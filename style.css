@@ -231,7 +231,150 @@ main{
 
 /* -------------------------------------------- Profile */
 
+#labels{
+    
+    font-size:15px;
+    color: rgb(2, 15, 27);
+    padding: 15px;
+    position:absolute;
+    padding-left: 350px;
+    padding-top:200px;
 
+}
+#labels >label{
+    font-weight: bolder;
+    color:white;
+    display: inline-block;
+    padding-top:25px;
+    padding-right:52px ;
+
+}
+#labels input{
+    width: 350px;
+    padding :5px 10px;
+    margin-left: 10px;
+    margin-top: 20px;
+    border-radius: 12px;
+}
+#gend{
+    margin-top:27px ;
+    color:white
+}
+
+#formgender{
+    margin-top: 20px;
+    
+
+}
+.male, .female{
+    display: flex;
+    border: 2px solid #ccc; 
+    border-radius: 28px;
+   
+}
+
+#male,#female {
+    display: none;
+}
+
+.male,.female {
+    margin-left: 50px;
+    cursor: pointer;
+    background-color: white;
+    color: #666;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    display:inline-block;
+}
+.male{
+   padding:20px 50px;
+}
+.female{
+    padding:20px 40px;
+}
+
+.male:hover  {
+    background-color: #3714e4;
+    color: white;
+    opacity:12%;
+    box-shadow: 2px 2px  #3714e4;
+}
+.female:hover  {
+    background-color: #e621b4; 
+    color: white;
+    opacity:12%;
+    box-shadow: 2px 2px  #e621b4;
+
+}
+#female:checked +label {
+    background-color: #e621b4; 
+    color: white;
+}
+
+ #male:checked+label  {
+    background-color: #3714e4; 
+    color: white;
+}
+
+    
+#submit{
+    font-size: 15px;
+    font-weight: bolder;
+    margin-left: 10px;
+    padding: 10px 20px;
+    background-color: rgb(234, 22, 22);
+    color: white;
+    border: 2px rgb(233, 231, 231) solid;
+    cursor: pointer;
+    transition: 1.2s ease;
+    padding:10px 15px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    margin-left:390px ;
+    margin-top: 40px;
+    border-radius: 15px;
+    
+
+}
+#submit:hover{
+    background-color: rgb(234, 22, 22);
+    border-width: 2px black solid;
+    text-shadow: 2px 2px 5px rgba(2, 2, 0, 0.5);
+    padding:10px 16px;
+    opacity: 50%;
+    
+    
+    
+}
+#submit:focus{
+    background-color: rgb(234, 22, 22);
+    border-width: 2px black solid;
+
+    box-shadow: 2px 2px 5px rgba(2, 2, 0, 0.5);
+    padding:10px 16px;
+    
+}
+#borrowed  {
+    font-weight: bolder;
+    width: 150px;
+    height: 35px;
+    cursor: pointer;
+    font-size: 15px;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--third-color);
+    color: var(--first-color);
+    position:fixed;
+    top: 30px;
+    right: 10px;
+    transition: all 0.3s;
+
+}
+
+#borrowed :hover{
+    color: var(--third-color);
+    background: var(--first-color);
+    box-shadow: 0 0 50px var(--second-color);
+}
 
 
 
