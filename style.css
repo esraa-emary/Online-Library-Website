@@ -17,7 +17,7 @@
 /* -------------------------------------------- INDEX 1 */
 /* ------------------------- header */
 
-header{
+.header{
     width: 100%;
     height: 7vh;
     background: var(--third-color);
@@ -29,7 +29,7 @@ header{
     align-items: center;
 }
 
-header section {
+.header section {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -41,7 +41,7 @@ header section {
 
 /* ------------------------- logo */
 
-header h3{
+.header h3{
     color: var(--first-color);
     font-weight: 400;
 }
@@ -81,7 +81,7 @@ header h3{
 }
 
 .nav-buttons button {
-    width: 100px;
+    width: 80px;
     height: 35px;
     cursor: pointer;
     font-size: 15px;
@@ -91,7 +91,7 @@ header h3{
     color: var(--first-color);
 }
 
-.second-button button{
+.first-button button{
     background-color: var(--first-color);
     color: var(--third-color);
 }
@@ -99,11 +99,19 @@ header h3{
 .nav-buttons button:hover{
     transition: all 0.3s;
     box-shadow: 0 0 50px var(--second-color);
+    scale: 1.1;
+}
+
+.nav-buttons a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
 }
 
 /* ------------------------- main */
 
-main{
+.main{
     background: url("img/main.jpg");
     background-size: cover;
     width: 100%;
@@ -136,6 +144,7 @@ main{
     background: var(--first-color);
     transition: all 0.3s;
     box-shadow: 0 0 50px var(--second-color);
+    scale: 1.1;
 }
 
 /* -------------------------------------------- Log-In */
@@ -156,66 +165,23 @@ main{
 
 
 
-/* -------------------------------------------- INDEX 5 */
+/* -------------------------------------------- Main Window */
+/* ------------------------- header */
 
+.manage-profile-logout-icons{
+    display: flex;
+    gap: 20px;
+}
 
+.manage-profile-logout-icons i, .nav-buttons i{
+    font-size: 25px;
+    color: var(--first-color);
+}
 
-
-
-/* -------------------------------------------- List Page */
-
-
-
-
-
-/* -------------------------------------------- Book Page */
-
-
-
-
-
-/* -------------------------------------------- Profile */
-
-
-
-
-
-/* -------------------------------------------- Borrowed Books */
-
-
-
-
-
-/* ------------------------------------------------------------------------------------- RESPONSIVE PART */
-/* -------------------------------------------- INDEX 1 */
-
-
-
-
-
-/* -------------------------------------------- Log-In */
-
-
-
-
-
-/* -------------------------------------------- Sign-Up */
-
-
-
-
-
-/* -------------------------------------------- Manage Books */
-
-
-
-
-
-/* -------------------------------------------- INDEX 5 */
-
-
-
-
+.manage-profile-logout-icons i:hover, .nav-buttons i:hover{
+    scale: 1.2;
+    transition: all 0.3s;
+}
 
 /* -------------------------------------------- List Page */
 
@@ -232,7 +198,7 @@ main{
 /* -------------------------------------------- Profile */
 
 #labels{
-    
+     
     font-size:15px;
     color: rgb(2, 15, 27);
     padding: 15px;
@@ -375,6 +341,61 @@ main{
     background: var(--first-color);
     box-shadow: 0 0 50px var(--second-color);
 }
+
+
+
+/* -------------------------------------------- Borrowed Books */
+
+
+
+
+
+/* ------------------------------------------------------------------------------------- RESPONSIVE PART */
+/* -------------------------------------------- INDEX 1 */
+
+
+
+
+
+/* -------------------------------------------- Log-In */
+
+
+
+
+
+/* -------------------------------------------- Sign-Up */
+
+
+
+
+
+/* -------------------------------------------- Manage Books */
+
+
+
+
+
+/* -------------------------------------------- INDEX 5 */
+
+
+
+
+
+/* -------------------------------------------- List Page */
+
+
+
+
+
+/* -------------------------------------------- Book Page */
+
+
+
+
+
+/* -------------------------------------------- Profile */
+
+
 
 
 
