@@ -14,7 +14,7 @@
 }
 
 /* ------------------------------------------------------------------------------------- MAIN PART */
-/* -------------------------------------------- INDEX 1 */
+/* -------------------------------------------- INDEX */
 /* ------------------------- header */
 
 .header{
@@ -50,11 +50,11 @@
 
 .search-bar input {
     width: 400px;
-    height: 35px;
     border: none;
     background: var(--first-color);
     color: var(--third-color);
-    padding: 20px;
+    height: 40px;
+    padding: 0 10px;
     font-size: 15px;
     border-radius: 10px;
 }
@@ -82,7 +82,7 @@
 
 .nav-buttons button {
     width: 80px;
-    height: 35px;
+    height: 40px;
     cursor: pointer;
     font-size: 15px;
     border: none;
@@ -118,10 +118,32 @@
     height: 100vh;
 }
 
+/* ------------------------- blurred-text */
+
+.blurred{
+    padding-top: 17rem;
+    padding-bottom: 13%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.blurred-text{
+    backdrop-filter: blur(10px);
+    width: 70%;
+    height: 50%;
+    padding: 4rem 2rem;
+    text-align: center;
+    color: var(--first-color);
+}
+
+.blurred-text h1{
+    margin-bottom: 10px;
+}
+
 /* ------------------------- buttons */
 
 .buttons{
-    padding-top: 41%;
     gap: 10%;
     display: flex;
     justify-content: center;
@@ -174,7 +196,7 @@
 }
 
 .manage-profile-logout-icons i, .nav-buttons i{
-    font-size: 25px;
+    font-size: 30px;
     color: var(--first-color);
 }
 
@@ -353,9 +375,107 @@
 /* ------------------------------------------------------------------------------------- RESPONSIVE PART */
 /* -------------------------------------------- INDEX 1 */
 
+@media screen and (max-width: 1024px) {
+    /* ------------------------- logo */
+    
+    .header h3{
+        font-size: 1rem;
+    }
+
+    /* ------------------------- search-bar */
+    
+    .search-bar input {
+        width: 300px;
+        height: 35px;
+        font-size: 13px;
+    }
+
+    .search-bar input::placeholder {
+        font-size: 13px;
+    }
+
+    /* ------------------------- nav-buttons */
+
+    .nav-buttons button {
+        width: 75px;
+        height: 35px;
+        font-size: 13px;
+    }
+
+    /* ------------------------- blurred-text */
+
+    .blurred-text{
+        padding: 3rem 1rem;
+    }
+
+    /* ------------------------- buttons */
+
+    .buttons button{
+        width: 160px;
+        height: 60px;
+        font-size: 1.2rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    /* ------------------------- header */
+
+    .header section {
+        padding: 0 15px;
+    }
+
+    /* ------------------------- logo */
+
+    .header h3{
+        font-size: 0.8rem;
+    }
+
+    /* ------------------------- search-bar */
 
 
+    .search-bar input {
+        width: 150px;
+        height: 30px;
+        font-size: 11px;
+    }
 
+    .search-bar input::placeholder {
+        font-size: 11px;
+    }
+
+    /* ------------------------- nav-buttons */
+
+    .nav-buttons button {
+        display: none;
+    }
+
+    .nav-buttons{
+        gap: 0px;
+    }
+
+    /* ------------------------- blurred-text */
+
+    .blurred-text{
+        width: 85%;
+        padding: 3rem 1rem;
+    }
+
+    .blurred-text h1{
+        font-size: 1.1rem;
+    }
+
+    .blurred-text p{
+        font-size: 0.8rem;
+    }
+
+    /* ------------------------- buttons */
+
+    .buttons button{
+        width: 120px;
+        height: 50px;
+        font-size: 1rem;
+    }
+}
 
 /* -------------------------------------------- Log-In */
 
@@ -375,9 +495,13 @@
 
 
 
-/* -------------------------------------------- INDEX 5 */
+/* -------------------------------------------- Main Window */
 
-
+@media screen and (max-width: 768px) {
+    .manage-profile-logout-icons i, .nav-buttons i{
+        font-size: 20px;
+    }
+}
 
 
 
