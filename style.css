@@ -392,43 +392,7 @@ top:-370px;
 } */
 
     
-#submit{
-    font-size: 15px;
-    font-weight: bolder;
-    margin-left: 10px;
-    padding: 10px 20px;
-    background-color:var(--first-color);
-    color: white;
-    border: 2px rgb(233, 231, 231) solid;
-    cursor: pointer;
-    transition: 1.2s ease;
-    padding:10px 15px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-    position: relative;
-    left:390px ;
-    margin-top: 40px;
-    border-radius: 15px;
-    margin-bottom: 20px;
-    
 
-}
-#submit:hover{
-    border-width: 2px black solid;
-    text-shadow: 2px 2px 5px rgba(2, 2, 0, 0.5);
-    padding:10px 16px;
-    opacity: 50%;
-    
-    
-    
-}
-#submit:focus{
-    background-color:#28a745;
-    border-width: 2px black solid;
-
-    box-shadow: 2px 2px 5px rgba(2, 2, 0, 0.5);
-    padding:10px 16px;
-    
-}
 
 #navbtn2812 button{
     border:none;
