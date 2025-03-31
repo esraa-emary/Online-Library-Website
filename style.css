@@ -81,7 +81,7 @@
 }
 
 .nav-buttons button {
-    width: 80px;
+    width: 75px;
     height: 40px;
     cursor: pointer;
     font-size: 15px;
@@ -118,28 +118,53 @@
     height: 100vh;
 }
 
-/* ------------------------- blurred-text */
+/* ------------------------- sentences */
 
-.blurred{
-    padding-top: 12rem;
-    padding-bottom: 13%;
+.sentence-container{
+    display: flex;
+    justify-content: center;
+}
+
+.sentences {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.blurred-text{
-    backdrop-filter: blur(10px);
-    width: 70%;
-    height: 50%;
-    padding: 4rem 2rem;
-    text-align: center;
+    flex-direction: column;
     color: var(--first-color);
+    width: 80%;
+    margin-top: 10rem;
+    padding: 2rem 0;
+    backdrop-filter: blur(10px);
 }
 
-.blurred-text h1{
-    margin-bottom: 10px;
+.sentence{
+    position: relative;
+    backdrop-filter: blur(10px);
+    width: 310px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    opacity: 0;
 }
+
+@keyframes slide-left {
+    from {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-2*100px);
+    }
+}
+
+.sentence:nth-child(1) { animation: slide-left 1s ease-out forwards 0s; transform: translateX(-250px);}
+.sentence:nth-child(2) { animation: slide-left 1s ease-out forwards 1s; transform: translateX(-150px);}
+.sentence:nth-child(3) { animation: slide-left 1s ease-out forwards 2s; transform: translateX(-50px);}
+.sentence:nth-child(4) { animation: slide-left 1s ease-out forwards 3s; transform: translateX(50px);}
+.sentence:nth-child(5) { animation: slide-left 1s ease-out forwards 4s; transform: translateX(150px);}
+.sentence:nth-child(6) { animation: slide-left 1s ease-out forwards 5s; transform: translateX(250px);}
+.sentence:nth-child(7) { animation: slide-left 1s ease-out forwards 6s; transform: translateX(350px);}
 
 /* ------------------------- buttons */
 
@@ -148,6 +173,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-top: 7rem;
 }
 
 .buttons button{
@@ -157,13 +183,13 @@
     font-size: 1.5rem;
     border: none;
     border-radius: 15px;
-    background: var(--third-color);
-    color: var(--first-color);
+    color: var(--third-color);
+    background: var(--first-color);
 }
 
 .buttons button:hover{
-    color: var(--third-color);
-    background: var(--first-color);
+    background: var(--third-color);
+    color: var(--first-color);
     transition: all 0.3s;
     box-shadow: 0 0 50px var(--second-color);
     scale: 1.1;
@@ -190,20 +216,50 @@
 /* -------------------------------------------- Main Window */
 /* ------------------------- header */
 
-.manage-profile-logout-icons{
+.home-manage-profile-logout-icons{
     display: flex;
     gap: 20px;
 }
 
-.manage-profile-logout-icons i, .nav-buttons i{
+.home-manage-profile-logout-icons i, .nav-buttons i, #menu-icon{
+    cursor: pointer;
     font-size: 30px;
     color: var(--first-color);
 }
 
-.manage-profile-logout-icons i:hover, .nav-buttons i:hover{
+.home-manage-profile-logout-icons i:hover, .nav-buttons i:hover, #menu-icon:hover{ 
     scale: 1.2;
     transition: all 0.3s;
 }
+
+#menu-icon{
+    display: none;
+}
+
+/* ------------------------- blurred-text */
+
+.blurred{
+    padding-top: 12rem;
+    padding-bottom: 13%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.blurred-text{
+    backdrop-filter: blur(10px);
+    width: 60%;
+    height: 50%;
+    padding: 4rem 2rem;
+    text-align: center;
+    color: var(--first-color);
+}
+
+.blurred-text h1{
+    margin-bottom: 10px;
+}
+
+
 
 /* -------------------------------------------- List Page */
 
@@ -376,6 +432,7 @@
 /* -------------------------------------------- INDEX 1 */
 
 @media screen and (max-width: 1024px) {
+
     /* ------------------------- logo */
 
     .header h3{
@@ -397,16 +454,25 @@
     /* ------------------------- nav-buttons */
 
     .nav-buttons button {
-        width: 75px;
         height: 35px;
         font-size: 13px;
     }
 
-    /* ------------------------- blurred-text */
+    /* ------------------------- sentences */
 
-    .blurred-text{
-        padding: 3rem 1rem;
+    .sentence{
+        width: 210px;
+        height: 40px;
+        font-size: 1.03rem;
     }
+
+    .sentence:nth-child(1) { transform: translateX(-180px);}
+    .sentence:nth-child(2) { transform: translateX(-105px);}
+    .sentence:nth-child(3) { transform: translateX(-30px);}
+    .sentence:nth-child(4) { transform: translateX(35px);}
+    .sentence:nth-child(5) { transform: translateX(110px);}
+    .sentence:nth-child(6) { transform: translateX(185px);}
+    .sentence:nth-child(7) { transform: translateX(260px);}
 
     /* ------------------------- buttons */
 
@@ -418,6 +484,7 @@
 }
 
 @media screen and (max-width: 768px) {
+
     /* ------------------------- header */
 
     .header section {
@@ -453,20 +520,26 @@
         gap: 0px;
     }
 
-    /* ------------------------- blurred-text */
+    /* ------------------------- sentences */
 
-    .blurred-text{
+    .sentences {
         width: 85%;
-        padding: 3rem 1rem;
+        margin-top: 8rem;
     }
 
-    .blurred-text h1{
-        font-size: 1.1rem;
+    .sentence{
+        width: 185px;
+        height: 30px;
+        font-size: 0.9rem;
     }
 
-    .blurred-text p{
-        font-size: 0.8rem;
-    }
+    .sentence:nth-child(1) { transform: translateX(-65px);}
+    .sentence:nth-child(2) { transform: translateX(-35px);}
+    .sentence:nth-child(3) { transform: translateX(-5px);}
+    .sentence:nth-child(4) { transform: translateX(25px);}
+    .sentence:nth-child(5) { transform: translateX(55px);}
+    .sentence:nth-child(6) { transform: translateX(85px);}
+    .sentence:nth-child(7) { transform: translateX(115px);}
 
     /* ------------------------- buttons */
 
@@ -475,6 +548,30 @@
         height: 50px;
         font-size: 1rem;
     }
+}
+
+@media screen and (max-width: 425px) {
+
+    /* ------------------------- sentences */
+
+    .sentences {
+        width: 85%;
+        margin-top: 8rem;
+    }
+
+    .sentence{
+        width: 142px;
+        height: 20px;
+        font-size: 0.7rem;
+    }
+
+    .sentence:nth-child(1) { transform: translateX(-55px);}
+    .sentence:nth-child(2) { transform: translateX(-35px);}
+    .sentence:nth-child(3) { transform: translateX(-15px);}
+    .sentence:nth-child(4) { transform: translateX(5px);}
+    .sentence:nth-child(5) { transform: translateX(25px);}
+    .sentence:nth-child(6) { transform: translateX(45px);}
+    .sentence:nth-child(7) { transform: translateX(65px);}
 }
 
 /* -------------------------------------------- Log-In */
@@ -497,13 +594,73 @@
 
 /* -------------------------------------------- Main Window */
 
-@media screen and (max-width: 768px) {
-    .manage-profile-logout-icons i, .nav-buttons i{
-        font-size: 20px;
+@media screen and (max-width: 1024px) {
+
+    /* ------------------------- blurred-text */
+
+    .blurred-text{
+        width: 85%;
+        padding: 3rem 1rem;
     }
 }
 
+@media screen and (max-width: 768px) {
+    
+    /* ------------------------- header */
 
+    .home-manage-profile-logout-icons i, .nav-buttons i, #menu-icon{
+        font-size: 20px;
+    }
+
+    .home-manage-profile-logout-icons{
+        gap: 5px;
+    }
+
+    /* ------------------------- blurred-text */
+
+    .blurred-text h1{
+        font-size: 1.1rem;
+    }
+
+    .blurred-text p{
+        font-size: 0.8rem;
+    }
+}
+
+@media screen and (max-width: 425px) {
+
+    /* ------------------------- header */
+
+    #menu-icon {
+        display: block;
+        cursor: pointer;
+    }
+    
+    .home-manage-profile-logout-icons {
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 20%;
+        height: auto;
+        padding: 30px 0;
+        backdrop-filter: blur(20px);
+        border-left: 2px solid var(--first-color);
+        border-bottom: 2px solid var(--first-color);
+        display: none;
+    }
+    
+    :has(#menu-toggle:checked) .home-manage-profile-logout-icons {
+        display: block;
+    }
+    
+    .home-manage-profile-logout-icons a {
+        display: block;
+        font-size: 1rem;
+        margin: 0.5rem 0;
+        color: var(--first-color);
+    }
+}
 
 /* -------------------------------------------- List Page */
 
