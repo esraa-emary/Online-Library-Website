@@ -275,53 +275,84 @@
 
 /* -------------------------------------------- Profile */
 
-#labels{
-     
+#body2812{
+    background-color:var(--first-color);
+    
+
+}
+#form2812 {
+    width:1000px;
+    height: 550px;
+    background-color:var(--third-color);
+
+
+    border-style: solid;
+    border-radius: 5px;
+    border-color: #b0bec5;       
     font-size:15px;
     color: rgb(2, 15, 27);
-    padding: 15px;
     position:absolute;
-    padding-left: 350px;
-    padding-top:200px;
+    left: 230px;
+    top:100px;
+    
+}
+#navbtn2812{
+    position:relative;
+    width:150px;
+    height: 440px;
+    
+
+
+   
+    
 
 }
+#labels input:focus {
+    background-color: #dddddd;  
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5); 
+} 
+#labels{
+display: inline-block;    
+position:relative;
+left:300px;
+top:-370px;
+}
+
 #labels >label{
-    font-weight: bolder;
-    color:white;
+
+    color:var(--second-color);
     display: inline-block;
-    padding-top:25px;
-    padding-right:52px ;
+    padding-right:58px ;
+    margin-top:50px;
 
 }
-#labels input{
+#labels input[type="text"]{
     width: 350px;
     padding :5px 10px;
     margin-left: 10px;
     margin-top: 20px;
     border-radius: 12px;
 }
-#gend{
-    margin-top:27px ;
-    color:white
-}
+
+
+
 
 #formgender{
-    margin-top: 20px;
-    
+    position: relative;
 
 }
-.male, .female{
+/* .male, .female{
     display: flex;
     border: 2px solid #ccc; 
     border-radius: 28px;
    
-}
+} */
 
-#male,#female {
+/* #male,#female {
     display: none;
-}
+} */
 
-.male,.female {
+/* .male,.female {
     margin-left: 50px;
     cursor: pointer;
     background-color: white;
@@ -335,9 +366,9 @@
 }
 .female{
     padding:20px 40px;
-}
+} */
 
-.male:hover  {
+/* .male:hover  {
     background-color: #3714e4;
     color: white;
     opacity:12%;
@@ -358,7 +389,7 @@
  #male:checked+label  {
     background-color: #3714e4; 
     color: white;
-}
+} */
 
     
 #submit{
@@ -366,21 +397,22 @@
     font-weight: bolder;
     margin-left: 10px;
     padding: 10px 20px;
-    background-color: rgb(234, 22, 22);
+    background-color:var(--first-color);
     color: white;
     border: 2px rgb(233, 231, 231) solid;
     cursor: pointer;
     transition: 1.2s ease;
     padding:10px 15px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-    margin-left:390px ;
+    position: relative;
+    left:390px ;
     margin-top: 40px;
     border-radius: 15px;
+    margin-bottom: 20px;
     
 
 }
 #submit:hover{
-    background-color: rgb(234, 22, 22);
     border-width: 2px black solid;
     text-shadow: 2px 2px 5px rgba(2, 2, 0, 0.5);
     padding:10px 16px;
@@ -390,39 +422,33 @@
     
 }
 #submit:focus{
-    background-color: rgb(234, 22, 22);
+    background-color:#28a745;
     border-width: 2px black solid;
 
     box-shadow: 2px 2px 5px rgba(2, 2, 0, 0.5);
     padding:10px 16px;
     
 }
-#borrowed  {
-    font-weight: bolder;
+
+#navbtn2812 button{
+    border:none;
+    margin-right: 10px;
+    position: relative; 
+    top:40px;
     width: 150px;
-    height: 35px;
     cursor: pointer;
-    font-size: 15px;
-    border: none;
-    border-radius: 10px;
-    background-color: var(--third-color);
-    color: var(--first-color);
-    position:fixed;
-    top: 30px;
-    right: 10px;
-    transition: all 0.3s;
-
-}
-
-#borrowed :hover{
-    color: var(--third-color);
-    background: var(--first-color);
-    box-shadow: 0 0 50px var(--second-color);
+    margin-top:30px;
+    border-radius: 15px;
+    
 }
 
 
-
-/* -------------------------------------------- Borrowed Books */
+#profilebtn2812{
+    background-color: orange;
+}
+#borrowbtn2812{
+    opacity:50%;
+}/* -------------------------------------------- Borrowed Books */
 
 
 
