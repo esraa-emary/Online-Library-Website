@@ -6,12 +6,13 @@
     * Author4: Mohammed Atef Abd El-Kader    ID: 20231143
     * Author5: George Malak Magdy            ID: 20231042
     * Author6: Mohammed Nabil El-Sayed       ID: 20231042
- * Date : 
- * Prof : Dr. Neamat El Tazi
- * Description: 
- * Version: V1.0
+    * Date : 31/3/2025
+    * Course : Web Programming
+    * Prof : Dr. Neamat El Tazi
+    * Description: 
+    * Version: V1.0
 -->
- 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,6 +23,8 @@
     <link rel="icon" href="img/icon.jpg">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Tangerine:wght@400;700&display=swap">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <!-- -------------------------------------------- header  -->
@@ -51,6 +54,245 @@
             </div>  
         </section>
     </header>
+    <!-- -------------------------------------------- Books  -->
     
+    <div id="Books" class="container text-center py-5">
+        <img src="./img/logo.jpg" alt="Logo" class="img-fluid mb-4">
+        <p class="fst-italic text-muted">Your gateway to knowledge and culture. Accessible for everyone.</p>
+        <!-- Programming Category -->
+        <div id="booktype">
+            <!-- Container to make the head and button in same line -->
+            <div class="header-container">
+                <h2>Programming Books :-</h2>
+                <button class="btn"> Add Book </button>
+            </div>
+            <!-- Grid of Books -->
+            <div class="row g-4">
+                <!-- Item 1st -->
+                <div class="col-lg-4 col-md-6 col-12">
+                    <!-- Card -->
+                    <div class="card border-0 ">
+                        <img src="./img/Books/Programming/P  (1).jpg" class="card-img-top img-fluid" alt="Book 1">
+                        <div class="card-body">
+                            <h5>John Hebeler, Matthew Fisher 
+                                <br> Ryan Blace, Andrew Parex</h5>
+                            <p class="fst-italic text-muted">50$</p>
+                            <button class="btn edit"><i class="fas fa-edit"></i></button>
+                            <button class="btn delete"><i class="fas fa-trash-alt"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <!-- And so on of the rest -->
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="card border-0 ">
+                        <img src="./img/Books/Programming/P  (2).jpg" class="card-img-top img-fluid" alt="Book 2">
+                        <div class="card-body">
+                            <h5>Mastery, White Belt</h5>
+                            <p class="fst-italic text-muted">70$</p>
+                            <button class="btn edit"><i class="fas fa-edit"></i></button>
+                            <button class="btn delete"><i class="fas fa-trash-alt"></i></button>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="card border-0 ">
+                        <img src="./img/Books/Programming/P  (3).jpg" class="card-img-top img-fluid" alt="Book 3">
+                        <div class="card-body">
+                            <h5>Jonathan Bartlett</h5>
+                            <p class="fst-italic text-muted">65$</p>
+                            <button class="btn edit"><i class="fas fa-edit"></i></button>
+                            <button class="btn delete"><i class="fas fa-trash-alt"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="card border-0 ">
+                        <img src="./img/Books/Programming/P  (4).jpg" class="card-img-top img-fluid" alt="Book 4">
+                        <div class="card-body">
+                            <h5>Bjarne Stroustrup</h5>
+                            <p class="fst-italic text-muted">100$</p>
+                            <button class="btn edit"><i class="fas fa-edit"></i></button>
+                            <button class="btn delete"><i class="fas fa-trash-alt"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+        <!-- Novel Category -->
+        <div id="booktype">
+                    <div class="header-container">
+                        <h2>Novel Books :-</h2>
+                        <button class="btn"> Add Book </button>
+                    </div>
+                    <div class="row g-4">
+                        <div class="col-lg-4 col-md-6 col-12">
+                            <div class="card border-0 ">
+                                <img src="./img/Books/Novel/N  (1).jpg" class="card-img-top img-fluid" alt="Book 1">
+                                <div class="card-body">
+                                    <h5>Pual Hoffman</h5>
+                                    <p class="fst-italic text-muted">30$</p>
+                                    <button class="btn edit"><i class="fas fa-edit"></i></button>
+                                    <button class="btn delete"><i class="fas fa-trash-alt"></i></button>
+                                </div>
+                            </div>
+                        </div>
+            
+                        <div class="col-lg-4 col-md-6 col-12">
+                            <div class="card border-0 ">
+                                <img src="./img/Books/Novel/N  (2).jpg" class="card-img-top img-fluid" alt="Book 2">
+                                <div class="card-body">
+                                    <h5>L . D . Goffigan</h5>
+                                    <p class="fst-italic text-muted">110$</p>
+                                    <button class="btn edit"><i class="fas fa-edit"></i></button>
+                                    <button class="btn delete"><i class="fas fa-trash-alt"></i></button>
+                                </div>
+                            </div>
+                        </div>
+            
+                        <div class="col-lg-4 col-md-6 col-12">
+                            <div class="card border-0 ">
+                                <img src="./img/Books/Novel/N  (3).jpg" class="card-img-top img-fluid" alt="Book 3">
+                                <div class="card-body">
+                                    <h5>Kimbra Swain</h5>
+                                    <p class="fst-italic text-muted">90$</p>
+                                    <button class="btn edit"><i class="fas fa-edit"></i></button>
+                                    <button class="btn delete"><i class="fas fa-trash-alt"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 col-12">
+                            <div class="card border-0 ">
+                                <img src="./img/Books/Novel/N  (4).jpg" class="card-img-top img-fluid" alt="Book 4">
+                                <div class="card-body">
+                                    <h5>Kristen Martin</h5>
+                                    <p class="fst-italic text-muted">100$</p>
+                                    <button class="btn edit"><i class="fas fa-edit"></i></button>
+                                    <button class="btn delete"><i class="fas fa-trash-alt"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 col-12">
+                            <div class="card border-0 ">
+                                <img src="./img/Books/Novel/N (5).jpeg" class="card-img-top img-fluid" alt="Book 5">
+                                <div class="card-body">
+                                    <h5>Fyodor Dostoyevsky</h5>
+                                    <p class="fst-italic text-muted">210$</p>
+                                    <button class="btn edit"><i class="fas fa-edit"></i></button>
+                                    <button class="btn delete"><i class="fas fa-trash-alt"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 col-12">
+                            <div class="card border-0 ">
+                                <img src="./img/Books/Novel/N (6).jpeg" class="card-img-top img-fluid" alt="Book 6">
+                                <div class="card-body">
+                                    <h5>Fyodor Dostoyevsky</h5>
+                                    <p class="fst-italic text-muted">300$</p>
+                                    <button class="btn edit"><i class="fas fa-edit"></i></button>
+                                    <button class="btn delete"><i class="fas fa-trash-alt"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 col-12">
+                            <div class="card border-0 ">
+                                <img src="./img/Books/Novel/N (7).jpeg" class="card-img-top img-fluid" alt="Book 7">
+                                <div class="card-body">
+                                    <h5>Fyodor Dostoyevsky</h5>
+                                    <p class="fst-italic text-muted">250$</p>
+                                    <button class="btn edit"><i class="fas fa-edit"></i></button>
+                                    <button class="btn delete"><i class="fas fa-trash-alt"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+        </div>
+        <!-- Psychology Category -->
+        <div id="booktype">
+            <div class="header-container">
+                <h2>Psychology Books :-</h2>
+                <button class="btn"> Add Book </button>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="card border-0 ">
+                        <img src="./img/Books/Psychology/ps (1).jpg" class="card-img-top img-fluid" alt="Book 1">
+                        <div class="card-body">
+                            <h5>David G. Myers 
+                                <br>C.Nathan Dewall</h5>
+                            <p class="fst-italic text-muted">85$</p>
+                            <button class="btn edit"><i class="fas fa-edit"></i></button>
+                            <button class="btn delete"><i class="fas fa-trash-alt"></i></button>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="card border-0 ">
+                        <img src="./img/Books/Psychology/ps (2).jpg" class="card-img-top img-fluid" alt="Book 2">
+                        <div class="card-body">
+                            <h5>Claudia Gray</h5>
+                            <p class="fst-italic text-muted">20$</p>
+                            <button class="btn edit"><i class="fas fa-edit"></i></button>
+                            <button class="btn delete"><i class="fas fa-trash-alt"></i></button>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="card border-0 ">
+                        <img src="./img/Books/Psychology/ps (3).jpg" class="card-img-top img-fluid" alt="Book 3">
+                        <div class="card-body">
+                            <h5>Eric Berne, M.D. </h5>
+                            <p class="fst-italic text-muted">65$</p>
+                            <button class="btn edit"><i class="fas fa-edit"></i></button>
+                            <button class="btn delete"><i class="fas fa-trash-alt"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="card border-0 ">
+                        <img src="./img/Books/Psychology/ps (4).jpg" class="card-img-top img-fluid" alt="Book 4">
+                        <div class="card-body">
+                            <h5>Galen E.Cole</h5>
+                            <p class="fst-italic text-muted">100$</p>
+                            <button class="btn edit"><i class="fas fa-edit"></i></button>
+                            <button class="btn delete"><i class="fas fa-trash-alt"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="card border-0 ">
+                        <img src="./img/Books/Psychology/ps (5).jpg" class="card-img-top img-fluid" alt="Book 5">
+                        <div class="card-body">
+                            <h5>Baird McCarthy</h5>
+                            <p class="fst-italic text-muted">100$</p>
+                            <button class="btn edit"><i class="fas fa-edit"></i></button>
+                            <button class="btn delete"><i class="fas fa-trash-alt"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="card border-0 ">
+                        <img src="./img/Books/Psychology/ps (6).jpg" class="card-img-top img-fluid" alt="Book 6">
+                        <div class="card-body">
+                            <h5>James Clear</h5>
+                            <p class="fst-italic text-muted">100$</p>
+                            <button class="btn edit"><i class="fas fa-edit"></i></button>
+                            <button class="btn delete"><i class="fas fa-trash-alt"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </div>
 </body>
 </html>
