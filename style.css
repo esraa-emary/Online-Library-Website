@@ -641,11 +641,63 @@
 
 /* -------------------------------------------- List Page */
 
+/* -------------------------------------------- Book Review */
+.r-p-main {
+    height: 100vh;
+    width: 100%;
+    background: url("img/main.jpg") ;
+    background-size: cover;
+}
+.r-p-main .book-box{
+    position: absolute;
+    top: 15%;
+    left: 15%;
+    width: 70%;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    padding: 20px;
+    background: #b7831134; /* Semi-transparent */
+    backdrop-filter: blur(10px); /* Blur effect */
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 5px 5px 10px rgba(134, 88, 7, 0.559); /* Soft shadow */
+}
+.r-p-main .book-box .book-box-img{
+    width: 400px;
+    height: 400px;
+}
+.r-p-main .book-box .book-box-img img{
+   height: 100%;
+}
+.r-p-main .book-box .book-box-content{
+    text-align: left;
+}
+.r-p-main .book-box .book-box-content h3{
+    font-size: 25px;
+}
+.r-p-main .book-box .book-box-content button{
+    width: 20%;
+    position: absolute;
+    background: #62380b57;
+    right:  17%;
+    border-radius: 20px;
+    margin: 20px;
+    padding: 8px;
+    transition: 0.3s;
+}
+.r-p-main .book-box .book-box-content button:hover{
+    transform: scale(1.1);
+}
+.r-p-main .book-box .book-box-content button a{
+   text-decoration: none;
+   width: 100%;
+   padding: 50px;
+   color: black;
+}
 
-
-
-
-/* -------------------------------------------- Book Page */
+/* -------------------------------------------- Borrow Page */
 #book-page2812 {
     background-color: var(--first-color);
 }
