@@ -405,6 +405,72 @@
 
 
 /* -------------------------------------------- Book Page */
+#book-page2812 {
+    background-color: var(--first-color);
+}
+#info2812{
+    width: 1000px;
+    height: 400px;
+    position: absolute;
+    left: 230px;
+    top: 250px;
+    
+}
+#info2812 input{
+    font-weight: bolder;
+    border:none;
+    padding-left: 8px;
+}
+#info2812 label{
+    color:var(--second-color);
+}
+#info2812 , #info2812 input{
+    background-color: var(--third-color);
+    color : var(--second-color);
+    font-size:15px;
+    font-weight: border;
+
+}
+#infobook22812  {
+    position: absolute;
+        top: 100px;
+        left:600px;
+
+    }
+    
+#infobook12812 {
+position: relative;
+    top: 100px;
+    left:60px;
+}
+
+#infobook22812 >label,#infobook22812 > input,#infobook12812>label,#infobook12812>input{
+margin:16px 3px;
+}
+#info2812 button{
+    position: relative;
+    top:230px;
+    left: 800px;
+    width: 150px;
+    cursor: pointer;
+    border-radius: 15px;
+    background-color: var(--first-color);
+
+}
+#info2812 button:hover{
+    background-color: var(--first-color);
+    opacity: 40%;
+}
+
+#info2812 button:focus{
+    background-color: var(--first-color);
+    opacity: 50%;
+}
+
+#info2812 button:active{
+    background-color: var(--first-color);
+    opacity: 80%;
+}
 
 
 
