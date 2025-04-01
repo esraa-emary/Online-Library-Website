@@ -51,5 +51,48 @@
         </section>
     </header>
     
+    <section class="logInPage">
+    
+        <div class="logInForm">
+            <h1>Log-In</h1>
+            <form action="">
+                <div class="inputData">
+                    <div class="userName">
+                        <label for="userName">Username:</label>
+                        <input type="text" id="userName" name="userName" placeholder="Enter your username" required>
+                    </div>
+                    
+                    <div class="password">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                    </div>
+                    
+                    <div class="radioChoices">
+                        <label>Your are:</label>
+                        <div class="choices">
+                            <div class="">
+                                <input type="radio" name="role" id="admin" value="admin">
+                                <label for="admin">Admin</label>
+                            </div>
+                            
+                            <div class="">
+                                <input type="radio" name="role" id="user" value="user" required>
+                                <label for="user">User</label>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="formBtn">
+                    <button class="logInBtn">Log In</button>
+                    
+                    <p>Don't have an account? <a href="./Sign-Up.html">Sign-Up</a></p>
+                </div>
+            </form>
+        </div>
+        
+    </section>
+    
 </body>
 </html>

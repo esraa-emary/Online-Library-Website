@@ -57,6 +57,7 @@
     padding: 0 10px;
     font-size: 15px;
     border-radius: 10px;
+    transition: all 0.3s ease-in-out;
 }
 
 .search-bar input::placeholder {
@@ -70,7 +71,6 @@
 .search-bar input:hover {
     outline: none;
     box-shadow: 0 0 30px var(--second-color);
-    transition: all 0.3s;
 }
 
 /* ------------------------- nav-buttons */
@@ -89,6 +89,7 @@
     border-radius: 10px;
     background-color: var(--third-color);
     color: var(--first-color);
+    transition: all 0.3s ease-in-out;
 }
 
 .first-button button {
@@ -97,7 +98,6 @@
 }
 
 .nav-buttons button:hover {
-    transition: all 0.3s;
     box-shadow: 0 0 50px var(--second-color);
     scale: 1.1;
 }
@@ -213,26 +213,243 @@
     border-radius: 15px;
     color: var(--third-color);
     background: var(--first-color);
+    transition: all 0.3s ease-in-out;
 }
 
 .buttons button:hover {
     background: var(--third-color);
     color: var(--first-color);
-    transition: all 0.3s;
     box-shadow: 0 0 50px var(--second-color);
     scale: 1.1;
 }
 
 /* -------------------------------------------- Log-In */
 
-
-
-
+.logInPage {
+    background: url("./img/main.jpg");
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    align-content: center;
+    
+    .logInForm {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 auto;
+        padding: 2.5rem;
+        backdrop-filter: blur(10px);
+        border-radius: 25px;
+        max-width: 35%;
+        
+        h1 {
+            font-size: 2.5rem;
+        }
+        
+        h1, label {
+            color: var(--first-color);
+        }
+        
+        form {
+            width: 100%;
+            .inputData {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+                margin: 3rem auto;
+                .userName, .password{
+                    display: flex;
+                    flex-direction: column;
+                    input {
+                        border: none;
+                        background: var(--first-color);
+                        color: var(--third-color);
+                        height: 40px;
+                        padding: 0 10px;
+                        font-size: 15px;
+                        border-radius: 10px;
+                        transition: all 0.35s ease;
+                    }
+                    
+                    input::placeholder {
+                        color: var(--third-color);
+                        font-style: italic;
+                        font-size: 15px;
+                    }
+                    
+                    input:focus, input:active ,input:hover {
+                        outline: 1px solid white;
+                    }
+                }
+                
+                .radioChoices{
+                    display: flex;
+                    label{
+                        min-width: fit-content;
+                        cursor: pointer;
+                    }
+                    .choices{
+                        width: 100%;
+                        display: flex;
+                        padding: 0 3.5rem;
+                        justify-content: space-between;
+                    }
+                }
+            }
+            
+            .formBtn {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                text-align: center;
+                gap: 2rem;
+                .logInBtn{
+                    border: none;
+                    background-color: var(--first-color);
+                    color: var(--third-color);
+                    font-size: 1rem;
+                    font-weight: 600;
+                    padding: 10px 20px;
+                    border-radius: 10px;
+                    cursor: pointer;
+                    transition: all 0.3s ease-in-out;
+                }
+                
+                .logInBtn:hover {
+                    background-color: var(--third-color);
+                    color: white;
+                    box-shadow: 0 0 25px var(--first-color);
+                }
+                
+                p {
+                    color: var(--first-color);
+                    a {
+                        color: var(--first-color);
+                        margin-left: 0.5rem;
+                        transition: all 0.3s ease-in-out;
+                    }
+                    a:hover {
+                        color: white;
+                    }
+                }
+            }
+        }
+    }
+}
 
 /* -------------------------------------------- Sign-Up */
 
-
-
+.signUpPage {
+    background: url("img/main.jpg");
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    align-content: center;
+    
+    .signUpForm {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 auto;
+        padding: 2.5rem;
+        backdrop-filter: blur(10px);
+        border-radius: 25px;
+        max-width: 35%;
+        
+        h1 {
+            font-size: 2.5rem;
+        }
+        
+        h1, label {
+            color: var(--first-color);
+        }
+        
+        form {
+            width: 100%;
+            .inputData {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+                margin: 2rem auto;
+                .userName, .password, .email, .confirmPassword{
+                    display: flex;
+                    flex-direction: column;
+                    input {
+                        border: none;
+                        background: var(--first-color);
+                        color: var(--third-color);
+                        height: 40px;
+                        padding: 0 10px;
+                        font-size: 15px;
+                        border-radius: 10px;
+                        transition: all 0.35s ease;
+                    }
+                    
+                    input::placeholder {
+                        color: var(--third-color);
+                        font-style: italic;
+                        font-size: 15px;
+                    }
+                    
+                    input:focus, input:active ,input:hover {
+                        outline: 1px solid white;
+                    }
+                }
+                
+                .radioChoices{
+                    display: flex;
+                    label{
+                        min-width: fit-content;
+                        cursor: pointer;
+                    }
+                    .choices{
+                        width: 100%;
+                        display: flex;
+                        padding: 0 3.5rem;
+                        justify-content: space-between;
+                    }
+                }
+            }
+            
+            .formBtn {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                text-align: center;
+                gap: 1.5rem;
+                .signUpBtn{
+                    border: none;
+                    background-color: var(--first-color);
+                    color: var(--third-color);
+                    font-size: 1rem;
+                    font-weight: 600;
+                    padding: 10px 20px;
+                    border-radius: 10px;
+                    cursor: pointer;
+                    transition: all 0.3s ease-in-out;
+                }
+                
+                .signUpBtn:hover {
+                    background-color: var(--third-color);
+                    color: white;
+                    box-shadow: 0 0 25px var(--first-color);
+                }
+                
+                p {
+                    color: var(--first-color);
+                    a {
+                        color: var(--first-color);
+                        margin-left: 0.5rem;
+                        transition: all 0.3s ease-in-out;
+                    }
+                    a:hover {
+                        color: white;
+                    }
+                }
+            }
+        }
+    }
+}
 
 
 /* -------------------------------------------- Manage Books */
@@ -384,13 +601,13 @@
     cursor: pointer;
     font-size: 30px;
     color: var(--first-color);
+    transition: all 0.3s ease-in-out;
 }
 
 .home-manage-profile-logout-icons i:hover,
 .nav-buttons i:hover,
 #menu-icon:hover {
     scale: 1.2;
-    transition: all 0.3s;
 }
 
 #menu-icon {

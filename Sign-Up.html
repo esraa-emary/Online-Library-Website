@@ -51,5 +51,58 @@
         </section>
     </header>
     
+    <section class="signUpPage">
+    
+        <div class="signUpForm">
+            <h1>Sign-Up</h1>
+            <form action="">
+                <div class="inputData">
+                    <div class="userName">
+                        <label for="userName">Username:</label>
+                        <input type="text" id="userName" name="userName" placeholder="Enter your username" required>
+                    </div>
+                    
+                    <div class="email">
+                        <label for="email">Password:</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    </div>
+                    
+                    <div class="password">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                    </div>
+                    
+                    <div class="confirmPassword">
+                        <label for="confirmpassword">Confirm Password:</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
+                    </div>
+                    
+                    <div class="radioChoices">
+                        <label>Your are:</label>
+                        <div class="choices">
+                            <div class="">
+                                <input type="radio" name="role" id="admin" value="admin">
+                                <label for="admin">Admin</label>
+                            </div>
+                            
+                            <div class="">
+                                <input type="radio" name="role" id="user" value="user" required>
+                                <label for="user">User</label>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="formBtn">
+                    <button class="signUpBtn">Sign Up</button>
+                    
+                    <p>Already have an account? <a href="./Log-In.html">Log-In</a></p>
+                </div>
+            </form>
+        </div>
+        
+    </section>
+    
 </body>
 </html>
