@@ -235,6 +235,7 @@
         display: flex;
         align-items: center;
         justify-content: space-around;
+        flex-wrap: wrap;
         padding: 35px 15px;
         background: #b7831134; /* Semi-transparent */
         backdrop-filter: blur(10px); /* Blur effect */
@@ -246,13 +247,17 @@
 .r-p-main .book-box .book-box-img{
     width: 400px;
     height: 400px;
-    
+    margin: 30px;
     img{
         height: 100%;
         border-radius: 15px;
+        transition: 0.5s;
     }
 }
-
+.r-p-main .book-box .book-box-img img:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
 .r-p-main .book-box .book-box-content {
     display: flex;
     flex-direction: column;
