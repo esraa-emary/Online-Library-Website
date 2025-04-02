@@ -188,6 +188,7 @@
 
                     a{
                         .borrow-btn{
+                            border: none;
                             background-color: var(--first-color);
                             font-weight: 600;
                             padding: 10px 20px;
@@ -201,12 +202,12 @@
                             background-color: var(--third-color);
                             box-shadow: 0 0 25px var(--first-color);
                             color: white;
-                             border:none;
                         }
                     }
                     
                     a{
                         .Book-Review-btn {
+                            border: none;
                             background-color: var(--first-color);
                             font-weight: 600;
                             padding: 10px 20px;
@@ -221,7 +222,6 @@
                             background-color: var(--third-color);
                             box-shadow: 0 0 25px var(--first-color);
                             color: white;
-                            border:none;
                         }
                     }
                 }
@@ -557,6 +557,7 @@ margin:16px 3px;
 /* -------------------------------------------- Borrowed Books */
 
 .reserve-btn {
+    border:none;
     background-color: var(--first-color);
     font-weight: 600;
     padding: 10px 20px;
@@ -571,7 +572,6 @@ margin:16px 3px;
     background-color: var(--third-color);
     box-shadow: 0 0 25px var(--first-color);
     color: white;
-    border:none;
 }
 
 
