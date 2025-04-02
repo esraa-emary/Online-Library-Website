@@ -221,7 +221,7 @@
 /* -------------------------------------------- Book Review */
 
 .r-p-main {
-    height: 100vh;
+    min-height: 100vh;
     background: url("../img/main.jpg") ;
     background-size: cover;
     background-position: center;
@@ -229,12 +229,13 @@
     align-content: center;
     
     .book-box{
-        margin: 0 auto;
-        width: 65%;
+        margin: auto;
+        width: 70%;
         text-align: center;
         display: flex;
         align-items: center;
         justify-content: space-around;
+        flex-wrap: wrap;
         padding: 35px 15px;
         background: #b7831134; /* Semi-transparent */
         backdrop-filter: blur(10px); /* Blur effect */
@@ -250,7 +251,13 @@
     img{
         height: 100%;
         border-radius: 15px;
+        transition: 0.5s;
     }
+}
+
+.r-p-main .book-box .book-box-img img:hover{
+    transform: scale(1.05);
+    cursor: pointer;
 }
 
 .r-p-main .book-box .book-box-content {
@@ -522,9 +529,19 @@ margin:16px 3px;
 
 
 
-/* -------------------------------------------- Book Page */
+/* -------------------------------------------- Book Review */
 
+@media screen and (max-width: 425px){
+    
+    .r-p-main .book-box .book-box-img{
+        width: 250px;
+        height: 250px;
 
+        img{
+            width: 100%;
+        }
+    }
+}
 
 
 
