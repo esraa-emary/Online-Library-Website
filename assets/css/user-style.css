@@ -11,6 +11,7 @@
     --first-color: #867b62;
     --second-color: rgba(106, 105, 105, 0.6);
     --third-color: #251201;
+    --card-background: #b49d65;
 }
 
 /* -------------------------------------------- header */
@@ -25,23 +26,23 @@
     position: fixed;
     display: flex;
     align-items: center;
-}
+    
+    section {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        justify-content: space-between;
+        padding: 0 30px;
+    }
+    
+    /* ------------------------- logo */
 
-.header section {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    justify-content: space-between;
-    padding: 0 30px;
-}
-
-/* ------------------------- logo */
-
-.header h3 {
-    color: var(--first-color);
-    font-weight: 400;
+    h3 {
+        color: var(--first-color);
+        font-weight: 400;
+    }
 }
 
 /* ------------------------- search-bar */
@@ -107,7 +108,7 @@
     padding: 0px 35px;
     display: flex;
     flex-direction: column;
-    background-color: var(--first-color);
+    /* background-color: var(--first-color); */
     color: var(--third-color);
 
     .logoPage {
@@ -129,8 +130,6 @@
     }
     
     .booktype {
-
-
         .header-container{
             display: flex;
             justify-content: space-between;
@@ -168,9 +167,9 @@
                 border-radius: 40px;
                 overflow: hidden;
                 position: relative;
-                background-color: var(--third-color);
+                background-color: var(--card-background);
                 transition: all 0.3s ease-in-out;
-                color: var(--first-color);
+                color: var(--third-color);
                 
                 img {
                     width: 100%;
@@ -183,88 +182,115 @@
                 
                 p {
                     font-style: italic;
-                    color: var(--first-color);
+                    color: var(--third-color);
                 }
-
-                .Book-Review-btn{
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    gap: 20px;
-                    background: var(--first-color);
-                    font-size: 12px;
-                    font-weight: bold;
-                    padding: 5px;
-                    margin: 20px 110px 20px 110px;
-                    border: 1px solid var(--first-color);
+                
+                .card-actions{
+                    margin-top: 25px;
+                    
                     a{
-                        color: var(--third-color);
-                        text-decoration: none;
+                        .Book-Review-btn{
+                            border: none;
+                            background-color: var(--first-color);
+                            font-weight: 600;
+                            padding: 10px 20px;
+                            border-radius: 10px;
+                            cursor: pointer;
+                            transition: all 0.3s ease-in-out;
+                            color: var(--third-color);
+                            i {margin-right: 0.5rem;}
+                        }
+                        
+                        .Book-Review-btn:hover{
+                            background-color: var(--third-color);
+                            box-shadow: 0 0 25px var(--first-color);
+                            color: white;
+                        }
                     }
-                    box-shadow: 0 0 10px var(--second-color);
-                    scale: 1.1;
                 }
             }
-
+            
+            .card:hover {
+                transform: scale(1.02);
+                box-shadow: 0 0 50px var(--first-color);
+            }
         }
     }
-
 }
 
 /* -------------------------------------------- Book Review */
+
 .r-p-main {
     height: 100vh;
-    width: 100%;
-    background: url("img/main.jpg") ;
+    background: url("../img/main.jpg") ;
     background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    align-content: center;
+    
+    .book-box{
+        margin: 0 auto;
+        width: 65%;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        padding: 35px 15px;
+        background: #b7831134; /* Semi-transparent */
+        backdrop-filter: blur(10px); /* Blur effect */
+        border-radius: 15px; /* Rounded corners */
+        box-shadow: 5px 5px 10px rgba(134, 88, 7, 0.559); /* Soft shadow */
+    }
 }
-.r-p-main .book-box{
-    position: absolute;
-    top: 15%;
-    left: 15%;
-    width: 70%;
-    text-align: center;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-around;
-    padding: 20px;
-    background: #b7831134; /* Semi-transparent */
-    backdrop-filter: blur(10px); /* Blur effect */
-    border-radius: 15px; /* Rounded corners */
-    box-shadow: 5px 5px 10px rgba(134, 88, 7, 0.559); /* Soft shadow */
-}
+
 .r-p-main .book-box .book-box-img{
     width: 400px;
     height: 400px;
+    
+    img{
+        height: 100%;
+        border-radius: 15px;
+    }
 }
-.r-p-main .book-box .book-box-img img{
-   height: 100%;
-}
-.r-p-main .book-box .book-box-content{
+
+.r-p-main .book-box .book-box-content {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
     text-align: left;
-}
-.r-p-main .book-box .book-box-content h3{
-    font-size: 25px;
-}
-.r-p-main .book-box .book-box-content button{
-    width: 20%;
-    position: absolute;
-    background: #62380b57;
-    right:  17%;
-    border-radius: 20px;
-    margin: 20px;
-    padding: 8px;
-    transition: 0.3s;
-}
-.r-p-main .book-box .book-box-content button:hover{
-    transform: scale(1.1);
-}
-.r-p-main .book-box .book-box-content button a{
-   text-decoration: none;
-   width: 100%;
-   padding: 50px;
-   color: black;
+    
+    h3{
+        font-size: 25px;
+        color: white;
+        span {
+            color: var(--first-color);
+        }
+    }
+    
+    a{
+        text-decoration: none;
+        transition: all 0.3s ease-in-out;
+        max-width: 50%;
+        
+        button {
+            border: none;
+            width: 100%;
+            background-color: var(--first-color);
+            color: var(--third-color);
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+        
+        button:hover {
+            background-color: var(--third-color);
+            box-shadow: 0 0 25px var(--first-color);
+            color: white;
+        }
+    }
 }
 
 /* -------------------------------------------- Borrow Page */
@@ -278,14 +304,41 @@
     left: 230px;
     top: 250px;
     
-}
-#info2812 input{
-    font-weight: bolder;
-    border:none;
-    padding-left: 8px;
-}
-#info2812 label{
-    color:var(--second-color);
+    input{
+        font-weight: bolder;
+        border:none;
+        padding-left: 8px;
+    }
+    
+    label{
+        color:var(--second-color);
+    }
+    
+    button{
+        position: relative;
+        top:230px;
+        left: 800px;
+        width: 150px;
+        cursor: pointer;
+        border-radius: 15px;
+        background-color: var(--first-color);
+    }
+    
+    button:hover{
+        background-color: var(--first-color);
+        opacity: 40%;
+    }
+    
+    button:focus{
+        background-color: var(--first-color);
+        opacity: 50%;
+    }
+    
+    button:active{
+        background-color: var(--first-color);
+        opacity: 80%;
+    }
+    
 }
 #info2812 , #info2812 input{
     background-color: var(--third-color);
@@ -294,7 +347,7 @@
     font-weight: border;
 
 }
-#infobook22812  {
+#infobook22812 {
     position: absolute;
         top: 100px;
         left:600px;
@@ -309,30 +362,6 @@ position: relative;
 
 #infobook22812 >label,#infobook22812 > input,#infobook12812>label,#infobook12812>input{
 margin:16px 3px;
-}
-#info2812 button{
-    position: relative;
-    top:230px;
-    left: 800px;
-    width: 150px;
-    cursor: pointer;
-    border-radius: 15px;
-    background-color: var(--first-color);
-
-}
-#info2812 button:hover{
-    background-color: var(--first-color);
-    opacity: 40%;
-}
-
-#info2812 button:focus{
-    background-color: var(--first-color);
-    opacity: 50%;
-}
-
-#info2812 button:active{
-    background-color: var(--first-color);
-    opacity: 80%;
 }
 
 /* -------------------------------------------- Profile */
@@ -367,14 +396,6 @@ margin:16px 3px;
 
 
 
-
-
-
-}
-
-#labels input:focus {
-    background-color: #dddddd;
-    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
 }
 
 #labels {
@@ -382,6 +403,11 @@ margin:16px 3px;
     position: relative;
     left: 300px;
     top: -370px;
+    
+    input:focus {
+        background-color: #dddddd;
+        box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+    }
 }
 
 #labels>label {

@@ -17,13 +17,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
-    <link rel="stylesheet" href="user-style.css">
-    <link rel="icon" href="img/icon.jpg">
+    <title>Book Page</title>
+    <link rel="stylesheet" href="../assets/css/user-style.css">
+    <link rel="icon" href="../assets/img/icon.jpg">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Tangerine:wght@400;700&display=swap">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
 </head>
-<body id="body2812">
+<body id="book-page2812">
     <!-- -------------------------------------------- header  -->
 
     <header class="header">
@@ -46,49 +46,29 @@
                     <a href="Main-Window.html" target="_blank" title="Home"><i class="bx bx-home"></i></a>
                     <a href="Manage-Books.html" target="_blank" title="Manage Books"><i class="bx bx-cog"></i></a>
                     <a href="Profile.html" target="_blank" title="Profile"><i class="bx bx-user"></i></a>
-                    <a href="index.html" target="_blank" title="Log-Out"><i class="bx bx-log-out"></i></a>
+                    <a href="../index.html" target="_blank" title="Log-Out"><i class="bx bx-log-out"></i></a>
                 </nav>  
             </div>  
         </section>
-    </header>
-    
 
 
-
-
-
-
- <div id="form2812">
-    <div id="navbtn2812">
-        <a href="Profile.html">
-            <button id="profilebtn2812">👤profile</button>
-            </a>
-        <a href="Borrowed-Books.html">
-            <button id="borrowbtn2812">📚borrowed book</button>
-            </a>
-          
+        <div id="info2812">
+         <div id="infobook12812">
+         <label>Title</label> <input/> <br />
+         <label>Author</label> <input/> <br />
+         </div>
+         <div id="infobook22812">
+         <label>Published</label> <input /> <br />
+         <label>Price</label> <input/> <br />
+         <label>Pages</label> <input/> <br />
         </div>
-    <div id="labels">
+    
         
-    <label> Name</label> <input type="text" /> <br />
-    <label> Email</label><input  type="text" style="margin-left:19px;"/><br />
-    <label> phone</label><input type="text"/><br />
-    <label style="margin-right: 45px;" > gender</label>
-   
-    
+         <button>Borrow</button>
+        </div>
+       
 
-        <label for="male" class="male" style="padding:0px;margin-right:15px;">Male</label>
-        <input type="radio" id="male" name="gender" value="male" checked style="padding:0px;margin-right:15px;">
-    
-        <label for="female" class="female" style="padding:0px;margin-right:15px;">Female</label>
-        <input type="radio" id="female" name="gender" value="female">
-
-    </div>
-    
-
-
-
-
+    </header>
 
 </body>
 </html>
