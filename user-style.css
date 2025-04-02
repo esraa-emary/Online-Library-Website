@@ -1,0 +1,511 @@
+/* ------------------------------------------------------------------------------------- GENERAL CLASSES */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+:root {
+    --first-color: #867b62;
+    --second-color: rgba(106, 105, 105, 0.6);
+    --third-color: #251201;
+}
+
+/* -------------------------------------------- header */
+
+.header {
+    width: 100%;
+    height: 7vh;
+    background: var(--third-color);
+    top: 0;
+    right: 0;
+    z-index: 1;
+    position: fixed;
+    display: flex;
+    align-items: center;
+}
+
+.header section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+    padding: 0 30px;
+}
+
+/* ------------------------- logo */
+
+.header h3 {
+    color: var(--first-color);
+    font-weight: 400;
+}
+
+/* ------------------------- search-bar */
+
+.search-bar input {
+    width: 400px;
+    border: none;
+    background: var(--first-color);
+    color: var(--third-color);
+    height: 40px;
+    padding: 0 10px;
+    font-size: 15px;
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+.search-bar input::placeholder {
+    color: var(--third-color);
+    font-style: italic;
+    font-size: 15px;
+}
+
+.search-bar input:focus,
+.search-bar input:active,
+.search-bar input:hover {
+    outline: none;
+    box-shadow: 0 0 30px var(--second-color);
+}
+
+/* ------------------------- nav-icons */
+
+.home-manage-profile-logout-icons {
+    display: flex;
+    gap: 20px;
+}
+
+.home-manage-profile-logout-icons i,
+.nav-buttons i,
+#menu-icon {
+    cursor: pointer;
+    font-size: 30px;
+    color: var(--first-color);
+    transition: all 0.3s ease-in-out;
+}
+
+.home-manage-profile-logout-icons i:hover,
+.nav-buttons i:hover,
+#menu-icon:hover {
+    scale: 1.2;
+}
+
+#menu-icon {
+    display: none;
+}
+
+/* -------------------------------------------- Book List Page */
+
+#Books {
+    width: 100%;
+    text-align: center;
+    margin: 10rem auto;
+    max-width: 1300px;
+    padding: 0px 35px;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--first-color);
+    color: var(--third-color);
+
+    .logoPage {
+        width: 150px;
+        margin-bottom: 10px;
+    }
+    
+    .marginTitle {
+        font-style: italic;
+        color: var(--third-color);
+    }
+    img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        border-radius: 25px;
+        margin: auto;
+        transition: all 0.3s ease-in-out;
+    }
+    
+    .booktype {
+
+
+        .header-container{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            margin-top: 100px;
+        }
+
+        h2 {
+            color: var(--third-color);
+            font-weight: bold;
+            text-align: center;
+            font-size: 30px;
+            margin-top: 5rem;
+            margin-bottom: 2rem;
+        }
+    
+        h5{
+            color: var(--third-color);
+            font-weight: bold;
+        }
+        
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            row-gap: 25px;
+            
+            .card {
+                display: flex;
+                justify-content: space-between;
+                flex-direction: column;
+                gap: 25px;
+                padding: 1rem;
+                max-width: 350px;
+                border-radius: 40px;
+                overflow: hidden;
+                position: relative;
+                background-color: var(--third-color);
+                transition: all 0.3s ease-in-out;
+                color: var(--first-color);
+                
+                img {
+                    width: 100%;
+                    height: auto;
+                    object-fit: cover;
+                    border-radius: 25px;
+                    margin: auto;
+                    transition: all 0.3s ease-in-out;
+                }
+                
+                p {
+                    font-style: italic;
+                    color: var(--first-color);
+                }
+
+                .Book-Review-btn{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 20px;
+                    background: var(--first-color);
+                    font-size: 12px;
+                    font-weight: bold;
+                    padding: 5px;
+                    margin: 20px 110px 20px 110px;
+                    border: 1px solid var(--first-color);
+                    a{
+                        color: var(--third-color);
+                        text-decoration: none;
+                    }
+                    box-shadow: 0 0 10px var(--second-color);
+                    scale: 1.1;
+                }
+            }
+
+        }
+    }
+
+}
+
+/* -------------------------------------------- Book Review */
+.r-p-main {
+    height: 100vh;
+    width: 100%;
+    background: url("img/main.jpg") ;
+    background-size: cover;
+}
+.r-p-main .book-box{
+    position: absolute;
+    top: 15%;
+    left: 15%;
+    width: 70%;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    padding: 20px;
+    background: #b7831134; /* Semi-transparent */
+    backdrop-filter: blur(10px); /* Blur effect */
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 5px 5px 10px rgba(134, 88, 7, 0.559); /* Soft shadow */
+}
+.r-p-main .book-box .book-box-img{
+    width: 400px;
+    height: 400px;
+}
+.r-p-main .book-box .book-box-img img{
+   height: 100%;
+}
+.r-p-main .book-box .book-box-content{
+    text-align: left;
+}
+.r-p-main .book-box .book-box-content h3{
+    font-size: 25px;
+}
+.r-p-main .book-box .book-box-content button{
+    width: 20%;
+    position: absolute;
+    background: #62380b57;
+    right:  17%;
+    border-radius: 20px;
+    margin: 20px;
+    padding: 8px;
+    transition: 0.3s;
+}
+.r-p-main .book-box .book-box-content button:hover{
+    transform: scale(1.1);
+}
+.r-p-main .book-box .book-box-content button a{
+   text-decoration: none;
+   width: 100%;
+   padding: 50px;
+   color: black;
+}
+
+/* -------------------------------------------- Borrow Page */
+#book-page2812 {
+    background-color: var(--first-color);
+}
+#info2812{
+    width: 1000px;
+    height: 400px;
+    position: absolute;
+    left: 230px;
+    top: 250px;
+    
+}
+#info2812 input{
+    font-weight: bolder;
+    border:none;
+    padding-left: 8px;
+}
+#info2812 label{
+    color:var(--second-color);
+}
+#info2812 , #info2812 input{
+    background-color: var(--third-color);
+    color : var(--second-color);
+    font-size:15px;
+    font-weight: border;
+
+}
+#infobook22812  {
+    position: absolute;
+        top: 100px;
+        left:600px;
+
+    }
+    
+#infobook12812 {
+position: relative;
+    top: 100px;
+    left:60px;
+}
+
+#infobook22812 >label,#infobook22812 > input,#infobook12812>label,#infobook12812>input{
+margin:16px 3px;
+}
+#info2812 button{
+    position: relative;
+    top:230px;
+    left: 800px;
+    width: 150px;
+    cursor: pointer;
+    border-radius: 15px;
+    background-color: var(--first-color);
+
+}
+#info2812 button:hover{
+    background-color: var(--first-color);
+    opacity: 40%;
+}
+
+#info2812 button:focus{
+    background-color: var(--first-color);
+    opacity: 50%;
+}
+
+#info2812 button:active{
+    background-color: var(--first-color);
+    opacity: 80%;
+}
+
+/* -------------------------------------------- Profile */
+
+#body2812 {
+    background-color: var(--first-color);
+
+
+}
+
+#form2812 {
+    width: 1000px;
+    height: 550px;
+    background-color: var(--third-color);
+
+
+    border-style: solid;
+    border-radius: 5px;
+    border-color: #b0bec5;
+    font-size: 15px;
+    color: rgb(2, 15, 27);
+    position: absolute;
+    left: 230px;
+    top: 100px;
+
+}
+
+#navbtn2812 {
+    position: relative;
+    width: 150px;
+    height: 440px;
+
+
+
+
+
+
+}
+
+#labels input:focus {
+    background-color: #dddddd;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+}
+
+#labels {
+    display: inline-block;
+    position: relative;
+    left: 300px;
+    top: -370px;
+}
+
+#labels>label {
+
+    color: var(--second-color);
+    display: inline-block;
+    padding-right: 58px;
+    margin-top: 50px;
+
+}
+
+#labels input[type="text"] {
+    width: 350px;
+    padding: 5px 10px;
+    margin-left: 10px;
+    margin-top: 20px;
+    border-radius: 12px;
+}
+
+
+
+
+#formgender {
+    position: relative;
+
+}
+
+/* .male, .female{
+    display: flex;
+    border: 2px solid #ccc; 
+    border-radius: 28px;
+   
+} */
+
+/* #male,#female {
+    display: none;
+} */
+
+/* .male,.female {
+    margin-left: 50px;
+    cursor: pointer;
+    background-color: white;
+    color: #666;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    display:inline-block;
+}
+.male{
+   padding:20px 50px;
+}
+.female{
+    padding:20px 40px;
+} */
+
+/* .male:hover  {
+    background-color: #3714e4;
+    color: white;
+    opacity:12%;
+    box-shadow: 2px 2px  #3714e4;
+}
+.female:hover  {
+    background-color: #e621b4; 
+    color: white;
+    opacity:12%;
+    box-shadow: 2px 2px  #e621b4;
+
+}
+#female:checked +label {
+    background-color: #e621b4; 
+    color: white;
+}
+
+ #male:checked+label  {
+    background-color: #3714e4; 
+    color: white;
+} */
+
+
+
+
+#navbtn2812 button {
+    border: none;
+    margin-right: 10px;
+    position: relative;
+    top: 40px;
+    width: 150px;
+    cursor: pointer;
+    margin-top: 30px;
+    border-radius: 15px;
+
+}
+
+
+#profilebtn2812 {
+    background-color: orange;
+}
+
+#borrowbtn2812 {
+    opacity: 50%;
+}
+
+/* -------------------------------------------- Borrowed Books */
+
+
+
+
+
+/* ------------------------------------------------------------------------------------- RESPONSIVE PART */
+/* -------------------------------------------- List Page */
+
+
+
+
+
+/* -------------------------------------------- Book Page */
+
+
+
+
+
+/* -------------------------------------------- Profile */
+
+
+
+
+
+/* -------------------------------------------- Borrowed Books */
