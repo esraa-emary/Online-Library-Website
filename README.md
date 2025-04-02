@@ -50,7 +50,7 @@ Contributions are welcome! Feel free to fork the repo, create a new branch, and 
 - George Malak Magdy:  [GitHub](https://github.com/GeorgeMalakM) - [LinkedIn](https://www.linkedin.com/in/george-malak204/)
 - John Ayman Demian:  [GitHub](https://github.com/Johnayman1) - [LinkedIn]()
 - Mohammed Atef Abd El-Kader: [GitHub](https://github.com/Mohammed-3tef) - [LinkedIn](https://www.linkedin.com/in/mohammed-atef-b0a408299/)
-- Mohammed Nabil El-Sayed: [GitHub](https://github.com/mohamednabil75) - [LinkedIn]()
+- Mohammed Nabil El-Sayed: [GitHub](https://github.com/mohamednabil75) - [LinkedIn](https://www.linkedin.com/in/mohamed-nabil-196869326/)
 
 ## 📜 License
 This project is licensed under the MIT License.
