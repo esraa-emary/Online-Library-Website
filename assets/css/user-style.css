@@ -201,6 +201,7 @@
                             background-color: var(--third-color);
                             box-shadow: 0 0 25px var(--first-color);
                             color: white;
+                             border:none;
                         }
                     }
                     
@@ -220,6 +221,7 @@
                             background-color: var(--third-color);
                             box-shadow: 0 0 25px var(--first-color);
                             color: white;
+                            border:none;
                         }
                     }
                 }
@@ -570,6 +572,7 @@ margin:16px 3px;
     background-color: var(--third-color);
     box-shadow: 0 0 25px var(--first-color);
     color: white;
+    border:none;
 }
 
 
