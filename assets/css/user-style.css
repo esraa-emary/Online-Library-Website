@@ -108,6 +108,7 @@
     padding: 0px 35px;
     display: flex;
     flex-direction: column;
+    /* background-color: var(--first-color); */
     color: var(--third-color);
 
     .logoPage {
@@ -186,27 +187,10 @@
                 
                 .card-actions{
                     margin-top: 25px;
-
-                    a{
-                        .borrow-btn{
-                            background-color: var(--first-color);
-                            font-weight: 600;
-                            padding: 10px 20px;
-                            border-radius: 10px;
-                            cursor: pointer;
-                            transition: all 0.3s ease-in-out;
-                            color: var(--third-color);
-                            i {margin-right: 0.5rem;}
-                        }
-                        .borrow-btn:hover{
-                            background-color: var(--third-color);
-                            box-shadow: 0 0 25px var(--first-color);
-                            color: white;
-                        }
-                    }
                     
                     a{
-                        .Book-Review-btn {
+                        .Book-Review-btn{
+                            border: none;
                             background-color: var(--first-color);
                             font-weight: 600;
                             padding: 10px 20px;
@@ -217,7 +201,7 @@
                             i {margin-right: 0.5rem;}
                         }
                         
-                        .Book-Review-btn:hover {
+                        .Book-Review-btn:hover{
                             background-color: var(--third-color);
                             box-shadow: 0 0 25px var(--first-color);
                             color: white;
@@ -232,29 +216,6 @@
             }
         }
     }
-    
- .availability {
-    display: inline-block;
-    padding: 3px 8px;
-    border-radius: 4px;
-    font-size: 0.8em;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-.available {
-   background-color: #4CAF50;
-   color: white;
-}
-.unavailable {
-   background-color: #f44336;
-   color: white;
-}
-.due-date {
-   font-size: 0.8em;
-   color: #666;
-   margin-top: 3px;
-}
-
 }
 
 /* -------------------------------------------- Book Review */
@@ -550,22 +511,10 @@ margin:16px 3px;
 
 /* -------------------------------------------- Borrowed Books */
 
-.reserve-btn {
-    background-color: var(--first-color);
-    font-weight: 600;
-    padding: 10px 20px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    color: var(--third-color);
-    i {margin-right: 0.5rem;}
-}
 
-.reserve-btn:hover {
-    background-color: var(--third-color);
-    box-shadow: 0 0 25px var(--first-color);
-    color: white;
-}
+
+
+
 /* ------------------------------------------------------------------------------------- RESPONSIVE PART */
 /* -------------------------------------------- List Page */
 
