@@ -234,6 +234,103 @@
 }
 
 /* ------------------------------------------------------------------------------------- RESPONSIVE PART */
+/* -------------------------------------------- header */
+@media screen and (max-width: 1024px) {
+
+    /* ------------------------- logo */
+
+    .header h3 {
+        font-size: 1rem;
+    }
+
+    /* ------------------------- search-bar */
+
+    .search-bar input {
+        width: 300px;
+        height: 35px;
+        font-size: 13px;
+    }
+
+    .search-bar input::placeholder {
+        font-size: 13px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    /* ------------------------- header */
+
+    .header section {
+        padding: 0 15px;
+        
+        /* ------------------------- logo */
+
+        h3 {
+            font-size: 0.8rem;
+        }
+    }
+
+    /* ------------------------- search-bar */
+
+
+    .search-bar input {
+        width: 150px;
+        height: 30px;
+        font-size: 11px;
+    }
+
+    .search-bar input::placeholder {
+        font-size: 11px;
+    }
+
+    /* ------------------------- icons */
+
+    .home-manage-profile-logout-icons i,
+    .nav-buttons i,
+    #menu-icon {
+        font-size: 20px;
+    }
+
+    .home-manage-profile-logout-icons {
+        gap: 5px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+
+    /* ------------------------- icons */
+
+    #menu-icon {
+        display: block;
+        cursor: pointer;
+    }
+
+    .home-manage-profile-logout-icons {
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 20%;
+        height: auto;
+        padding: 30px 0;
+        backdrop-filter: blur(20px);
+        border-left: 2px solid var(--first-color);
+        border-bottom: 2px solid var(--first-color);
+        display: none;
+    }
+
+    :has(#menu-toggle:checked) .home-manage-profile-logout-icons {
+        display: block;
+    }
+
+    .home-manage-profile-logout-icons a {
+        display: block;
+        font-size: 1rem;
+        margin: 0.5rem 0;
+        color: var(--first-color);
+    }
+}
+
 /* -------------------------------------------- Manage Books */
 
 
