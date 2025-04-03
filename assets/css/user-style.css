@@ -482,68 +482,10 @@ margin:16px 3px;
 
 }
 
-
-
-
 #formgender {
     position: relative;
 
 }
-
-/* .male, .female{
-    display: flex;
-    border: 2px solid #ccc; 
-    border-radius: 28px;
-   
-} */
-
-/* #male,#female {
-    display: none;
-} */
-
-/* .male,.female {
-    margin-left: 50px;
-    cursor: pointer;
-    background-color: white;
-    color: #666;
-    font-weight: bold;
-    transition: all 0.3s ease;
-    display:inline-block;
-}
-.male{
-   padding:20px 50px;
-}
-.female{
-    padding:20px 40px;
-} */
-
-/* .male:hover  {
-    background-color: #3714e4;
-    color: white;
-    opacity:12%;
-    box-shadow: 2px 2px  #3714e4;
-}
-.female:hover  {
-    background-color: #e621b4; 
-    color: white;
-    opacity:12%;
-    box-shadow: 2px 2px  #e621b4;
-
-}
-#female:checked +label {
-    background-color: #e621b4; 
-    color: white;
-}
-
- #male:checked+label  {
-    background-color: #3714e4; 
-    color: white;
-} */
-
-
-
-
-
 
 #borrowbtn2812 {
     border: none;
@@ -586,9 +528,6 @@ margin:16px 3px;
     color: white;
 }
 
-
-
-
 /* ------------------------------------------------------------------------------------- RESPONSIVE PART */
 /* -------------------------------------------- header */
 @media screen and (max-width: 1024px) {
@@ -627,7 +566,6 @@ margin:16px 3px;
     }
 
     /* ------------------------- search-bar */
-
 
     .search-bar input {
         width: 150px;
@@ -707,8 +645,6 @@ margin:16px 3px;
     }
 }
 
-
-
 /* -------------------------------------------- Profile */
 
 
@@ -716,3 +652,7 @@ margin:16px 3px;
 
 
 /* -------------------------------------------- Borrowed Books */
+
+
+
+
