@@ -415,19 +415,18 @@ margin:16px 3px;
 
 #body2812 {
     background-color: var(--first-color);
-
-
+    background: url("../img/main.jpg");
+    position:absolute;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 #form2812 {
     width: 1000px;
     height: 550px;
-    background-color: var(--third-color);
-
-
+    backdrop-filter: blur(10px);
     border-style: solid;
     border-radius: 5px;
-    border-color: #b0bec5;
     font-size: 15px;
     color: rgb(2, 15, 27);
     position: absolute;
@@ -446,11 +445,14 @@ margin:16px 3px;
 }
 
 #labels {
+    font-weight: 700;
+    font-size: 17px;
+    font-family: "Poppins", sans-serif;
     display: inline-block;
     position: relative;
-    left: 300px;
+    left: 250px;
     top: -370px;
-    
+    font-weight:700px;
     input:focus {
         background-color: #dddddd;
         box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
@@ -459,7 +461,8 @@ margin:16px 3px;
 
 #labels>label {
 
-    color: var(--second-color);
+    color: var(--first-color);
+    
     display: inline-block;
     padding-right: 58px;
     margin-top: 50px;
@@ -467,11 +470,16 @@ margin:16px 3px;
 }
 
 #labels input[type="text"] {
+    font-size:15px;
     width: 350px;
     padding: 5px 10px;
     margin-left: 10px;
     margin-top: 20px;
     border-radius: 12px;
+    background-color: var(--first-color);
+    color:var(--third-color);
+    opacity: 80%;
+
 }
 
 
@@ -532,26 +540,31 @@ margin:16px 3px;
     color: white;
 } */
 
-#navbtn2812 button {
-    border: none;
-    margin-right: 10px;
-    position: relative;
-    top: 40px;
-    width: 150px;
-    cursor: pointer;
-    margin-top: 30px;
-    border-radius: 15px;
-
-}
 
 
-#profilebtn2812 {
-    background-color: orange;
-}
+
+
 
 #borrowbtn2812 {
-    opacity: 50%;
+    border: none;
+    background-color: var(--first-color);
+    color: var(--third-color);
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    position:relative;
+    width:200px;
+    left:400px;
+    top:440px;
 }
+ #borrowbtn2812:hover{
+    background-color: var(--third-color);
+    color: white;
+    box-shadow: 0 0 25px var(--first-color);
+ }
 
 /* -------------------------------------------- Borrowed Books */
 
