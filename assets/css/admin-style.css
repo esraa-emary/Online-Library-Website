@@ -160,7 +160,7 @@
         .cards {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            row-gap: 25px;
+            gap: 25px;
 
             .card {
                 display: flex;
