@@ -197,93 +197,6 @@
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* .sentence-container {
-    display: flex;
-    justify-content: center;
-}
-
-.sentences {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    color: var(--first-color);
-    width: 80%;
-    margin-top: 10rem;
-    padding: 2rem 0;
-    backdrop-filter: blur(10px);
-}
-
-.sentence {
-    position: relative;
-    backdrop-filter: blur(10px);
-    width: 310px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    opacity: 0;
-}
-
-@keyframes slide-left {
-    from {
-        opacity: 0;
-        transform: translateX(-100%);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateX(-2*100px);
-    }
-}
-
-.sentence:nth-child(1) {
-    animation: slide-left 1s ease-out forwards 0s;
-    transform: translateX(-250px);
-}
-
-.sentence:nth-child(2) {
-    animation: slide-left 1s ease-out forwards 1s;
-    transform: translateX(-150px);
-}
-
-.sentence:nth-child(3) {
-    animation: slide-left 1s ease-out forwards 2s;
-    transform: translateX(-50px);
-}
-
-.sentence:nth-child(4) {
-    animation: slide-left 1s ease-out forwards 3s;
-    transform: translateX(50px);
-}
-
-.sentence:nth-child(5) {
-    animation: slide-left 1s ease-out forwards 4s;
-    transform: translateX(150px);
-}
-
-.sentence:nth-child(6) {
-    animation: slide-left 1s ease-out forwards 5s;
-    transform: translateX(250px);
-}
-
-.sentence:nth-child(7) {
-    animation: slide-left 1s ease-out forwards 6s;
-    transform: translateX(350px);
-} */
-
 /* ------------------------- buttons */
 
 .buttons {
@@ -806,15 +719,77 @@
 
 /* -------------------------------------------- Log-In */
 
+@media screen and (max-width: 768px) {
+    .logInPage {
+        .logInForm {
+            max-width: 80%;
+            
+            form {
+                .inputData .radioChoices {
+                    .choices {
+                        padding: 0 1.5rem;
+                    }
+                }
+            }
+        }
+    }
+}
 
-
-
+@media screen and (max-width: 425px) {
+    .logInPage {
+        .logInForm {
+            max-width: 95%;
+            padding: 2.5rem 1.25rem;
+            
+            form {
+                .inputData .radioChoices {
+                    flex-direction: column;
+                    gap: 0.5rem;
+                    .choices {
+                        padding: 0;
+                    }
+                }
+            }
+        }
+    }
+}
 
 /* -------------------------------------------- Sign-Up */
 
+@media screen and (max-width: 768px) {
+    .signUpPage {
+        .signUpForm {
+            max-width: 80%;
+            
+            form {
+                .inputData .radioChoices {
+                    .choices {
+                        padding: 0 1.5rem;
+                    }
+                }
+            }
+        }
+    }
+}
 
-
-
+@media screen and (max-width: 425px) {
+    .signUpPage {
+        .signUpForm {
+            max-width: 95%;
+            padding: 2.5rem 1.25rem;
+            
+            form {
+                .inputData .radioChoices {
+                    flex-direction: column;
+                    gap: 0.5rem;
+                    .choices {
+                        padding: 0;
+                    }
+                }
+            }
+        }
+    }
+}
 
 /* -------------------------------------------- Main Window */
 
