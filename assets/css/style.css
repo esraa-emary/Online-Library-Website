@@ -724,10 +724,37 @@
         .logInForm {
             max-width: 80%;
             
+            h1 {
+                font-size: 2rem;
+            }
+            
             form {
-                .inputData .radioChoices {
-                    .choices {
-                        padding: 0 1.5rem;
+                font-size: 0.8rem;
+                .inputData {
+                    margin: 2rem auto;
+                    
+                    .userName, .password {
+                        input {
+                            height: 30px;
+                        }
+                        
+                        input::placeholder {
+                            font-size: 0.75rem;
+                        }
+                    }
+                    .radioChoices {
+                        .choices {
+                            padding: 0 1.5rem;
+                        }
+                    }
+                }
+                
+                .formBtn{
+                    gap: 1rem;
+                                       
+                    .logInBtn {
+                        font-size: 0.85rem;
+                        padding: 7.5px 10px;
                     }
                 }
             }
@@ -738,8 +765,8 @@
 @media screen and (max-width: 425px) {
     .logInPage {
         .logInForm {
-            max-width: 95%;
-            padding: 2.5rem 1.25rem;
+            max-width: 90%;
+            padding: 2rem 1.25rem;
             
             form {
                 .inputData .radioChoices {
@@ -761,10 +788,37 @@
         .signUpForm {
             max-width: 80%;
             
+            h1 {
+                font-size: 2rem;
+            }
+            
             form {
-                .inputData .radioChoices {
-                    .choices {
-                        padding: 0 1.5rem;
+                font-size: 0.8rem;
+                .inputData {
+                    margin: 2rem auto;
+                    
+                    .userName, .password, .email, .confirmPassword {
+                        input {
+                            height: 30px;
+                        }
+                        
+                        input::placeholder {
+                            font-size: 0.75rem;
+                        }
+                    }
+                    .radioChoices {
+                        .choices {
+                            padding: 0 1.5rem;
+                        }
+                    }
+                }
+                
+                .formBtn{
+                    gap: 1rem;
+                    
+                    .signUpBtn {
+                        font-size: 0.85rem;
+                        padding: 7.5px 10px;
                     }
                 }
             }
@@ -775,8 +829,8 @@
 @media screen and (max-width: 425px) {
     .signUpPage {
         .signUpForm {
-            max-width: 95%;
-            padding: 2.5rem 1.25rem;
+            max-width: 90%;
+            padding: 2rem 1.25rem;
             
             form {
                 .inputData .radioChoices {
