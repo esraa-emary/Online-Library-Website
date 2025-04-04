@@ -53,7 +53,7 @@
     background: var(--first-color);
     color: var(--third-color);
     height: 40px;
-    padding: 0 10px;
+    padding: 0 0 0 30px;
     font-size: 15px;
     border-radius: 10px;
     transition: all 0.3s ease-in-out;
@@ -69,7 +69,23 @@
 .search-bar input:active,
 .search-bar input:hover {
     outline: none;
+}
+
+.search-bar:focus,
+.search-bar:active,
+.search-bar:hover {
     box-shadow: 0 0 30px var(--second-color);
+}
+
+.search-bar{
+    position: relative;
+}
+
+.search-bar a{
+    color: var(--third-color);
+    position: absolute;
+    left: 10px;
+    top: 10px;
 }
 
 /* ------------------------- nav-icons */
@@ -549,6 +565,11 @@ margin:16px 3px;
     .search-bar input::placeholder {
         font-size: 13px;
     }
+
+    .search-bar a{
+        top: 5px;
+        font-size: 0.8rem;
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -568,13 +589,19 @@ margin:16px 3px;
     /* ------------------------- search-bar */
 
     .search-bar input {
-        width: 150px;
+        width: 170px;
         height: 30px;
         font-size: 11px;
+        padding: 0 0 0 25px;
     }
 
     .search-bar input::placeholder {
         font-size: 11px;
+    }
+
+    .search-bar a{
+        top: 7px;
+        font-size: 0.8rem;
     }
 
     /* ------------------------- icons */
