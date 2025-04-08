@@ -550,9 +550,11 @@ margin: 2% 1%;
    
 }
  #borrowbtn2812:hover{
-    background-color: var(--third-color);
-    color: white;
-    box-shadow: 0 0 25px var(--first-color);
+    button{
+        background-color: var(--third-color);
+        color: white;
+        box-shadow: 0 0 25px var(--first-color);
+    }
  }
 
 /* -------------------------------------------- Borrowed Books */
