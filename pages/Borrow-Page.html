@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Tangerine:wght@400;700&display=swap">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
 </head>
-<body id="book-page2812">
+<body id="borrowPage">
     <!-- -------------------------------------------- header  -->
      
     <header class="header">
@@ -48,30 +48,41 @@
                     <a href="Manage-Books.html" title="Manage Books"><i class="bx bx-cog"></i></a>
                     <a href="Profile.html" title="Profile"><i class="bx bx-user"></i></a>
                     <a href="../index.html" title="Log-Out"><i class="bx bx-log-out"></i></a>
-                </nav>  
-            </div>  
+                </nav>
+            </div>
         </section>
     </header>
 
-
-       
-        <div id="info2812">
-         <div id="infobook12812">
-         <label>Title</label> <input value="david copper field" disabled/> <br />
-         <label>Author</label> <input value="Charles Dickens"disabled/> <br />
-         </div>
-         <div id="infobook22812">
-         <label>Published</label> <input value="1950,May" disabled/> <br />
-         <label>Price</label> <input value="250 L.E" disabled/> <br />
-         <label>Pages</label> <input value="250" disabled/> <br />
+    <div id="card">
+        <div class="card-details">
+            <div id="left-details">
+                <label for="title">Title:</label>
+                <br>
+                <input id="title" value="David Copper Field" disabled/>
+                <br>
+                <label for="author">Author:</label>
+                <br>
+                <input id="author" value="Charles Dickens"disabled/>
+            </div>
+            
+            <div id="right-details">
+                <label for="published">Published:</label>
+                <br>
+                <input id="published" value="1950, May" disabled/>
+                <br>
+                <label for="price">Price:</label>
+                <br>
+                <input id="price" value="250 L.E" disabled/>
+                <br>
+                <label for="pages">Pages:</label>
+                <br>
+                <input id="pages" value="250" disabled/>
+                <br>
+            </div>
         </div>
-    
         
-         <button>Borrow</button>
-        </div>
+        <button>Borrow</button>
+    </div>
        
-
-    </header>
-
 </body>
 </html>

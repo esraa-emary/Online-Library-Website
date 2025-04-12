@@ -23,7 +23,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Tangerine:wght@400;700&display=swap">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
 </head>
-<body id="body2812">
+
+<body id="profilePage">
     <!-- -------------------------------------------- header  -->
         
     <header class="header">
@@ -48,43 +49,51 @@
                     <a href="Manage-Books.html" title="Manage Books"><i class="bx bx-cog"></i></a>
                     <a href="Profile.html" title="Profile"><i class="bx bx-user"></i></a>
                     <a href="../index.html" title="Log-Out"><i class="bx bx-log-out"></i></a>
-                </nav>  
-            </div>  
+                </nav>
+            </div>
         </section>
     </header>
-    
 
-
-
-
- <div id="form2812">
-    
-       
-       
-          
-    <div id="labels">
+    <form id="card">
+        <div id="labels">
+            <label for="name">Name:</label>
+            <input id="name" type="text" value="john wick" disabled/>
+            
+            <br>
+            <br>
+            
+            <label for="email">Email:</label>
+            <input id="email" value= "john_wick2812@yahoo.com" type="email" disabled/>
+            
+            <br>
+            <br>
+            
+            <label for="phone">Phone:</label>
+            <input id="phone" value="0123456789" type="text" disabled/>
+            
+            <br>
+            <br>
+            
+            <div class="gender">
+                <label>Gender:</label>
+                <div class="male">
+                    <label for="male" class="male">Male</label>
+                    <input type="radio" id="male" name="gender" value="male" checked>
+                </div>
+                
+                <div class="female">
+                    <label for="female" class="female">Female</label>
+                    <input type="radio" id="female" name="gender" value="female">
+                </div>
+            </div>
+            
+            
+        </div>
         
-    <label>Name</label> <input type="text" value="john wick" disabled /> <br />
-    <label>Email</label><input  value= "john_wick2812"type="text" style="margin-left:3%;" disabled/><br />
-    <label>Phone</label><input value="0123456789"type="text" disabled/><br />
-    <label style="margin-right: 5%;" >Gender</label>
-   
-    
-
-        <label for="male" class="male" style="padding:0px;margin-right:3%;">Male</label>
-        <input type="radio" id="male" name="gender" value="male" checked style="padding:0px;margin-right:4%;">
-    
-        <label for="female" class="female" >Female</label>
-        <input type="radio" id="female" name="gender" value="female">
-        <a href="Borrowed-Books.html"id="borrowbtn2812" >
+        <a href="Borrowed-Books.html" id="borrowBtn">
             <button >📚Borrowed Books</button>
-            </a>
-
-    </div>
-
-
-
-
+        </a>
+    </form>
 
 </body>
 </html>
