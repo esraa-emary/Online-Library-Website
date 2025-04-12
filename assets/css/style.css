@@ -173,6 +173,7 @@
     font-size: 18px;
     width: 200px;
     height: 60px;
+    transition: all 0.3s ease-in-out;
 }
 
 .home-page button:hover {
@@ -309,6 +310,7 @@
     border-radius: 20rem;
     width: 300px;
     height: 300px;
+    transition: all 0.3s ease-in-out;
 }
 
 .slide img:hover{
