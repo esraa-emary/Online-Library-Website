@@ -8,9 +8,10 @@
 }
 
 :root {
-    --first-color: #867b62;
+    --first-color: #000;
     --second-color: rgba(106, 105, 105, 0.6);
-    --third-color: #251201;
+    --third-color: #fefefe;
+    --fourth-color: #4f88ba;
     --card-background: #b49d65;
 }
 
@@ -244,7 +245,7 @@
 /* -------------------------------------------- Log-In */
 
 .logInPage {
-    background: url("../img/main.jpg");
+    /* background: url("../img/main.jpg"); */
     background-size: cover;
     background-position: center;
     min-height: 100vh;
@@ -256,9 +257,9 @@
         align-items: center;
         margin: 0 auto;
         padding: 2.5rem;
-        backdrop-filter: blur(10px);
-        border-radius: 25px;
+        border-radius: 15px;
         max-width: 35%;
+        border: 1px solid var(--first-color);
         
         h1 {
             font-size: 2.5rem;
@@ -279,9 +280,7 @@
                     display: flex;
                     flex-direction: column;
                     input {
-                        border: none;
-                        background: var(--first-color);
-                        color: var(--third-color);
+                        border: 1px solid var(--first-color);
                         height: 40px;
                         padding: 0 10px;
                         font-size: 15px;
@@ -290,13 +289,8 @@
                     }
                     
                     input::placeholder {
-                        color: var(--third-color);
                         font-style: italic;
                         font-size: 15px;
-                    }
-                    
-                    input:focus, input:active ,input:hover {
-                        outline: 1px solid white;
                     }
                 }
                 
@@ -311,6 +305,9 @@
                         display: flex;
                         padding: 0 3.5rem;
                         justify-content: space-between;
+                        input {
+                            accent-color: var(--fourth-color);
+                        }
                     }
                 }
             }
@@ -323,7 +320,7 @@
                 gap: 2rem;
                 .logInBtn{
                     border: none;
-                    background-color: var(--first-color);
+                    background-color: var(--fourth-color);
                     color: var(--third-color);
                     font-size: 1rem;
                     font-weight: 600;
@@ -334,20 +331,20 @@
                 }
                 
                 .logInBtn:hover {
-                    background-color: var(--third-color);
+                    background-color: var(--first-color);
                     color: white;
-                    box-shadow: 0 0 25px var(--first-color);
+                    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
                 }
                 
                 p {
                     color: var(--first-color);
                     a {
-                        color: var(--first-color);
+                        color: var(--fourth-color);
                         margin-left: 0.5rem;
                         transition: all 0.3s ease-in-out;
                     }
                     a:hover {
-                        color: white;
+                        color: var(--first-color);
                     }
                 }
             }
@@ -358,7 +355,6 @@
 /* -------------------------------------------- Sign-Up */
 
 .signUpPage {
-    background: url("../img/main.jpg");
     background-size: cover;
     background-position: center;
     min-height: 100vh;
@@ -369,17 +365,13 @@
         flex-direction: column;
         align-items: center;
         margin: 0 auto;
-        padding: 2.5rem;
-        backdrop-filter: blur(10px);
-        border-radius: 25px;
+        padding: 2rem;
+        border-radius: 15px;
         max-width: 35%;
+        border: 1px solid var(--first-color);
         
         h1 {
             font-size: 2.5rem;
-        }
-        
-        h1, label {
-            color: var(--first-color);
         }
         
         form {
@@ -393,9 +385,7 @@
                     display: flex;
                     flex-direction: column;
                     input {
-                        border: none;
-                        background: var(--first-color);
-                        color: var(--third-color);
+                        border: 1px solid var(--first-color);
                         height: 40px;
                         padding: 0 10px;
                         font-size: 15px;
@@ -404,13 +394,8 @@
                     }
                     
                     input::placeholder {
-                        color: var(--third-color);
                         font-style: italic;
                         font-size: 15px;
-                    }
-                    
-                    input:focus, input:active ,input:hover {
-                        outline: 1px solid white;
                     }
                 }
                 
@@ -425,6 +410,9 @@
                         display: flex;
                         padding: 0 3.5rem;
                         justify-content: space-between;
+                        input {
+                            accent-color: var(--fourth-color);
+                        }
                     }
                 }
             }
@@ -437,7 +425,7 @@
                 gap: 1.5rem;
                 .signUpBtn{
                     border: none;
-                    background-color: var(--first-color);
+                    background-color: var(--fourth-color);
                     color: var(--third-color);
                     font-size: 1rem;
                     font-weight: 600;
@@ -448,20 +436,20 @@
                 }
                 
                 .signUpBtn:hover {
-                    background-color: var(--third-color);
+                    background-color: var(--first-color);
                     color: white;
-                    box-shadow: 0 0 25px var(--first-color);
+                    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
                 }
                 
                 p {
                     color: var(--first-color);
                     a {
-                        color: var(--first-color);
+                        color: var(--fourth-color);
                         margin-left: 0.5rem;
                         transition: all 0.3s ease-in-out;
                     }
                     a:hover {
-                        color: white;
+                        color: var(--first-color);
                     }
                 }
             }

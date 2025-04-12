@@ -8,9 +8,10 @@
 }
 
 :root {
-    --first-color: #867b62;
+    --first-color: #000;
     --second-color: rgba(106, 105, 105, 0.6);
-    --third-color: #251201;
+    --third-color: #fefefe;
+    --fourth-color: #4f88ba;
     --card-background: #b49d65;
 }
 
@@ -136,7 +137,7 @@
     .booktype {
         .addBookBtn {
             border: none;
-            background-color: var(--first-color);
+            background-color: var(--fourth-color);
             color: white;
             font-size: 1rem;
             font-weight: 600;
@@ -147,8 +148,8 @@
         }
 
         .addBookBtn:hover {
-            background-color: var(--third-color);
-            box-shadow: 0 0 25px var(--first-color);
+            background-color: var(--first-color);
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         }
 
         .header-container{
@@ -169,7 +170,6 @@
         }
 
         h5{
-            color: var(--third-color);
             font-weight: bold;
         }
 
@@ -188,28 +188,27 @@
                 border-radius: 40px;
                 overflow: hidden;
                 position: relative;
-                background-color: var(--card-background);
                 transition: all 0.3s ease-in-out;
 
                 img {
                     width: 100%;
                     height: auto;
                     object-fit: cover;
-                    border-radius: 25px;
+                    border-radius: 5px;
                     margin: auto;
                     transition: all 0.3s ease-in-out;
                 }
 
                 p {
                     font-style: italic;
-                    color: dimgray;
+                    color: rgb(48, 48, 48);
                 }
 
                 .cardBtn {
                     display: flex;
                     justify-content: left;
                     gap: 20px;
-                    background: var(--first-color);
+                    background: var(--fourth-color);
                     color: var(--third-color);
                     font-size: 20px;
                     font-weight: bold;
@@ -226,18 +225,18 @@
                 }
 
                 .cardBtn:hover {
-                    background: var(--third-color);
-                    color: var(--first-color);
+                    background: var(--first-color);
                     transition: all 0.3s;
-                    box-shadow: 0 0 50px var(--first-color);
-                    scale: 1.1;
+                    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+                    transform: scale(1.05);
                 }
             }
 
             .card:hover {
-                box-shadow: #b5a887 0px 0px 50px;
-                background-color: #b8a883;
-                transform: scale(1.025);
+                transform: scale(1.015);
+                img {
+                    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+                }
                 .edit, .delete{
                     opacity: 1;
                 }
