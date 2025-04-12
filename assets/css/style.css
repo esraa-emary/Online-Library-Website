@@ -121,12 +121,12 @@
     align-items: center;
     text-decoration: none;
     color: var(--first-color);
+    transition: all 0.3s ease-in-out;
 }
 
 .nav a:hover{
     color: var(--fourth-color);
     transform: scale(1.1);
-    transition: all 0.3 ease-in-out;
 }
 
 /* ------------------------- home-page */
@@ -136,7 +136,7 @@
     background-size: cover;
     background-position: center;
     width: 100%;
-    min-height: 80vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -179,6 +179,7 @@
     background-color: var(--third-color);
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     color: var(--first-color);
+    cursor: pointer;
 }
 
 /* ------------------------- slider-books */
@@ -352,14 +353,19 @@ div.display-slide{
     color: var(--third-color);
 }
 
-.accounts a{
+.footer a{
+    font-size: 1rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.footer i{
     font-size: 2rem;
+    transition: all 0.3s ease-in-out;
 }
 
 .footer a:hover, .footer i:hover{
     color: var(--fourth-color);
     transform: scale(1.1);
-    transition: all 0.3 ease-in-out;
 }
 
 .accounts{
@@ -578,56 +584,6 @@ div.display-slide{
                 }
             }
         }
-    }
-}
-
-/* -------------------------------------------- Main Window */
-/* ------------------------- header */
-
-.home-manage-profile-logout-icons {
-    display: flex;
-    gap: 20px;
-}
-
-.home-manage-profile-logout-icons i,
-.nav-buttons i,
-#menu-icon {
-    cursor: pointer;
-    font-size: 30px;
-    color: var(--first-color);
-    transition: all 0.3s ease-in-out;
-}
-
-.home-manage-profile-logout-icons i:hover,
-.nav-buttons i:hover,
-#menu-icon:hover {
-    scale: 1.2;
-}
-
-#menu-icon {
-    display: none;
-}
-
-/* ------------------------- blurred-text */
-
-.blurred {
-    padding-top: 12rem;
-    padding-bottom: 13%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.blurred-text {
-    backdrop-filter: blur(10px);
-    width: 60%;
-    height: 50%;
-    padding: 4rem 2rem;
-    text-align: center;
-    color: var(--first-color);
-    
-    h1 {
-        margin-bottom: 10px;
     }
 }
 
@@ -981,79 +937,5 @@ div.display-slide{
                 }
             }
         }
-    }
-}
-
-/* -------------------------------------------- Main Window */
-
-@media screen and (max-width: 1024px) {
-
-    /* ------------------------- blurred-text */
-
-    .blurred-text {
-        width: 85%;
-        padding: 3rem 1rem;
-    }
-}
-
-@media screen and (max-width: 768px) {
-
-    /* ------------------------- header */
-
-    .home-manage-profile-logout-icons i,
-    .nav-buttons i,
-    #menu-icon {
-        font-size: 20px;
-    }
-
-    .home-manage-profile-logout-icons {
-        gap: 5px;
-    }
-
-    /* ------------------------- blurred-text */
-
-    .blurred-text {
-        h1 {
-            font-size: 1.1rem;
-        }
-    
-        p {
-            font-size: 0.8rem;
-        }
-    }
-}
-
-@media screen and (max-width: 425px) {
-
-    /* ------------------------- header */
-
-    #menu-icon {
-        display: block;
-        cursor: pointer;
-    }
-
-    .home-manage-profile-logout-icons {
-        flex-direction: column;
-        position: absolute;
-        top: 100%;
-        right: 0;
-        width: 20%;
-        height: auto;
-        padding: 30px 0;
-        backdrop-filter: blur(20px);
-        border-left: 2px solid var(--first-color);
-        border-bottom: 2px solid var(--first-color);
-        display: none;
-    }
-
-    :has(#menu-toggle:checked) .home-manage-profile-logout-icons {
-        display: block;
-    }
-
-    .home-manage-profile-logout-icons a {
-        display: block;
-        font-size: 1rem;
-        margin: 0.5rem 0;
-        color: var(--first-color);
     }
 }
