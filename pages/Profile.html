@@ -24,76 +24,103 @@
     <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
 </head>
 
-<body id="profilePage">
+<body >
     <!-- -------------------------------------------- header  -->
-        
     <header class="header">
         <section>
             <div class="logo">
                 <h3>LibraSphere</h3>
             </div>
-    
+
             <form class="search-bar" action="List-Page.html">
                 <a href="List-Page.html"><i class="bx bx-search" title="Search"></i></a>
                 <input type="text" placeholder="Title, Author or Category" title="Search">
             </form>
-            
-            <div>
-                <label for="menu-toggle">
-                    <i class="bx bx-menu" id="menu-icon"></i>
-                </label>
-                <input type="checkbox" id="menu-toggle" hidden>
-                
-                <nav class="home-manage-profile-logout-icons">
-                    <a href="Main-Window.html" title="Home"><i class="bx bx-home"></i></a>
-                    <a href="Manage-Books.html" title="Manage Books"><i class="bx bx-cog"></i></a>
-                    <a href="Profile.html" title="Profile"><i class="bx bx-user"></i></a>
-                    <a href="../index.html" title="Log-Out"><i class="bx bx-log-out"></i></a>
-                </nav>
-            </div>
+
+            <nav class="nav">
+                <a href="../index.html">Home</a>
+                <a href="List-Page.html">Books</a>
+                <a href="Manage-Books.html">Manage Books</a>
+                <a href="Profile.html">Profile</a>
+                <a href="../index.html">About US</a>
+                <a class="first-button" href="Sign-Up.html" title="Sign-Up">Sign-Up</a>
+                <a href="Log-In.html" title="Log-In">Log-In</a>
+                <a href="../index.html">Log-Out</a>
+            </nav>
         </section>
     </header>
 
-    <form id="card">
-        <div id="labels">
-            <label for="name">Name:</label>
-            <input id="name" type="text" value="john wick" disabled/>
-            
-            <br>
-            <br>
-            
-            <label for="email">Email:</label>
-            <input id="email" value= "john_wick2812@yahoo.com" type="email" disabled/>
-            
-            <br>
-            <br>
-            
-            <label for="phone">Phone:</label>
-            <input id="phone" value="0123456789" type="text" disabled/>
-            
-            <br>
-            <br>
-            
-            <div class="gender">
-                <label>Gender:</label>
-                <div class="male">
-                    <label for="male" class="male">Male</label>
-                    <input type="radio" id="male" name="gender" value="male" checked>
+    <section id="profilePage">
+        <form id="card" action="Borrowed-Books.html">
+            <div id="labels">
+                <label for="name">Name:</label>
+                <input id="name" type="text" value="john wick" disabled/>
+                
+                <br>
+                <br>
+                
+                <label for="email">Email:</label>
+                <input id="email" value= "john_wick2812@yahoo.com" type="email" disabled/>
+                
+                <br>
+                <br>
+                
+                <label for="phone">Phone:</label>
+                <input id="phone" value="0123456789" type="text" disabled/>
+                
+                <br>
+                <br>
+                
+                <div class="gender">
+                    <label>Gender:</label>
+                    <div class="male">
+                        <label for="male" class="male">Male</label>
+                        <input type="radio" id="male" name="gender" value="male" checked>
+                    </div>
+                    
+                    <div class="female">
+                        <label for="female" class="female">Female</label>
+                        <input type="radio" id="female" name="gender" value="female">
+                    </div>
                 </div>
                 
-                <div class="female">
-                    <label for="female" class="female">Female</label>
-                    <input type="radio" id="female" name="gender" value="female">
-                </div>
+                
             </div>
             
-            
-        </div>
-        
-        <a href="Borrowed-Books.html" id="borrowBtn">
-            <button >📚Borrowed Books</button>
-        </a>
-    </form>
+            <a href="Borrowed-Books.html" id="borrowBtn">
+                <button >📚Borrowed Books</button>
+            </a>
+        </form>
+    </section>
 
+    <!-- -------------------------------------------- footer  -->
+    <footer id="footer">
+        <section  class="footer">
+            <h2>CONTACT WITH US</h2>
+
+            <div class="accounts">
+                <a title="Esraa Emary" href="https://www.linkedin.com/in/esraa-emary-b372b8303/" target="blank"><i class='bx bxl-linkedin-square'></i></a>
+                <a title="Mohammed Atef" href="https://www.linkedin.com/in/mohammed-atef-b0a408299/" target="blank"><i class='bx bxl-linkedin-square'></i></a>
+                <a title="Mohammed Nabil" href="https://www.linkedin.com/in/mohamed-nabil-196869326/" target="blank"><i class='bx bxl-linkedin-square'></i></a>
+                <a title="George Malak" href="https://www.linkedin.com/in/george-malak204/" target="blank"><i class='bx bxl-linkedin-square'></i></a>
+                <a title="John Ayman" href="" target="blank"><i class='bx bxl-linkedin-square'></i></a>
+                <a title="Mariam Badr" href="https://www.linkedin.com/in/mariambadr13/" target="blank"><i class='bx bxl-linkedin-square'></i></a>
+            </div>
+
+            <div class="foot1">
+                <a href="../index.html">Home</a>
+                <a href="List-Page.html">Books</a>
+                <a href="Manage-Books.html">Manage Books</a>
+                <a href="Profile.html">Profile</a>
+                <a href="../index.html">About Us</a>
+            </div>
+            
+            <div class="foot2">
+                <p class="copyright">
+                    © LibraSphere | All Rights Reserved
+                </p>
+            </div>
+        </section>
+    </footer>
 </body>
 </html>

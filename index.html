@@ -21,6 +21,8 @@
     <link rel="icon" href="img/icon.jpg">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Tangerine:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Prata&display=swap">
+    <script src="./assets/js/script.js" defer></script>
     <title>LibraSphere</title>
 </head>
 <body>
@@ -36,47 +38,207 @@
                 <input type="text" placeholder="Title, Author or Category" title="Search">
             </form>
 
-            <nav class="nav-buttons">
-                <a href="index.html">
-                    <i class="bx bx-home" title="Home"></i>
-                </a>
-
-                <a class="first-button" href="./pages/Sign-Up.html" title="Sign-Up">
-                    <button>Sign-Up</button>
-                </a>
-
-                <a href="./pages/Log-In.html" title="Log-In">
-                    <button>Log-In</button>
-                </a>
+            <nav class="nav">
+                <a href="index.html">Home</a>
+                <a href="./pages/List-Page.html">Books</a>
+                <a href="./pages/Manage-Books.html">Manage Books</a>
+                <a href="./pages/Profile.html">Profile</a>
+                <a href="index.html">About US</a>
+                <a class="first-button" href="./pages/Sign-Up.html" title="Sign-Up">Sign-Up</a>
+                <a href="./pages/Log-In.html" title="Log-In">Log-In</a>
+                <a href="index.html">Log-Out</a>
             </nav>
         </section>
     </header>
 
     <!-- -------------------------------------------- main  -->
-    <main class="main">
-        <section class="sentence-container">
-            <div class="sentences">
-                <h2 class="sentence">Welcome to LibraSphere</h2>
-                <h2 class="sentence">Search for any book</h2>
-                <h2 class="sentence">Search by Title</h2>
-                <h2 class="sentence">Search by Author</h2>
-                <h2 class="sentence">Search by Category</h2>
-                <h2 class="sentence">Waiting for you</h2>
-                <h2 class="sentence">Don't miss the choice</h2>
+    <main>
+        <section class="home-page">
+            <div>
+                <p>COME AND JOIN THE READING CLUB</p>
+                <h1>Enjoy the silence <br> in our reading room</h1>
+                <a href="./pages/List-Page.html">
+                    <button>SEE MORE</button>
+                </a>
             </div>
         </section>
 
-        <section>
-            <div class="buttons">
-                <a href="./pages/Sign-Up.html" title="Sign-Up">
-                    <button>Sign-Up</button>
-                </a>
+        <section class="slider-books">
+            <div class="cards">
+                <div class="card">
+                    <img src="../assets/img/Books/Programming/P  (1).jpg" alt="Semantic Web Programming">
+                    <div class="card-body">
+                        <h5>Semantic Web Programming</h5>
+                        <p class="author">John Hebeler, Matthew Fisher, Ryan Blace, Andrew Parex</p>
+                        <p class="price">50$</p>
+                        <span class="availability available">Available</span>
+                        <div class="card-actions">
+                            <a href="Book-Review.html"><button class="Book-Review-btn"><i class="fas fa-book-open"></i>Book Review</button></a>
+                            <a href="Borrow-Page.html"><a href="Borrow-Page.html"><button class="borrow-btn"><i class="fas fa-hand-holding"></i>Borrow</button></a></a>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="card">
+                    <img src="../assets/img/Books/Programming/P  (2).jpg" alt="White Belt">
+                    <div class="card-body">
+                        <h5>Mastery, White Belt</h5>
+                        <p class="author">Anonymous</p>
+                        <p class="price">70$</p>
+                        <span class="availability unavailable">Unavailable</span>
+                        <div class="due-date">Due back: 15/06/2025</div>
+                        <div class="card-actions">
+                            <a href="Book-Review.html"><button class="Book-Review-btn"><i class="fas fa-book-open"></i>Book Review</button></a>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="card">
+                    <img src="../assets/img/Books/Programming/P  (4).jpg" alt="The C++ Programming Language">
+                    <div class="card-body">
+                        <h5>The C++ Programming Language</h5>
+                        <p class="author">Bjarne Stroustrup</p>
+                        <p class="price">100$</p>
+                        <span class="availability unavailable">Unavailable</span>
+                        <div class="due-date">Due back: 22/05/2025</div>
+                        <div class="card-actions">
+                            <a href="Book-Review.html"><button class="Book-Review-btn"><i class="fas fa-book-open"></i>Book Review</button></a>
+    
+                        </div>
+                    </div>
+                </div>
 
-                <a href="./pages/Log-In.html" title="Log-In">
-                    <button>Log-In</button>
-                </a>
+                <div class="card">
+                    <img src="../assets/img/Books/Psychology/ps (3).jpg" alt="Games People Play">
+                    <div class="card-body">
+                        <h5>Games People Play</h5>
+                        <p class="author">Eric Berne, M.D.</p>
+                        <p class="price">65$</p>
+                        <span class="availability available">Available</span>
+                        <div class="card-actions">
+                            <a href="Book-Review.html"><button class="Book-Review-btn"><i class="fas fa-book-open"></i>Book Review</button></a>
+                            <a href="Borrow-Page.html"><button class="borrow-btn"><i class="fas fa-hand-holding"></i>Borrow</button></a>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="card">
+                    <img src="../assets/img/Books/Psychology/ps (4).jpg" alt="Psychology and You">
+                    <div class="card-body">
+                        <h5>Psychology and You</h5>
+                        <p class="author">Galen E. Cole</p>
+                        <p class="price">100$</p>
+                        <span class="availability unavailable">Unavailable</span>
+                        <div class="due-date">Due back: 30/06/2025</div>
+                        <div class="card-actions">
+                            <a href="Book-Review.html"><button class="Book-Review-btn"><i class="fas fa-book-open"></i>Book Review</button></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="../assets/img/Books/Psychology/ps (1).jpg" alt="Psychology">
+                    <div class="card-body">
+                        <h5>Psychology</h5>
+                        <p class="author">David G. Myers, C. Nathan Dewall</p>
+                        <p class="price">85$</p>
+                        <span class="availability available">Available</span>
+                        <div class="card-actions">
+                            <a href="Book-Review.html"><button class="Book-Review-btn"><i class="fas fa-book-open"></i>Book Review</button></a>
+                            <a href="Borrow-Page.html"><button class="borrow-btn"><i class="fas fa-hand-holding"></i>Borrow</button></a>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="card">
+                    <img src="../assets/img/Books/Psychology/ps (2).jpg" alt="Defy the Stars">
+                    <div class="card-body">
+                        <h5>Defy the Stars</h5>
+                        <p class="author">Claudia Gray</p>
+                        <p class="price">20$</p>
+                        <span class="availability unavailable">Unavailable</span>
+                        <div class="due-date">Due back: 18/06/2025</div>
+                        <div class="card-actions">
+                            <a href="Book-Review.html"><button class="Book-Review-btn"><i class="fas fa-book-open"></i>Book Review</button></a>
+    
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="../assets/img/Books/Novel/N  (3).jpg" alt="Winter's Arrow">
+                    <div class="card-body">
+                        <h5>Winter's Arrow</h5>
+                        <p class="author">Kimbra Swain</p>
+                        <p class="price">90$</p>
+                        <span class="availability unavailable">Unavailable</span>
+                        <div class="due-date">Due back: 10/06/2025</div>
+                        <div class="card-actions">
+                            <a href="Book-Review.html"><button class="Book-Review-btn"><i class="fas fa-book-open"></i>Book Review</button></a>
+    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="feed-back">
+            <h2>Feed Back</h2>
+            <div class="feed-slides">
+                <div class="slide">
+                    <center><img width="400px" src="./assets/img/feed-back/p1.jpeg" alt=""></center>
+                    <center><p>“Quick & tidy. I found many new books in the Kalium Bookstore site.
+                        I ordered some of them and I got the package the next day already and neatly. Super happy!”</p></center><br>
+                    <center><h5>Mona Ahmed</h5></center>
+                </div>
+
+                <div class="slide">
+                    <center><img width="400px" src="./assets/img/feed-back/p2.jpeg" alt=""></center>
+                    <center><p>“Excellent delivery.
+                        What made the difference for me to buy this product from this store were low shipping costs. Even though my product was only € 15.
+                        For another large chain, shipping costs were charged below a certain amount.”</p></center><br>
+                    <center><h5>Mahy Farook</h5></center>
+                </div>
+
+                <div class="slide">
+                    <center><img width="400px" src="./assets/img/feed-back/p3.jpg" alt=""></center>
+                    <center><p>“So this bookstore is the best of both worlds.
+                        I get that experience of browsing the shelves, which, as a card-carrying nerd, I love a lot.
+                        But I also know I’m getting what is almost definitely the best price possible, thanks to this bookstore.”</p></center><br>
+                    <center><h5>Magdy Ahmed</h5></center>
+                </div>
             </div>
         </section>
     </main>
+
+    <!-- -------------------------------------------- footer  -->
+    <footer id="footer">
+        <section  class="footer">
+            <h2>CONTACT WITH US</h2>
+
+            <div class="accounts">
+                <a title="Esraa Emary" href="https://www.linkedin.com/in/esraa-emary-b372b8303/" target="blank"><i class='bx bxl-linkedin-square'></i></a>
+                <a title="Mohammed Atef" href="https://www.linkedin.com/in/mohammed-atef-b0a408299/" target="blank"><i class='bx bxl-linkedin-square'></i></a>
+                <a title="Mohammed Nabil" href="https://www.linkedin.com/in/mohamed-nabil-196869326/" target="blank"><i class='bx bxl-linkedin-square'></i></a>
+                <a title="George Malak" href="https://www.linkedin.com/in/george-malak204/" target="blank"><i class='bx bxl-linkedin-square'></i></a>
+                <a title="John Ayman" href="" target="blank"><i class='bx bxl-linkedin-square'></i></a>
+                <a title="Mariam Badr" href="https://www.linkedin.com/in/mariambadr13/" target="blank"><i class='bx bxl-linkedin-square'></i></a>
+            </div>
+
+            <div class="foot1">
+                <a href="index.html">Home</a>
+                <a href="./pages/List-Page.html">Books</a>
+                <a href="./pages/Manage-Books.html">Manage Books</a>
+                <a href="./pages/Profile.html">Profile</a>
+                <a href="index.html">About Us</a>
+            </div>
+            
+            <div class="foot2">
+                <p class="copyright">
+                    © LibraSphere | All Rights Reserved
+                </p>
+            </div>
+        </section>
+    </footer>
 </body>
 </html>

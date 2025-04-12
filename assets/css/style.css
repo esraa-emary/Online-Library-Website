@@ -15,6 +15,19 @@
     --card-background: #b49d65;
 }
 
+::-webkit-scrollbar {
+    width: 15px; 
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--third-color); 
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--fourth-color);
+    border-radius: 15px;
+}
+
 /* ------------------------------------------------------------------------------------- MAIN PART */
 /* -------------------------------------------- INDEX */
 /* ------------------------- header */
@@ -29,6 +42,7 @@
     position: fixed;
     display: flex;
     align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     
     section {
         width: 100%;
@@ -43,8 +57,9 @@
     /* ------------------------- logo */
 
     h3 {
-        color: var(--first-color);
-        font-weight: 400;
+        color: var(--fourth-color);
+        font-weight: 600;
+        font-size: 1.5rem;
     }
 }
 
@@ -53,17 +68,18 @@
 .search-bar input {
     width: 400px;
     border: none;
-    background: var(--first-color);
-    color: var(--third-color);
+    background: var(--third-color);
+    color: var(--first-color);
     height: 40px;
     padding: 0 0 0 30px;
     font-size: 15px;
     border-radius: 10px;
+    border: 1px solid var(--first-color);
     transition: all 0.3s ease-in-out;
 }
 
 .search-bar input::placeholder {
-    color: var(--third-color);
+    color: var(--first-color);
     font-style: italic;
     font-size: 15px;
 }
@@ -78,6 +94,7 @@
 .search-bar:active,
 .search-bar:hover {
     box-shadow: 0 0 30px var(--second-color);
+    border-radius: 10px;
 }
 
 .search-bar{
@@ -85,161 +102,268 @@
 }
 
 .search-bar a{
-    color: var(--third-color);
+    color: var(--first-color);
     position: absolute;
     left: 10px;
     top: 10px;
 }
 
-/* ------------------------- nav-buttons */
+/* ------------------------- nav */
 
-.nav-buttons {
+.nav {
     display: flex;
     gap: 10px;
-    
-    button {
-        width: 75px;
-        height: 40px;
-        cursor: pointer;
-        font-size: 15px;
-        border: none;
-        border-radius: 10px;
-        background-color: var(--third-color);
-        color: var(--first-color);
-        transition: all 0.3s ease-in-out;
-    }
 }
 
-.first-button button {
-    background-color: var(--first-color);
-    color: var(--third-color);
-}
-
-.nav-buttons button:hover {
-    box-shadow: 0 0 50px var(--second-color);
-    scale: 1.1;
-}
-
-.nav-buttons a {
+.nav a {
     display: flex;
     justify-content: center;
     align-items: center;
     text-decoration: none;
+    color: var(--first-color);
 }
 
-/* ------------------------- main */
+.nav a:hover{
+    color: var(--fourth-color);
+    transform: scale(1.1);
+    transition: all 0.3 ease-in-out;
+}
 
-.main {
-    background: url("../img/main.jpg");
+/* ------------------------- home-page */
+
+.home-page {
+    background: url("../img/home.jpg");
     background-size: cover;
     background-position: center;
     width: 100%;
-    min-height: 100vh;
-}
-
-/* ------------------------- sentences */
-
-.sentence-container {
-    display: flex;
-    justify-content: center;
-    
-    .sentences {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        color: var(--first-color);
-        width: 80%;
-        margin-top: 10rem;
-        padding: 2rem 0;
-        backdrop-filter: blur(10px);
-        
-        .sentence {
-            position: relative;
-            backdrop-filter: blur(10px);
-            width: 310px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            opacity: 0;
-        }
-        
-        .sentence:nth-child(1) {
-            animation: slide-left 1s ease-out forwards 0s;
-            transform: translateX(-250px);
-        }
-        
-        .sentence:nth-child(2) {
-            animation: slide-left 1s ease-out forwards 1s;
-            transform: translateX(-150px);
-        }
-        
-        .sentence:nth-child(3) {
-            animation: slide-left 1s ease-out forwards 2s;
-            transform: translateX(-50px);
-        }
-        
-        .sentence:nth-child(4) {
-            animation: slide-left 1s ease-out forwards 3s;
-            transform: translateX(50px);
-        }
-        
-        .sentence:nth-child(5) {
-            animation: slide-left 1s ease-out forwards 4s;
-            transform: translateX(150px);
-        }
-        
-        .sentence:nth-child(6) {
-            animation: slide-left 1s ease-out forwards 5s;
-            transform: translateX(250px);
-        }
-        
-        .sentence:nth-child(7) {
-            animation: slide-left 1s ease-out forwards 6s;
-            transform: translateX(350px);
-        }
-    }
-}
-
-
-@keyframes slide-left {
-    from {
-        opacity: 0;
-        transform: translateX(-100%);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateX(-2*100px);
-    }
-}
-
-/* ------------------------- buttons */
-
-.buttons {
-    gap: 10%;
+    min-height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.home-page div{
+    color: var(--third-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.home-page div p{
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+.home-page div h1{
+    font-weight: 500;
+    font-size: 4rem;
+    font-family: "Prata", serif;
+}
+
+.home-page a{
+    padding-top: 4rem;
+}
+
+.home-page button{
+    background-color: transparent;
+    color: var(--third-color);
+    border: 1px solid var(--third-color);
+    font-size: 18px;
+    width: 200px;
+    height: 60px;
+}
+
+.home-page button:hover {
+    background-color: var(--third-color);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    color: var(--first-color);
+}
+
+/* ------------------------- slider-books */
+
+.slider-books{
     padding-top: 5rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 25px;
+    text-align: center;
     
-    button {
-        width: 200px;
-        height: 60px;
-        cursor: pointer;
-        font-size: 1.5rem;
-        border: none;
-        border-radius: 15px;
-        color: var(--third-color);
-        background: var(--first-color);
+    .card {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        gap: 25px;
+        padding: 1rem;
+        max-width: 350px;
+        border-radius: 40px;
+        overflow: hidden;
+        position: relative;
         transition: all 0.3s ease-in-out;
+        
+        img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 5px;
+            margin: auto;
+            transition: all 0.3s ease-in-out;
+        }
+        
+        p {
+            font-style: italic;
+        }
+        
+        .card-actions{
+            margin-top: 25px;
+
+            a{
+                .borrow-btn{
+                    border: none;
+                    background-color: var(--fourth-color);
+                    font-weight: 600;
+                    padding: 10px 20px;
+                    border-radius: 10px;
+                    cursor: pointer;
+                    transition: all 0.3s ease-in-out;
+                    color: var(--third-color);
+                    i {margin-right: 0.5rem;}
+                }
+                .borrow-btn:hover{
+                    background-color: var(--first-color);
+                    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+                    color: white;
+                }
+                
+                .Book-Review-btn {
+                    border: none;
+                    background-color: var(--fourth-color);
+                    font-weight: 600;
+                    padding: 10px 20px;
+                    border-radius: 10px;
+                    cursor: pointer;
+                    transition: all 0.3s ease-in-out;
+                    color: var(--third-color);
+                    i {margin-right: 0.5rem;}
+                }
+                
+                .Book-Review-btn:hover {
+                    background-color: var(--first-color);
+                    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+                    color: white;
+                }
+            }
+        }
     }
     
-    button:hover {
-        background-color: var(--third-color);
-        color: white;
-        box-shadow: 0 0 50px var(--first-color);
+    .card img:hover {
+        transform: scale(1.015);
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     }
+}
+
+/* ------------------------- feed-back */
+
+.feed-back{
+    background-color: var(--third-color);
+    width: 100%;
+    padding: 5rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.feed-slides{
+    display: flex;
+    gap: 1rem;
+    position: relative;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+}
+
+.feed-slides div{
+    display: none;
+}
+
+.slide{
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+    width: 800px;
+}
+
+.slide img{
+    border-radius: 20rem;
+    width: 300px;
+    height: 300px;
+}
+
+.slide img:hover{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.slide p{
+    height: 100px;
+}
+
+div.display-slide{
+    display: block;
+}
+
+/* ------------------------- footer */
+
+.footer{
+    background-color: rgb(27, 26, 26);
+    width: 100%;
+    height: 30vh;
+    color: var(--third-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.foot1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    padding-bottom: 30px;
+}
+
+.footer h2{
+    font-weight: 500;
+}
+
+.footer a{
+    text-decoration: none;
+    color: var(--third-color);
+}
+
+.accounts a{
+    font-size: 2rem;
+}
+
+.footer a:hover, .footer i:hover{
+    color: var(--fourth-color);
+    transform: scale(1.1);
+    transition: all 0.3 ease-in-out;
+}
+
+.accounts{
+    padding-bottom: 20px;
 }
 
 /* -------------------------------------------- Log-In */
