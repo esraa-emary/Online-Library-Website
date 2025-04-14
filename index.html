@@ -34,9 +34,16 @@
                 <h3>LibraSphere</h3>
             </div>
 
-            <form class="search-bar" action="./pages/List-Page.html">
-                <a href="./pages/List-Page.html"><i class="bx bx-search" title="Search"></i></a>
-                <input type="text" placeholder="Title, Author or Category" title="Search">
+            <!-- <form class="search-bar" onsubmit="search(event)">
+                <a href="#" onclick="search(event)"><i class="bx bx-search" title="Search"></i></a>
+                <input id="search" type="text" placeholder="Title, Author or Category" title="Search">
+            </form> -->
+            
+            <form class="search-bar" action="./pages/List-Page.html" onsubmit="search(event)">
+                <a href="#" onclick="search(event)">
+                    <i class="bx bx-search" title="Search"></i>
+                </a>  
+                <input id="search" type="text" placeholder="Title, Author or Category" title="Search">
             </form>
 
             <nav class="nav">

@@ -101,3 +101,36 @@ function nextSlide() {
     }
     showSlides(slideIndex);
 }
+
+// ---------------------------------------- search
+
+// function search(event) {
+//     event.preventDefault(); // Prevent form submission or link default behavior
+//     alert('Search triggered!'); // Test the function
+//     window.location.href = "pages/list-Page.html"; // Redirect to the page
+
+
+
+//     // let content = document.getElementById("search").value.trim();
+//     // let lowerContent = content.toLowerCase();
+
+//     // let categories = document.getElementsByClassName("booktype");
+//     // for (let i = 0; i < categories.length; i++) {
+//     //     let ele = categories[i].textContent.toLowerCase();
+
+//     //     if (lowerContent === ele) {
+//     //         window.location.href = "results.html";
+
+
+//     //         return;
+//     //     }
+//     // }
+// }
+
+
+
+// function search(event) {
+//     event.preventDefault(); // Stop the page from going directly
+//     alert('Search triggered!'); // Show the alert
+//     window.location.href = './pages/List-Page.html'; // Now manually go to the page
+// }
