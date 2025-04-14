@@ -16,7 +16,7 @@
 }
 
 ::-webkit-scrollbar {
-    width: 15px; 
+    width: 10px; 
 }
 
 ::-webkit-scrollbar-track {
@@ -25,7 +25,7 @@
 
 ::-webkit-scrollbar-thumb {
     background-color: var(--fourth-color);
-    border-radius: 15px;
+    border-radius: 10px;
 }
 
 /* ------------------------------------------------------------------------------------- MAIN PART */
@@ -38,7 +38,7 @@
     background: var(--third-color);
     top: 0;
     right: 0;
-    z-index: 1;
+    z-index: 100;
     position: fixed;
     display: flex;
     align-items: center;
@@ -113,20 +113,19 @@
 .nav {
     display: flex;
     gap: 10px;
-}
-
-.nav a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    color: var(--first-color);
-    transition: all 0.3s ease-in-out;
-}
-
-.nav a:hover{
-    color: var(--fourth-color);
-    transform: scale(1.1);
+    
+    a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        color: var(--first-color);
+        transition: all 0.3s ease-in-out;
+    }
+    
+    a:hover{
+        color: var(--fourth-color);
+    }
 }
 
 /* ------------------------- home-page */
@@ -140,64 +139,68 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.home-page div{
-    color: var(--third-color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-}
-
-.home-page div p{
-    font-weight: 400;
-    font-size: 1rem;
-}
-
-.home-page div h1{
-    font-weight: 500;
-    font-size: 4rem;
-    font-family: "Prata", serif;
-}
-
-.home-page a{
-    padding-top: 4rem;
-}
-
-.home-page button{
-    background-color: transparent;
-    color: var(--third-color);
-    border: 1px solid var(--third-color);
-    font-size: 18px;
-    width: 200px;
-    height: 60px;
-    transition: all 0.3s ease-in-out;
-}
-
-.home-page button:hover {
-    background-color: var(--third-color);
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    color: var(--first-color);
-    cursor: pointer;
+    
+    div{
+        color: var(--third-color);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+        
+        p{
+            font-weight: 400;
+            font-size: 1rem;
+        }
+        
+        h1{
+            font-weight: 500;
+            font-size: 4rem;
+            font-family: "Prata", serif;
+        }
+    }
+    
+    a{
+        margin-top: 4rem;
+        
+        button{
+            background-color: transparent;
+            color: var(--third-color);
+            border: 1px solid var(--third-color);
+            font-size: 18px;
+            width: 200px;
+            height: 60px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+        
+        button:hover {
+            background-color: var(--third-color);
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            color: var(--first-color);
+        }
+    }
 }
 
 /* ------------------------- slider-books */
 
 .slider-books {
     text-align: center;
-    padding: 5rem;
+    margin: 5rem auto 0rem;
+    padding: 0 2.5rem;
     display: flex;
     flex-direction: column;
     gap: 5rem;
     width: 100%;
+    
+    h2 {
+        font-size: 2rem;
+    }
 
     .slider{
         display: flex;
         justify-content: space-between;
         align-items: center;
-
 
         .slider-btn{
             font-size: 5rem;
@@ -209,6 +212,7 @@
         .cards {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
+            padding: 5rem 0;
             
             .card {
                 display: flex;
@@ -226,7 +230,7 @@
                 }
     
                 img {
-                    height: 500px;
+                    height: 450px;
                     object-fit: cover;
                     border-radius: 5px;
                     margin: auto;
@@ -322,16 +326,8 @@
     position: relative;
 }
 
-.cards {
-    overflow: hidden;
-}
-
-.card {
-    display: none;
-}
-
 .center-slide {
-    transform: scale(1.2);
+    transform: scale(1.15);
     z-index: 2;
 }
 
@@ -358,46 +354,53 @@
     align-items: center;
     flex-direction: column;
     gap: 50px;
-}
-
-.feed-slides{
-    display: flex;
-    gap: 1rem;
-    position: relative;
-    overflow: hidden;
-    justify-content: center;
-    align-items: center;
-}
-
-.feed-slides div{
-    display: none;
-}
-
-.slide{
-    display: flex;
-    gap: 15px;
-    align-items: center;
-    justify-content: center;
-    width: 800px;
-}
-
-.slide img{
-    border-radius: 20rem;
-    width: 300px;
-    height: 300px;
-    transition: all 0.3s ease-in-out;
-}
-
-.slide img:hover{
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-}
-
-.slide p{
-    height: 100px;
-}
-
-div.display-slide{
-    display: block;
+    
+    h2 {
+        font-size: 2rem;
+    }
+    
+    .feed-slides{
+        display: flex;
+        gap: 1rem;
+        position: relative;
+        overflow: hidden;
+        justify-content: center;
+        align-items: center;
+        
+        div{
+            display: none;
+        }
+        
+        .slide{
+            gap: 15px;
+            align-items: center;
+            justify-content: center;
+            width: 800px;
+            
+            p{
+                height: 100px;
+            }
+            
+            .customerFeedback {
+                align-content: center;
+            }
+            
+            img{
+                border-radius: 20rem;
+                width: 275px;
+                height: 275px;
+                transition: all 0.3s ease-in-out;
+            }
+            
+            img:hover{
+                box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            }
+        }
+    }
+    
+    div.display-slide{
+        display: block;
+    }
 }
 
 /* ------------------------- footer */
@@ -411,6 +414,27 @@ div.display-slide{
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    
+    h2{
+        font-weight: 500;
+    }
+    
+    a{
+        text-decoration: none;
+        color: var(--third-color);
+        font-size: 1rem;
+        transition: all 0.3s ease-in-out;
+        
+        i{
+            font-size: 2rem;
+            transition: all 0.3s ease-in-out;
+        }
+    }
+    
+    a:hover, i:hover{
+        color: var(--fourth-color);
+        transform: scale(1.075);
+    }
 }
 
 .foot1{
@@ -421,30 +445,6 @@ div.display-slide{
     padding-bottom: 30px;
 }
 
-.footer h2{
-    font-weight: 500;
-}
-
-.footer a{
-    text-decoration: none;
-    color: var(--third-color);
-}
-
-.footer a{
-    font-size: 1rem;
-    transition: all 0.3s ease-in-out;
-}
-
-.footer i{
-    font-size: 2rem;
-    transition: all 0.3s ease-in-out;
-}
-
-.footer a:hover, .footer i:hover{
-    color: var(--fourth-color);
-    transform: scale(1.1);
-}
-
 .accounts{
     padding-bottom: 20px;
 }
@@ -452,7 +452,6 @@ div.display-slide{
 /* -------------------------------------------- Log-In */
 
 .logInPage {
-    /* background: url("../img/main.jpg"); */
     background-size: cover;
     background-position: center;
     min-height: 100vh;
@@ -466,7 +465,8 @@ div.display-slide{
         padding: 2.5rem;
         border-radius: 15px;
         max-width: 35%;
-        border: 1px solid var(--first-color);
+        background-color: #f1f1f1;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         
         h1 {
             font-size: 2.5rem;
@@ -571,11 +571,12 @@ div.display-slide{
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin: 0 auto;
+        margin: 5rem auto;
         padding: 2rem;
         border-radius: 15px;
         max-width: 35%;
-        border: 1px solid var(--first-color);
+        background-color: #f1f1f1;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         
         h1 {
             font-size: 2.5rem;
@@ -671,11 +672,11 @@ div.display-slide{
     background: var(--third-color);
     color: var(--first-color);
     text-align: center;
-}
-
-.about-us h2{
-    font-size: 5rem;
-    margin-bottom: 5rem;
+    
+    h2{
+        font-size: 3.5rem;
+        margin-bottom: 5rem;
+    }
 }
 
 .items{
@@ -684,6 +685,93 @@ div.display-slide{
     display: flex;
     flex-wrap: wrap;
     position: relative;
+    
+    .item{
+        margin-bottom: 40px;
+        width: 100%;
+        position: relative;
+        
+        .dot{
+            height: 21px;
+            width: 21px;
+            background-color: var(--fourth-color);
+            box-shadow: 0 0 25px  var(--fourth-color),
+                        0 0 50px  var(--fourth-color);
+            position: absolute;
+            left: calc(50% - 8px);
+            border-radius: 50%;
+            top: 10px;
+        }
+        
+        h3{
+            font-size: 25px;
+            color: var(--first-color);
+            margin-bottom: 15px;
+            font-weight: 800;
+            margin: 6px 0 15px;
+        }
+        
+        .content{
+            background-color: var(--third-color);
+            border: 3px solid var(--fourth-color);
+            padding: 30px;
+            border-radius: 2rem ;
+            box-shadow: 0 0 10px var(--fourth-color);
+            transition: all 0.3s ease-in-out;
+            
+            p{
+                color: var(--first-color);
+                margin-bottom: 20px;
+                font-size: 16px;
+                font-weight: 300;
+                line-height: 22px;
+            }
+        }
+        
+        .content:hover{
+            transform: scale(1.015);
+            box-shadow: 0 0 25px var(--fourth-color);
+        }
+        
+        .accounts-individual{
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            
+            a {
+                display: flex; 
+                justify-content: center;
+                align-items: center;
+                transition: all 0.3s ease-in-out;
+                color: var(--first-color);
+                font-size: 40px;
+                width: 60px; 
+                height: 60px;
+                border-radius: 50%;
+                background: transparent; 
+                border: none;
+                text-decoration: none; 
+            }
+            
+            a:hover {
+                transform: scale(1.1);
+                color: var(--fourth-color);
+                box-shadow: 0 0 35px var(--fourth-color); 
+            }
+        }
+    }
+    
+    .item:last-child{
+        margin-bottom: 0;
+    }
+    
+    .item:nth-child(odd){
+        padding-right: calc(50% + 30px);
+    }
+    
+    .item:nth-child(even){
+        padding-left: calc(50% + 30px);
+    }
 }
 
 .items::before{
@@ -693,99 +781,6 @@ div.display-slide{
     height: 100%;
     background-color: var(--fourth-color);
     left: calc(50% - 1px);
-}
-
-.item{
-    margin-bottom: 40px;
-    width: 100%;
-    position: relative;
-}
-
-.item:last-child{
-    margin-bottom: 0;
-}
-
-.item:nth-child(odd){
-    padding-right: calc(50% + 30px);
-}
-
-.item:nth-child(even){
-    padding-left: calc(50% + 30px);
-}
-
-.dot{
-    height: 21px;
-    width: 21px;
-    background-color: var(--fourth-color);
-    box-shadow: 0 0 25px  var(--fourth-color),
-                0 0 50px  var(--fourth-color);
-    position: absolute;
-    left: calc(50% - 8px);
-    border-radius: 50%;
-    top: 10px;
-}
-
-.name{
-    font-size: 20px;
-    font-weight: 800;
-    color: var(--first-color);
-    margin: 6px 0 15px;
-}
-
-.content{
-    background-color: var(--third-color);
-    border: 3px solid var(--fourth-color);
-    padding: 30px;
-    border-radius: 2rem ;
-    box-shadow: 0 0 10px var(--fourth-color);
-    transition: all 0.3s ease-in-out;
-}
-
-.content:hover{
-    transform: scale(1.05);
-    box-shadow: 0 0 25px var(--fourth-color);
-}
-
-.item h3{
-    font-size: 30px;
-    color: var(--first-color);
-    margin-bottom: 15px;
-    font-weight: 500;
-}
-
-.content p{
-    color: var(--first-color);
-    margin-bottom: 20px;
-    font-size: 16px;
-    font-weight: 300;
-    line-height: 22px;
-}
-
-.accounts-individual{
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-}
-
-.accounts-individual a {
-    display: flex; 
-    justify-content: center;
-    align-items: center;
-    transition: all 0.3s ease-in-out;
-    color: var(--first-color);
-    font-size: 40px;
-    width: 60px; 
-    height: 60px;
-    border-radius: 50%;
-    background: transparent; 
-    border: none;
-    text-decoration: none; 
-}
-
-.accounts-individual a:hover {
-    transform: scale(1.1);
-    color: var(--fourth-color);
-    box-shadow: 0 0 35px var(--fourth-color); 
 }
 
 /* ------------------------------------------------------------------------------------- RESPONSIVE PART */
