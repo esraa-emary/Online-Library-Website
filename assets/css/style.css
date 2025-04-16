@@ -67,14 +67,13 @@
 
 .search-bar input {
     width: 400px;
-    border: none;
     background: var(--third-color);
     color: var(--first-color);
     height: 40px;
     padding: 0 0 0 30px;
     font-size: 15px;
-    border-radius: 10px;
     border: 1px solid var(--first-color);
+    border-radius: 10px;
     transition: all 0.3s ease-in-out;
 }
 

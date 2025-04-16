@@ -39,12 +39,20 @@
                 <input id="search" type="text" placeholder="Title, Author or Category" title="Search">
             </form> -->
             
-            <form class="search-bar" action="./pages/List-Page.html" onsubmit="search(event)">
-                <a href="#" onclick="search(event)">
-                    <i class="bx bx-search" title="Search"></i>
-                </a>  
-                <input id="search" type="text" placeholder="Title, Author or Category" title="Search">
-            </form>
+            <!-- <div class="ajax">
+                <form class="search-bar" action="./pages/List-Page.html" onsubmit="search(event)">
+                    <input id="search" type="text" placeholder="Search by Title, Author or Category" 
+                           title="Search" onkeyup="showHint(this.value)" autocomplete="off">
+                </form>
+                <div id="txtHint" class="results-container"></div>
+            </div> -->
+
+            <div class="search-bar" style="position: relative;">
+                <a href="#" onclick="search(event)"><i class="bx bx-search" title="Search"></i></a>
+                <input id="search" type="text" placeholder="Search by Title, Author or Category" 
+                           title="Search" onkeyup="showHint(this.value)" autocomplete="off">
+                <div id="txtHint" class="results-container"></div>
+            </div>
 
             <nav class="nav">
                 <a style="color: #4f88ba;" href="index.html">Home</a>
