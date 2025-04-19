@@ -254,6 +254,21 @@
     }
 }
 
+.status-badge {
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-weight: bold;
+    display: inline-block;
+}
+.status-badge.available {
+    background-color: #d4edda;
+    color: #155724;
+}
+.status-badge.unavailable {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
 /* -------------------------------------------- Borrow Page */
 
 #borrowPage {
@@ -314,79 +329,350 @@
 
 /* -------------------------------------------- Profile */
 
+.borrow-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background-color: #cccccc;
+}
+
+.borrow-btn:disabled:hover::after {
+    content: "This book is currently unavailable";
+    position: absolute;
+    background: #333;
+    color: white;
+    padding: 5px;
+    border-radius: 3px;
+    margin-top: -30px;
+    margin-left: -50px;
+    font-size: 12px;
+}
+
 #profilePage {
-    min-height: 100vh;
-    align-content: center;
-    
-    #card {
-        background-color: #f1f1f1;
-        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-        max-width: 50%;
-        padding: 35px 15px;
-        border-radius: 15px;
-        margin: 0 auto;
-        text-align: center;
-        
-        #labels {
-            font-weight: 700;
-            
-            label {
-                margin-right: 25px;
-            };
-            
-            input {
-                border: 1px solid var(--first-color);
-                height: 40px;
-                padding: 0 10px;
-                font-size: 15px;
-                border-radius: 10px;
-                transition: all 0.35s ease;
-            }
-            
-            input::placeholder {
-                font-style: italic;
-                font-size: 15px;
-            }
-            
-            .gender{
-                display: flex;
-                gap: 25px;
-                align-items: center;
-                justify-content: center;
-                margin-bottom: 25px;
-                label {
-                    margin-right: 5px;
-                };
-                
-                .male, .female {
-                    display: flex;
-                    align-items: center;
-                    gap: 10px;
-                }
-            }
-        }
-        
-        #borrowBtn{
-            button{
-                border: none;
-                background-color: var(--fourth-color);
-                color: white;
-                font-size: 1rem;
-                font-weight: 600;
-                padding: 10px 20px;
-                border-radius: 10px;
-                cursor: pointer;
-                transition: all 0.3s ease-in-out;
-            }
-        }
-         
-        #borrowBtn:hover{
-            button{
-                background-color: var(--first-color);
-                box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-            }
-        }
-    }
+    min-height: calc(100vh - 7vh - 30vh);
+    margin-top: 9vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8f9fa;
+    padding: 2rem 0;
+}
+
+.profile-container {
+    background-color: #f1f1f1;
+    box-shadow: #4f88ba 0px 5px 15px;
+    max-width: 800px;
+    width: 90%;
+    padding: 2.5rem;
+    border-radius: 15px;
+    margin: 2rem auto;
+}
+
+.profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid var(--first-color);
+    padding-bottom: 1rem;
+}
+
+.profile-title {
+    font-size: 1.8rem;
+    color: #4f88ba;
+    font-weight: 700;
+}
+
+.profile-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: var(--first-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: white;
+    font-weight: 700;
+}
+
+.profile-section {
+    margin-bottom: 2rem;
+}
+
+.section-title {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color:#4f88ba;
+    font-weight: 600;
+}
+
+.profile-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+    color: #4f88ba;
+}
+
+.form-group input, 
+.form-group select {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--first-color);
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.35s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(var(--first-color-rgb), 0.2);
+}
+
+.gender-options {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.gender-option {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.reading-goal {
+    background: #f9f9f9;
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-top: 1rem;
+    border: 1px solid #ddd;
+}
+
+.goal-progress {
+    margin-top: 1.5rem;
+    height: 12px;
+    background: #e0e0e0;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background: var(--fourth-color);
+    width: 0%;
+    transition: width 0.5s ease;
+}
+
+.progress-text {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: #4f88ba;
+    text-align: center;
+}
+
+.profile-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    gap: 1rem;
+}
+
+.btn {
+    padding: 0.8rem 1.8rem;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-primary {
+    background-color: var(--fourth-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--first-color);
+    box-shadow: #4f88ba 0px 5px 15px;
+}
+
+.btn-secondary {
+    background-color: #f0f0f0;
+    color: #4f88ba;
+    border: 1px solid #ddd;
+}
+
+.btn-secondary:hover {
+    background-color: #e0e0e0;
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+/* Borrowed Books Page Styles */
+.borrowed-books-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.borrowed-books-container h1 {
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.borrowing-info {
+    margin-bottom: 2rem;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.borrowed-count {
+    font-weight: bold;
+    color: #3498db;
+}
+
+.borrowed-book-card {
+    display: flex;
+    background: #f9f9f9;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.book-cover {
+    width: 150px;
+    background: #eee;
+}
+
+.book-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.book-details {
+    flex: 1;
+    padding: 1.5rem;
+}
+
+.book-details h3 {
+    margin-top: 0;
+    color: #2c3e50;
+}
+
+.book-details .author {
+    color: #7f8c8d;
+    margin-bottom: 1rem;
+}
+
+.borrowing-info p {
+    margin: 0.5rem 0;
+    color: #34495e;
+}
+
+.progress-container {
+    height: 8px;
+    background: #ecf0f1;
+    border-radius: 4px;
+    margin: 1rem 0;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background: #3498db;
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+.time-left {
+    font-weight: bold;
+}
+
+.time-left.overdue {
+    color: #e74c3c;
+}
+
+.book-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.return-btn, .renew-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.return-btn {
+    background: #3498db;
+    color: white;
+}
+
+.return-btn:hover {
+    background: #2980b9;
+}
+
+.renew-btn {
+    background: #2ecc71;
+    color: white;
+}
+
+.renew-btn:hover {
+    background: #27ae60;
+}
+
+.no-books-message {
+    text-align: center;
+    padding: 2rem;
+    background: #f9f9f9;
+    border-radius: 8px;
+    margin-top: 2rem;
+}
+
+.no-books-message p {
+    margin-bottom: 1rem;
+    color: #7f8c8d;
+}
+
+.login-btn, .browse-books-btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+.login-btn:hover, .browse-books-btn:hover {
+    background: #2980b9;
 }
 
 /* -------------------------------------------- Borrowed Books */
@@ -517,6 +803,7 @@
     }
 }
 
+
 /* -------------------------------------------- List Page */
 
 
@@ -544,6 +831,4 @@
 
 
 /* -------------------------------------------- Borrowed Books */
-
-
 
