@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Tangerine:wght@400;700&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Prata&display=swap">
     <script src="./assets/js/script.js" defer></script>
+    <script type="module" src="./assets/js/Storing.js" defer></script>
     <title>LibraSphere</title>
 </head>
 <body>
@@ -57,12 +58,12 @@
             <nav class="nav">
                 <a style="color: #4f88ba;" href="index.html">Home</a>
                 <a href="./pages/List-Page.html">Books</a>
-                <a href="./pages/Manage-Books.html">Manage Books</a>
-                <a href="./pages/Profile.html">Profile</a>
+                <a id="manage" href="./pages/Manage-Books.html">Manage Books</a>
+                <a id="profile" href="./pages/Profile.html">Profile</a>
                 <a href="./pages/About-Us.html">About US</a>
-                <a class="first-button" href="./pages/Sign-Up.html" title="Sign-Up">Sign-Up</a>
-                <a href="./pages/Log-In.html" title="Log-In">Log-In</a>
-                <a href="index.html">Log-Out</a>
+                <a id="sign" class="first-button" href="./pages/Sign-Up.html" title="Sign-Up">Sign-Up</a>
+                <a id="login" href="./pages/Log-In.html" title="Log-In">Log-In</a>
+                <a id="logout" href="index.html">Log-Out</a>
             </nav>
         </section>
     </header>
@@ -81,142 +82,14 @@
 
         <!-- -------------------------------------------- slider-book  -->
         <section id="Books" class="slider-books">
-            <h2>Books</h2>
             <div class="slider">
-                <a onclick="prevSlide1()" class="slider-btn prev1"><</a>
+                <a onclick="prevSlide1()" class="slider-btn prev1"></a>
 
-                <div class="cards">
-                    <div class="card">
-                        <img src="./assets/img/Books/Novel/N (1).jpg" alt="The Left Hand of God">
-                        <div class="card-body">
-                            <h5>The Left Hand of God</h5>
-                            <p class="author">Paul Hoffman</p>
-                            <p class="price">30$</p>
-                            <span class="availability available">Available</span>
-                            <div class="card-actions">
-                                <a href="./pages/Book-Review.html"><button class="Book-Review-btn"><i class="fas fa-book-open"></i>Book Review</button></a>
-                                <a href="./pages/Borrow-Page.html"><button class="borrow-btn"><i class="fas fa-hand-holding"></i>Borrow</button></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <img src="./assets/img/Books/Novel/N (3).jpg" alt="Winter's Arrow">
-                        <div class="card-body">
-                            <h5>Winter's Arrow</h5>
-                            <p class="author">Kimbra Swain</p>
-                            <p class="price">90$</p>
-                            <span class="availability unavailable">Unavailable</span>
-                            <div class="due-date">Due back: 10/06/2025</div>
-                            <div class="card-actions">
-                                <a href="./pages/Book-Review.html"><button class="Book-Review-btn"><i class="fas fa-book-open"></i>Book Review</button></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <img src="./assets/img/Books/Novel/N (2).jpg" alt="The Beast of the Highlands">
-                        <div class="card-body">
-                            <h5>The Beast of the Highlands</h5>
-                            <p class="author">L.D. Goffigan</p>
-                            <p class="price">110$</p>
-                            <span class="availability available">Available</span>
-                            <div class="card-actions">
-                                <a href="./pages/Book-Review.html"><button class="Book-Review-btn"><i class="fas fa-book-open"></i>Book Review</button></a>
-                                <a href="./pages/Borrow-Page.html"><button class="borrow-btn"><i class="fas fa-hand-holding"></i>Borrow</button></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <img src="./assets/img/Books/Novel/N (4).jpg" alt="The Waning">
-                        <div class="card-body">
-                            <h5>The Waning</h5>
-                            <p class="author">Kristen Martin</p>
-                            <p class="price">100$</p>
-                            <span class="availability available">Available</span>
-                            <div class="card-actions">
-                                <a href="./pages/Book-Review.html"><button class="Book-Review-btn"><i class="fas fa-book-open"></i>Book Review</button></a>
-                                <a href="./pages/Borrow-Page.html"><button class="borrow-btn"><i class="fas fa-hand-holding"></i>Borrow</button></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <img src="./assets/img/Books/Novel/N (5).jpg" alt="Crime and Punishment">
-                        <div class="card-body">
-                            <h5>Crime and Punishment</h5>
-                            <p class="author">Fyodor Dostoyevsky</p>
-                            <p class="price">210$</p>
-                            <span class="availability unavailable">Unavailable</span>
-                            <div class="due-date">Due back: 05/07/2025</div>
-                            <div class="card-actions">
-                                <a href="./pages/Book-Review.html"><button class="Book-Review-btn"><i class="fas fa-book-open"></i>Book Review</button></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <img src="./assets/img/Books/Psychology/ps (2).jpg" alt="Defy the Stars">
-                        <div class="card-body">
-                            <h5>Defy the Stars</h5>
-                            <p class="author">Claudia Gray</p>
-                            <p class="price">20$</p>
-                            <span class="availability unavailable">Unavailable</span>
-                            <div class="due-date">Due back: 18/06/2025</div>
-                            <div class="card-actions">
-                                <a href="./pages/Book-Review.html"><button class="Book-Review-btn"><i class="fas fa-book-open"></i>Book Review</button></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <img src="./assets/img/Books/Programming/P (3).jpg" alt="Programming from the Ground Up">
-                        <div class="card-body">
-                            <h5>Programming from the Ground Up</h5>
-                            <p class="author">Jonathan Bartlett</p>
-                            <p class="price">65$</p>
-                            <span class="availability available">Available</span>
-                            <div class="card-actions">
-                                <a href="./pages/Book-Review.html"><button class="Book-Review-btn"><i class="fas fa-book-open"></i>Book Review</button></a>
-                                <a href="./pages/Borrow-Page.html"><button class="borrow-btn"><i class="fas fa-hand-holding"></i>Borrow</button></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <img src="./assets/img/Books/Programming/P (2).jpg" alt="White Belt">
-                        <div class="card-body">
-                            <h5>Mastery, White Belt</h5>
-                            <p class="author">Anonymous</p>
-                            <p class="price">70$</p>
-                            <span class="availability unavailable">Unavailable</span>
-                            <div class="due-date">Due back: 15/06/2025</div>
-                            <div class="card-actions">
-                                <a href="./pages/Book-Review.html"><button class="Book-Review-btn"><i class="fas fa-book-open"></i>Book Review</button></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <img src="./assets/img/Books/Psychology/ps (3).jpg" alt="Games People Play">
-                        <div class="card-body">
-                            <h5>Games People Play</h5>
-                            <p class="author">Eric Berne, M.D.</p>
-                            <p class="price">65$</p>
-                            <span class="availability available">Available</span>
-                            <div class="card-actions">
-                                <a href="./pages/Book-Review.html"><button class="Book-Review-btn"><i class="fas fa-book-open"></i>Book Review</button></a>
-                                <a href="./pages/Borrow-Page.html"><button class="borrow-btn"><i class="fas fa-hand-holding"></i>Borrow</button></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <div id="available-books"  class="container"></div>
 
                 <a onclick="nextSlide1()" class="slider-btn next1">></a>
             </div>
         </section>
-
         <!-- -------------------------------------------- feed-back  -->
         <section class="feed-back">
             <h2>Feed Back</h2>
@@ -264,8 +137,6 @@
             <div class="foot1">
                 <a href="index.html">Home</a>
                 <a href="./pages/List-Page.html">Books</a>
-                <a href="./pages/Manage-Books.html">Manage Books</a>
-                <a href="./pages/Profile.html">Profile</a>
                 <a href="./pages/About-Us.html">About US</a>
             </div>
             
