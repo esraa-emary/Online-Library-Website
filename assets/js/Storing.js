@@ -426,6 +426,9 @@ let userStore = {
 
     logout: function() {
         sessionStorage.removeItem('currentUser');
+        // document.getElementById("manage").style.display="none";
+        // document.getElementById("profile").style.display="none";
+        // document.getElementById("logout").style.display="none";
     },
 
     checkUser: function() {
@@ -743,11 +746,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // Handle Book Review page
     if (window.location.pathname.includes("Book-Review.html")) {
     const currentUser = userStore.getCurrentUser();
-    if (!currentUser) {
-        alert('Please login first');
-        window.location.href = 'Log-In.html';
-        return;
-    }
+    // if (!currentUser) {
+    //     alert('Please login first');
+    //     window.location.href = 'Log-In.html';
+    //     return;
+    // }
 
     const urlParams = new URLSearchParams(window.location.search);
     const bookTitle = urlParams.get('title');
