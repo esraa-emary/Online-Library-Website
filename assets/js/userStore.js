@@ -114,7 +114,6 @@ export let userStore = {
         this.saveToLocalStorage();
         return true;
     },
-
     returnBook: function(email, bookauthor , booktitle) {
         const user = this.findUserByEmail(email);
 
