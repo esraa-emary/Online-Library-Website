@@ -17,13 +17,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
+    <title>List Page</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/user-style.css">
     <link rel="icon" href="../assets/img/icon.jpg">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Tangerine:wght@400;700&display=swap">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
 </head>
-
 <body >
     <!-- -------------------------------------------- header  -->
     <header class="header">
@@ -38,60 +38,100 @@
             </form>
 
             <nav class="nav">
-                <a href="../index.html">Home</a>
+                <a href="../Home.html">Home</a>
                 <a href="List-Page.html">Books</a>
                 <a href="Manage-Books.html">Manage Books</a>
-                <a style="color: #4f88ba;" href="Profile.html">Profile</a>
-                <a href="About-Us.html">About US</a>
+                <a href="Profile.html">Profile</a>
+                <a style="color: #4f88ba;" href="About-Us.html">About US</a>
                 <a class="first-button" href="Sign-Up.html" title="Sign-Up">Sign-Up</a>
                 <a href="Log-In.html" title="Log-In">Log-In</a>
-                <a href="../index.html">Log-Out</a>
+                <a href="../Home.html">Log-Out</a>
             </nav>
         </section>
     </header>
 
-    <section id="profilePage">
-        <form id="card" action="Borrowed-Books.html">
-            <div id="labels">
-                <label for="name">Name:</label>
-                <input id="name" type="text" value="john wick" disabled/>
-                
-                <br>
-                <br>
-                
-                <label for="email">Email:</label>
-                <input id="email" value= "john_wick2812@yahoo.com" type="email" disabled/>
-                
-                <br>
-                <br>
-                
-                <label for="phone">Phone:</label>
-                <input id="phone" value="01234567892" type="text" disabled/>
-                
-                <br>
-                <br>
-                
-                <div class="gender">
-                    <label>Gender:</label>
-                    <div class="male">
-                        <label for="male" class="male">Male</label>
-                        <input type="radio" id="male" name="gender" value="male" checked>
-                    </div>
-                    
-                    <div class="female">
-                        <label for="female" class="female">Female</label>
-                        <input type="radio" id="female" name="gender" value="female">
+
+    <!-- -------------------------------------------- Profile  -->
+    <div id="profilePage">
+        <div class="profile-container">
+            <div class="profile-header">
+                <h1 class="profile-title">My Profile</h1>
+                <div class="profile-avatar" id="userAvatar"></div>
+            </div>
+            
+            <form id="profileForm">
+                <div class="profile-section">
+                    <h2 class="section-title">Personal Information</h2>
+                    <div class="profile-form">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input id="name" type="text" disabled>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input id="email" type="email" disabled>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input id="phone" type="tel" placeholder="Not provided" disabled>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Gender</label>
+                            <div class="gender-options">
+                                <div class="gender-option">
+                                    <input type="radio" id="male" name="gender" value="male" disabled>
+                                    <label for="male">Male</label>
+                                </div>
+                                <div class="gender-option">
+                                    <input type="radio" id="female" name="gender" value="female" disabled>
+                                    <label for="female">Female</label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
+                <!-- Reading Goal Section -->
+                <div class="profile-section">
+                    <h2 class="section-title">Reading Goal</h2>
+                    <div class="reading-goal">
+                        <div class="form-group">
+                            <label for="readingGoal">Set Your Reading Goal (books per year)</label>
+                            <input type="number" id="readingGoal" min="0" disabled>
+                        </div>
+                        <div class="goal-progress">
+                            <div class="progress-bar" id="readingProgress"></div>
+                        </div>
+                        <p class="progress-text">
+                            Completed: <span id="completedBooks">0</span> of <span id="goalNumber">0</span> books
+                        </p>
+                    </div>
+                </div>
                 
-            </div>
-            
-            <a href="Borrowed-Books.html" id="borrowBtn">
-                <button >📚Borrowed Books</button>
-            </a>
-        </form>
-    </section>
+                <div class="profile-section">
+
+                </div>
+                
+                <div class="profile-actions">
+                    <button type="button" id="editBtn" class="btn btn-secondary">
+                        <i class="fas fa-edit"></i> Edit Profile
+                    </button>
+                    <a href="Borrowed-Books.html" class="btn btn-primary">
+                        <i class="fas fa-book"></i> My Borrowed Books
+                    </a>
+                    <button type="button" id="saveBtn" class="btn btn-primary" style="display:none">
+                        <i class="fas fa-save"></i> Save Changes
+                    </button>
+                    <button type="button" id="cancelBtn" class="btn btn-secondary" style="display:none">
+                        <i class="fas fa-times"></i> Cancel
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
 
     <!-- -------------------------------------------- footer  -->
     <footer id="footer">
@@ -108,11 +148,11 @@
             </div>
 
             <div class="foot1">
-                <a href="../index.html">Home</a>
+                <a href="../Home.html">Home</a>
                 <a href="List-Page.html">Books</a>
                 <a href="Manage-Books.html">Manage Books</a>
                 <a href="Profile.html">Profile</a>
-                <a href="About-Us.html">About US</a>
+                <a href="About-Us.html">About Us</a>
             </div>
             
             <div class="foot2">
@@ -122,5 +162,7 @@
             </div>
         </section>
     </footer>
+    <script src="../assets/js/Storing.js"></script>
+    
 </body>
 </html>
