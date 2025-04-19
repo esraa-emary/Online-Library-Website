@@ -54,31 +54,33 @@
 
 <!-- -------------------------------------------- Borrow -->
 
+      <section class="borrow">
         <div class="container">
-            <div class="borrow-form-container">
-                <h1>Borrow Book</h1>
-                <form id="borrowForm">
-                    <div class="form-group">
-                        <label for="title">Book Title</label>
-                        <input type="text" id="title" readonly>
-                    </div>
-                    <div class="form-group">
-                        <label for="author">Author</label>
-                        <input type="text" id="author" readonly>
-                    </div>
-                    <div class="form-group">
-                        <label for="category">Category</label>
-                        <input type="text" id="category" readonly>
-                    </div>
-                    <div class="form-group">
-                        <label for="price">Price</label>
-                        <input type="text" id="price" readonly>
-                    </div>
+            <h1>Borrow Book</h1>
+            <form id="borrowForm">
+                <div class="form-group">
+                    <label for="title">Book Title:</label>
+                    <input type="text" id="title" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="author">Author:</label>
+                    <input type="text" id="author" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="category">Category:</label>
+                    <input type="text" id="category" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="price">Price:</label>
+                    <input type="text" id="price" readonly>
+                </div>
+                <div class="buttons">
                     <button type="button" id="borrowBtn" class="borrow-btn">Borrow</button>
-                    <a href="List-Page.html" class="back-link">Back to Books</a>
-                </form>
-            </div>
-        </div>
+                    <a onclick="window.location.href='List-Page.html'">Back to Books</a>
+                </div>
+            </form>
+        </div>    
+    </section>
        
        
     <!-- -------------------------------------------- footer  -->
