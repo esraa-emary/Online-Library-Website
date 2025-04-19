@@ -1,6 +1,9 @@
 // -------------------------------> Book Store
+
 export let bookStore = {
     books: [],
+
+//-------------------------------------------Function Add Book
 
     addBook: function(title, author, price, category, isAvailable = true, description = '', cover = '', returnDate = null) {
         // Validate required fields
@@ -28,11 +31,54 @@ export let bookStore = {
         return true;
     },
 
+//-------------------------------------------Function Handle Add Book Form
+
+    handleAddBookForm: function(formId) {
+    const form = document.getElementById(formId);
+    if (!form) return;
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const formData = new FormData(form);
+        const bookData = {
+            title: formData.get('title'),
+            author: formData.get('author'),
+            price: parseFloat(formData.get('price')),
+            category: formData.get('category'),
+            description: formData.get('description'),
+            cover: formData.get('cover'),
+            isAvailable: formData.get('availability') === 'available'
+        };
+
+        if (this.addBook(
+            bookData.title,
+            bookData.author,
+            bookData.price,
+            bookData.category,
+            bookData.isAvailable,
+            bookData.description,
+            bookData.cover
+        )) {
+            alert("Book added successfully!");
+            form.reset();
+            if (window.location.pathname.includes("Manage-Books.html")) {
+                this.PrintListOfManageBooks(this.getBooks());
+            }
+        }
+    });
+    },
+
+//-------------------------------------------Function Calculate Return Date
+
     calculateReturnDate: function() {
         const today = new Date();
         today.setDate(today.getDate() + 20);
         return today.toISOString().split('T')[0];
     },
+
+    
+//-------------------------------------------Function Edit Book
 
     editBook: function(title, author, updates) {
         const bookIndex = this.books.findIndex(book => 
@@ -79,41 +125,7 @@ export let bookStore = {
         return true;
     },
 
-    handleAddBookForm: function(formId) {
-        const form = document.getElementById(formId);
-        if (!form) return;
-
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            const formData = new FormData(form);
-            const bookData = {
-                title: formData.get('title'),
-                author: formData.get('author'),
-                price: parseFloat(formData.get('price')),
-                category: formData.get('category'),
-                description: formData.get('description'),
-                cover: formData.get('cover'),
-                isAvailable: formData.get('availability') === 'available'
-            };
-
-            if (this.addBook(
-                bookData.title,
-                bookData.author,
-                bookData.price,
-                bookData.category,
-                bookData.isAvailable,
-                bookData.description,
-                bookData.cover
-            )) {
-                alert("Book added successfully!");
-                form.reset();
-                if (window.location.pathname.includes("Manage-Books.html")) {
-                    this.PrintListOfManageBooks(this.getBooks());
-                }
-            }
-        });
-    },
+//-------------------------------------------Function Handle Edit Book Form
 
     handleEditBookForm: function(formId, bookTitle, bookauthor) {
         const form = document.getElementById(formId);
@@ -174,6 +186,9 @@ export let bookStore = {
         });
     },
 
+
+//-------------------------------------------Function Update Book Status
+
     updateBookStatus: function(title , author, isAvailable) {
         const book = this.books.find(book => book.author === author && book.title === title);
         if (!book) return false;
@@ -189,6 +204,9 @@ export let bookStore = {
         return true;
     },
 
+
+//-------------------------------------------Function Remove Book 
+
     removeBook: function(title , author) {
         const initialLength = this.books.length;
         this.books = this.books.filter(book => book.title !== title && book.author !== author);
@@ -198,14 +216,61 @@ export let bookStore = {
         }
         return false;
     },
+//-------------------------------------------Function Get Book 
 
     getBooks: function() {
         return this.books;
     },
+   
+//-------------------------------------------Function Print Available Books For Home Page
+
+    PrintAvailableBooks: function(books) {
+    const container = document.getElementById("available-books");
+    if (!container) return;
     
-    getAvailableBooks: function() {
-        return this.books.filter(book => book.isAvailable === true);
-    },
+    container.innerHTML = '';
+
+    const section = document.createElement("div");
+    section.className = "booktype";
+
+    section.innerHTML = `
+        <h2>Books</h2>
+        <div class="cards"></div>
+    `;
+
+    const cardsContainer = section.querySelector(".cards");
+
+    books.forEach(book => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `
+            <img src="${book.cover}" alt="${book.title}">
+            <div class="card-body">
+                <h5 class="title">${book.title}</h5>
+                <p class="author">${book.author}</p>
+                <p class="price">${book.price}$</p>
+                <span class="availability ${book.isAvailable ? 'available' : 'unavailable'}">
+                    ${book.isAvailable ? 'Available' : 'Unavailable until ' + book.returnDate}
+                </span>
+                <div class="card-actions">
+                    <a href="Book-Review.html?title=${encodeURIComponent(book.title)}&author=${encodeURIComponent(book.author)}">
+                       <button class="Book-Review-btn"> <i class="fas fa-book-open"></i> Book Review</button></a>
+                       
+                    <a href="Borrow-Page.html?title=${encodeURIComponent(book.title)}&author=${encodeURIComponent(book.author)}">
+                        <button class="borrow-btn" ${!book.isAvailable ? 'disabled' : ''}>
+                            <i class="fas fa-hand-holding"></i>Borrow
+                        </button>
+                    </a>
+                </div>
+            </div>
+        `;
+        cardsContainer.appendChild(card);
+     });
+
+      container.appendChild(section);
+   },
+
+//-------------------------------------------Function Print Books For List Page
 
     PrintListOfBooks: function(books) {
         const container = document.getElementById("list-books");
@@ -262,7 +327,8 @@ export let bookStore = {
             container.appendChild(section);
         }
     },
- 
+ //-------------------------------------------Function Print Books For Manage Page
+
     PrintListOfManageBooks: function(books) {
         const container = document.getElementById("manage-books");
         if (!container) return;
@@ -325,6 +391,8 @@ export let bookStore = {
         this.initEditButtons();
     },
 
+//-------------------------------------------Function Delete Book 
+
     addDeleteEventListeners: function() {
         const deleteButtons = document.querySelectorAll('.cardBtn.delete');
         deleteButtons.forEach(button => {
@@ -353,6 +421,8 @@ export let bookStore = {
         }
     },
 
+//-------------------------------------------Function Update Return Date 
+
     updateReturnDate: function(bookauthor, booktitle , newReturnDate) {
         const book = this.books.find(book => book.author === bookauthor && book.title === booktitle );
         if (!book) return false;
@@ -361,6 +431,9 @@ export let bookStore = {
         this.saveToLocalStorage();
         return true;
     },
+
+
+//-------------------------------------------Functions Local Storage (Save , Load)
 
     saveToLocalStorage: function() {
         localStorage.setItem('bookStore', JSON.stringify(this.books));
