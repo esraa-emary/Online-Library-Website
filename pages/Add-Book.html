@@ -1,0 +1,142 @@
+<!--  
+ * Authors:
+    * Author1: Esraa Emary Abd El-Salam      ID: 20250054
+    * Author2: Mariam Badr Yehia             ID: 20250391
+    * Author3: John Ayman Demian             ID: 20250109
+    * Author4: Mohammed Atef Abd El-Kader    ID: 20251143
+    * Author5: George Malak Magdy            ID: 20251042
+    * Author6: Mohammed Nabil El-Sayed       ID: 20230358
+ * Date : 
+ * Prof : Dr. Neamat El Tazi
+ * Description: 
+ * Version: V1.0
+-->
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Page</title>
+    <link rel="stylesheet" href="../assets/css/admin-style.css">
+    <link rel="icon" href="../assets/img/icon.jpg">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Tangerine:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+<!-- -------------------------------------------- header  -->
+<header class="header">
+    <section>
+        <div class="logo">
+            <h3>LibraSphere</h3>
+        </div>
+
+        <form class="search-bar" action="List-Page.html">
+            <a href="List-Page.html"><i class="bx bx-search" title="Search"></i></a>
+            <input type="text" placeholder="Title, Author or Category" title="Search">
+        </form>
+
+        <nav class="nav">
+            <a href="../Home.html">Home</a>
+            <a style="color: #4f88ba;" href="List-Page.html">Books</a>
+            <a href="Manage-Books.html">Manage Books</a>
+            <a href="Profile.html">Profile</a>
+            <a href="About-Us.html">About US</a>
+            <a class="first-button" href="Sign-Up.html" title="Sign-Up">Sign-Up</a>
+            <a href="Log-In.html" title="Log-In">Log-In</a>
+            <a href="../Home.html">Log-Out</a>
+        </nav>
+    </section>
+</header>
+
+
+  <!-- -------------------------------------------- Add  -->
+
+<section id="Books" class="container">
+    <img src="../assets/img/logo.jpg" alt="LibraSphere Logo" class="logoPage">
+    <p class="marginTitle"><Bold>Your gateway to knowledge and culture. Accessible for everyone.</Bold></p>
+    <br>
+    
+    <section class="AddBookpage">
+        <form class="AddBookForm" id="add-book-form" action="./Manage-Books.html">
+            <h1>Add Book</h1>
+            
+            <div>
+                <label for="title">Title of Book:</label>
+                <input type="text" id="title" name="title" placeholder="Enter Title of Book" required>
+            </div>
+            
+            <div>
+                <label for="author">Enter Author of your Book:</label>
+                <input type="text" id="author" name="author" placeholder="Enter Author of your Book" required>
+            </div>
+            
+            <div>
+                <label for="category">Enter Category of your Book:</label>
+                <input type="text" id="category" name="category" placeholder="Enter Category of your Book" required>
+            </div>
+            
+            <div>
+                <label for="price">Enter Price of your Book:</label>
+                <input type="number" id="price" name="price" placeholder="Enter Price of your Book" required>
+            </div>
+            
+            <div>
+                <label for="description">Enter Description of your Book:</label>
+                <textarea id="description" name="description" placeholder="Enter Description of your Book" required></textarea>
+            </div>
+            
+            <div>
+                <label for="cover">Enter Path image of your Book:</label>
+                <input type="text" id="cover" name="cover" placeholder="Enter Path image of your Book" required>
+            </div>
+
+            <div class="BookAvailability">
+                <label for="availability">Availability Status: </label>
+                <select id="availability" name="availability" required>
+                    <option value="available">Available</option>
+                    <option value="unavailable">Unavailable</option>
+                </select>
+            </div>    <br>
+            
+            <div class="FormBtn">
+                <button class="AddBtn" type="submit">Add Book</button>
+            </div>
+        </form>
+    </section>
+</section>
+
+
+<!-- -------------------------------------------- footer  -->
+<footer id="footer">
+    <section  class="footer">
+        <h2>CONTACT WITH US</h2>
+
+        <div class="accounts">
+            <a title="Esraa Emary" href="https://www.linkedin.com/in/esraa-emary-b372b8303/" target="blank"><i class='bx bxl-linkedin-square'></i></a>
+            <a title="Mohammed Atef" href="https://www.linkedin.com/in/mohammed-atef-b0a408299/" target="blank"><i class='bx bxl-linkedin-square'></i></a>
+            <a title="Mohammed Nabil" href="https://www.linkedin.com/in/mohamed-nabil-196869326/" target="blank"><i class='bx bxl-linkedin-square'></i></a>
+            <a title="George Malak" href="https://www.linkedin.com/in/george-malak204/" target="blank"><i class='bx bxl-linkedin-square'></i></a>
+            <a title="John Ayman" href="https://www.linkedin.com/in/john-ayman-aa30842b7/" target="blank"><i class='bx bxl-linkedin-square'></i></a>
+            <a title="Mariam Badr" href="https://www.linkedin.com/in/mariambadr13/" target="blank"><i class='bx bxl-linkedin-square'></i></a>
+        </div>
+
+        <div class="foot1">
+            <a href="../Home.html">Home</a>
+            <a href="List-Page.html">Books</a>
+            <a href="Manage-Books.html">Manage Books</a>
+            <a href="Profile.html">Profile</a>
+            <a href="About-Us.html">About US</a>
+        </div>
+        
+        <div class="foot2">
+            <p class="copyright">
+                © LibraSphere | All Rights Reserved
+            </p>
+        </div>
+    </section>
+</footer>
+   <script src="../assets/js/Storing.js"></script>
+</body>
+</html>
