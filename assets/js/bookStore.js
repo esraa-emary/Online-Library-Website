@@ -279,6 +279,80 @@ export let bookStore = {
             container.appendChild(section);
         }
     },
+
+    //-------------------------------------------Function Print Books For Search Page
+    
+    PrintSearch: function (books) {
+        const search = document.getElementById("search").value.toLowerCase().trim();
+        const container = document.getElementById("search-page");
+        if (!container) return;
+
+        container.innerHTML = '';
+
+        // Filter books based on title, author, or category
+        const filteredBooks = books.filter(book => {
+            return (
+                book.title.toLowerCase().includes(search) ||
+                book.author.toLowerCase().includes(search) ||
+                book.category.toLowerCase().includes(search)
+            );
+        });
+
+        if (filteredBooks.length === 0) {
+            container.innerHTML = `<p>No results found for "${search}"</p>`;
+            return;
+        }
+
+        // Group filtered books by category
+        const grouped = {};
+        filteredBooks.forEach(book => {
+            if (!grouped[book.category]) {
+                grouped[book.category] = [];
+            }
+            grouped[book.category].push(book);
+        });
+
+        for (const category in grouped) {
+            const section = document.createElement("div");
+            section.className = "booktype";
+
+            section.innerHTML = `
+                <h2>${category} Books</h2>
+                <div class="cards"></div>
+            `;
+
+            const cardsContainer = section.querySelector(".cards");
+
+            grouped[category].forEach(book => {
+                const card = document.createElement("div");
+                card.className = "card";
+                card.innerHTML = `
+                    <img src="${book.cover}" alt="${book.title}">
+                    <div class="card-body">
+                        <h5 class="title">${book.title}</h5>
+                        <p class="author">${book.author}</p>
+                        <p class="price">${book.price}$</p>
+                        <span class="availability ${book.isAvailable ? 'available' : 'unavailable'}">
+                            ${book.isAvailable ? 'Available' : 'Unavailable until ' + book.returnDate}
+                        </span>
+                        <div class="card-actions">
+                            <a href="Book-Review.html?title=${encodeURIComponent(book.title)}&author=${encodeURIComponent(book.author)}">
+                                <button class="Book-Review-btn"><i class="fas fa-book-open"></i> Book Review</button>
+                            </a>
+                            <a href="Borrow-Page.html?title=${encodeURIComponent(book.title)}&author=${encodeURIComponent(book.author)}">
+                                <button class="borrow-btn" ${!book.isAvailable ? 'disabled' : ''}>
+                                    <i class="fas fa-hand-holding"></i>Borrow
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                `;
+                cardsContainer.appendChild(card);
+            });
+
+            container.appendChild(section);
+        }
+    },
  //-------------------------------------------Function Print Books For Manage Page
 
     PrintListOfManageBooks: function(books) {
