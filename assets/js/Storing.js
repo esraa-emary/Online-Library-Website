@@ -440,7 +440,7 @@ let userStore = {
                 isAdmin: user.isAdmin
             }));
             alert("Welcome, " + user.name);
-            window.location.href = user.isAdmin ? "Manage-Books.html" : "Home.html";
+            window.location.href = user.isAdmin ? "Manage-Books.html" : "index.html";
         } else {
             alert("Invalid credentials. Please try again or Create a new account.");
         }
@@ -986,7 +986,7 @@ document.querySelector('.logInForm form')?.addEventListener('submit', function(e
             isAdmin: user.isAdmin
         }));
         alert("Login successful! Redirecting...");
-        window.location.href = user.isAdmin ? "Manage-Books.html" : "Home.html";
+        window.location.href = user.isAdmin ? "Manage-Books.html" : "index.html";
     } else {
         alert("Invalid credentials. Please try again or create a new account.");
     }
