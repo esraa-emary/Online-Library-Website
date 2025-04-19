@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     }
-
+    
     // ----------------------- Handle Profile Page
 
     if (document.getElementById('profileForm')) {
