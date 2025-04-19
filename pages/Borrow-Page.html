@@ -49,38 +49,33 @@
         </section>
     </header>
 
-    <section  id="borrowPage">
-        <div id="card">
-            <div class="card-details">
-                <div id="left-details">
-                    <label for="title">Title:</label>
-                    <br>
-                    <input id="title" value="David Copper Field" disabled/>
-                    <br>
-                    <label for="author">Author:</label>
-                    <br>
-                    <input id="author" value="Charles Dickens"disabled/>
-                </div>
-                
-                <div id="right-details">
-                    <label for="published">Published:</label>
-                    <br>
-                    <input id="published" value="1950, May" disabled/>
-                    <br>
-                    <label for="price">Price:</label>
-                    <br>
-                    <input id="price" value="250 L.E" disabled/>
-                    <br>
-                    <label for="pages">Pages:</label>
-                    <br>
-                    <input id="pages" value="250" disabled/>
-                    <br>
-                </div>
+<!-- -------------------------------------------- Borrow -->
+
+        <div class="container">
+            <div class="borrow-form-container">
+                <h1>Borrow Book</h1>
+                <form id="borrowForm">
+                    <div class="form-group">
+                        <label for="title">Book Title</label>
+                        <input type="text" id="title" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="author">Author</label>
+                        <input type="text" id="author" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <input type="text" id="category" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Price</label>
+                        <input type="text" id="price" readonly>
+                    </div>
+                    <button type="button" id="borrowBtn" class="borrow-btn">Borrow</button>
+                    <a href="List-Page.html" class="back-link">Back to Books</a>
+                </form>
             </div>
-            
-            <button>Borrow</button>
         </div>
-    </section>
        
     <!-- -------------------------------------------- footer  -->
     <footer id="footer">
@@ -97,7 +92,7 @@
             </div>
 
             <div class="foot1">
-                <a href="../index.html">Home</a>
+                <a href="../Home.html">Home</a>
                 <a href="List-Page.html">Books</a>
                 <a href="Manage-Books.html">Manage Books</a>
                 <a href="Profile.html">Profile</a>
@@ -112,4 +107,5 @@
         </section>
     </footer>
 </body>
+<script src="../assets/js/Storing.js"></script>
 </html>
