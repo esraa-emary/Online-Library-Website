@@ -221,55 +221,7 @@ export let bookStore = {
     getBooks: function() {
         return this.books;
     },
-   
-//-------------------------------------------Function Print Available Books For Home Page
-
-    PrintAvailableBooks: function(books) {
-    const container = document.getElementById("available-books");
-    if (!container) return;
-    
-    container.innerHTML = '';
-
-    const section = document.createElement("div");
-    section.className = "booktype";
-
-    section.innerHTML = `
-        <h2>Books</h2>
-        <div class="cards"></div>
-    `;
-
-    const cardsContainer = section.querySelector(".cards");
-
-    books.forEach(book => {
-        const card = document.createElement("div");
-        card.className = "card";
-        card.innerHTML = `
-            <img src="${book.cover}" alt="${book.title}">
-            <div class="card-body">
-                <h5 class="title">${book.title}</h5>
-                <p class="author">${book.author}</p>
-                <p class="price">${book.price}$</p>
-                <span class="availability ${book.isAvailable ? 'available' : 'unavailable'}">
-                    ${book.isAvailable ? 'Available' : 'Unavailable until ' + book.returnDate}
-                </span>
-                <div class="card-actions">
-                    <a href="Book-Review.html?title=${encodeURIComponent(book.title)}&author=${encodeURIComponent(book.author)}">
-                       <button class="Book-Review-btn"> <i class="fas fa-book-open"></i> Book Review</button></a>
-                       
-                    <a href="Borrow-Page.html?title=${encodeURIComponent(book.title)}&author=${encodeURIComponent(book.author)}">
-                        <button class="borrow-btn" ${!book.isAvailable ? 'disabled' : ''}>
-                            <i class="fas fa-hand-holding"></i>Borrow
-                        </button>
-                    </a>
-                </div>
-            </div>
-        `;
-        cardsContainer.appendChild(card);
-     });
-
-      container.appendChild(section);
-   },
-
+     
 //-------------------------------------------Function Print Books For List Page
 
     PrintListOfBooks: function(books) {
