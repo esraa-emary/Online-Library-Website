@@ -1,11 +1,13 @@
 import { userStore } from "./userStore.js";
 import { bookStore } from "./bookStore.js";
 
+
 // -------------------------------> Initialization
 bookStore.loadFromLocalStorage();
 userStore.loadFromLocalStorage();
 
 // Initialize with sample data if empty
+
 if (bookStore.books.length === 0) {
     // Programming Books
     bookStore.addBook("Semantic Web Programming", "John Hebeler, Matthew Fisher, Ryan Blace, Andrew Parex", 50, "Programming", true, "", "../assets/img/Books/Programming/P (1).jpg");
@@ -29,12 +31,14 @@ if (bookStore.books.length === 0) {
 
 document.addEventListener('DOMContentLoaded', function() {
 
-    // Handle Add Book form if on Add-Book page
+    // -----------------------Handle Add Book form if on Add-Book page
+
     if (document.getElementById('add-book-form')) {
         bookStore.handleAddBookForm('add-book-form');
     }
 
-    // Handle Edit Book form if on Edit-Book page
+    // ----------------------- Handle Edit Book form if on Edit-Book page
+
     if (document.getElementById('edit-book-form')) {
         const urlParams = new URLSearchParams(window.location.search);
         const bookTitle = urlParams.get('title');
@@ -47,7 +51,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Handle Borrow Book page
+    // ----------------------- Handle Borrow Book page
+
     if (document.getElementById('borrowBtn')) {
         const currentUser = userStore.getCurrentUser();
         if (!currentUser) {
@@ -88,7 +93,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Handle Profile Page
+    // ----------------------- Handle Profile Page
+
     if (document.getElementById('profileForm')) {
         const currentUser = userStore.getCurrentUser();
         
@@ -212,14 +218,10 @@ document.addEventListener('DOMContentLoaded', function() {
         // Initial load
         loadUserData();
     }
-    // Handle Book Review page
+    // ----------------------- Handle Book Review page
+
     if (window.location.pathname.includes("Book-Review.html")) {
     const currentUser = userStore.getCurrentUser();
-    // if (!currentUser) {
-    //     alert('Please login first');
-    //     window.location.href = 'Log-In.html';
-    //     return;
-    // }
 
     const urlParams = new URLSearchParams(window.location.search);
     const bookTitle = urlParams.get('title');
@@ -284,7 +286,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     }
 
-    // Initialize book listings
+    // ----------------------- Handle Book listings (Home , manage , List)
+
     try {
         const path = window.location.pathname;
 
@@ -293,7 +296,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
         }else if (document.getElementById('list-books')) {
             bookStore.PrintListOfBooks(bookStore.getBooks());
-        }
+
+        }else if (document.getElementById('available-books')) {
+           bookStore.PrintAvailableBooks(bookStore.getBooks());
+    }
     }
     catch (error) {
         console.error("Error loading books:", error);
@@ -302,6 +308,8 @@ document.addEventListener('DOMContentLoaded', function() {
             container.innerHTML = '<div class="error">Failed to load books. Please try again later.</div>';
         }
     }
+
+    // ----------------------- Borrowed Books Handler
 
     if (window.location.pathname.includes("Borrowed-Books.html")) {
         const currentUser = userStore.getCurrentUser();
@@ -370,8 +378,9 @@ document.addEventListener('DOMContentLoaded', function() {
         
         borrowedBooksContainer.innerHTML = html;
     
+     // ----------------------- Return Button Handler
 
-        document.querySelectorAll('.return-btn').forEach(btn => {
+    document.querySelectorAll('.return-btn').forEach(btn => {
 
             btn.addEventListener('click', function() {
 
@@ -387,7 +396,80 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
+    // ----------------------- Sign-Up Form Handler
+
+    document.querySelector('.signUpForm form')?.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const username = document.getElementById('userName').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+    const role = document.querySelector('input[name="role"]:checked')?.value;
+    
+    if (!username || !email || !password || !confirmPassword || !role) {
+        alert("Please fill all fields!");
+        return;
+    }
+    
+    if (password.length < 8) {
+        alert("Password must be at least 8 characters long!");
+        return;
+    }
+    
+    if (password !== confirmPassword) {
+        alert("Passwords don't match!");
+        return;
+    }
+    
+    const isAdmin = (role === 'admin');
+    const success = userStore.addUser(username, email, password, isAdmin);
+    
+    if (success) {
+        alert("Registration successful! Redirecting to login...");
+        window.location.href = "Log-In.html";
+    }
+     });
+
+     // ----------------------- Log-In Form Handler
+
+    document.querySelector('.logInForm form')?.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const username = document.getElementById('userName').value;
+    const password = document.getElementById('password').value;
+    const role = document.querySelector('input[name="role"]:checked')?.value;
+    
+    if (!username || !password || !role) {
+        alert("Please fill all fields!");
+        return;
+    }
+
+    if (password.length < 8) {
+        alert("Password must be at least 8 characters long!");
+        return;
+    }
+    
+    const user = userStore.Checkuser(username, password);
+    
+    if (user && ((role === 'admin' && user.isAdmin) || (role === 'user' && !user.isAdmin))) {
+        sessionStorage.setItem('currentUser', JSON.stringify({
+            name: user.name,
+            email: user.email,
+            isAdmin: user.isAdmin
+        }));
+        alert("Login successful! Redirecting...");
+        window.location.href = "../index.html";
+        // window.location.href = user.isAdmin ? "Manage-Books.html" : "../Home.html";
+    } else {
+        alert("Invalid credentials. Please try again or create a new account.");
+    }
+    });
+
 });
+
+//---------------------------------- Helper Function
+
 
 function displayUserBorrowedBooks() {
     
@@ -538,20 +620,6 @@ function updateReadingProgress() {
     }
 }
 
-function calculateProgress(borrowDate, returnDate) {
-    if (!borrowDate || !returnDate) return 0;
-    
-    const borrow = new Date(borrowDate);
-    const returnD = new Date(returnDate);
-    const today = new Date();
-    
-    const totalDays = (returnD - borrow) / (1000 * 60 * 60 * 24);
-    const daysPassed = (today - borrow) / (1000 * 60 * 60 * 24);
-    
-    const progress = (daysPassed / totalDays) * 100;
-    return Math.min(Math.max(progress, 0), 100);
-}
-
 function calculateBorrowingProgress(borrowDate, returnDate) {
     const start = new Date(borrowDate);
     const end = new Date(returnDate);
@@ -589,70 +657,3 @@ function formatDate(dateString) {
     return new Date(dateString).toLocaleDateString(undefined, options);
 }
 
-// Sign-Up Form Handler
-document.querySelector('.signUpForm form')?.addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const username = document.getElementById('userName').value;
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-    const confirmPassword = document.getElementById('confirmPassword').value;
-    const role = document.querySelector('input[name="role"]:checked')?.value;
-    
-    if (!username || !email || !password || !confirmPassword || !role) {
-        alert("Please fill all fields!");
-        return;
-    }
-    
-    if (password.length < 8) {
-        alert("Password must be at least 8 characters long!");
-        return;
-    }
-    
-    if (password !== confirmPassword) {
-        alert("Passwords don't match!");
-        return;
-    }
-    
-    const isAdmin = (role === 'admin');
-    const success = userStore.addUser(username, email, password, isAdmin);
-    
-    if (success) {
-        alert("Registration successful! Redirecting to login...");
-        window.location.href = "Log-In.html";
-    }
-});
-
-// Log-In Form Handler
-document.querySelector('.logInForm form')?.addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const username = document.getElementById('userName').value;
-    const password = document.getElementById('password').value;
-    const role = document.querySelector('input[name="role"]:checked')?.value;
-    
-    if (!username || !password || !role) {
-        alert("Please fill all fields!");
-        return;
-    }
-
-    if (password.length < 8) {
-        alert("Password must be at least 8 characters long!");
-        return;
-    }
-    
-    const user = userStore.Checkuser(username, password);
-    
-    if (user && ((role === 'admin' && user.isAdmin) || (role === 'user' && !user.isAdmin))) {
-        sessionStorage.setItem('currentUser', JSON.stringify({
-            name: user.name,
-            email: user.email,
-            isAdmin: user.isAdmin
-        }));
-        alert("Login successful! Redirecting...");
-        window.location.href = "../index.html";
-        // window.location.href = user.isAdmin ? "Manage-Books.html" : "../Home.html";
-    } else {
-        alert("Invalid credentials. Please try again or create a new account.");
-    }
-});
