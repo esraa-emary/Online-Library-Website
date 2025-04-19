@@ -6,26 +6,25 @@
     * Author4: Mohammed Atef Abd El-Kader    ID: 20231143
     * Author5: George Malak Magdy            ID: 20231042
     * Author6: Mohammed Nabil El-Sayed       ID: 20230358
- * Date : 31/3/2025
+ * Date : 
  * Prof : Dr. Neamat El Tazi
  * Description: 
  * Version: V1.0
 -->
-
+ 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manage Books</title>
+    <title>List Page</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/admin-style.css">
     <link rel="icon" href="../assets/img/icon.jpg">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Tangerine:wght@400;700&display=swap">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
-
-<body>
+<body >
     <!-- -------------------------------------------- header  -->
     <header class="header">
         <section>
@@ -39,226 +38,28 @@
             </form>
 
             <nav class="nav">
-                <a href="../index.html">Home</a>
+                <a href="../Home.html">Home</a>
                 <a href="List-Page.html">Books</a>
-                <a style="color: #4f88ba;" href="Manage-Books.html">Manage Books</a>
+                <a href="Manage-Books.html">Manage Books</a>
                 <a href="Profile.html">Profile</a>
-                <a href="About-Us.html">About US</a>
+                <a style="color: #4f88ba;" href="About-Us.html">About US</a>
                 <a class="first-button" href="Sign-Up.html" title="Sign-Up">Sign-Up</a>
                 <a href="Log-In.html" title="Log-In">Log-In</a>
-                <a href="../index.html">Log-Out</a>
+                <a href="../Home.html">Log-Out</a>
             </nav>
         </section>
     </header>
-    
-    <!-- -------------------------------------------- Books  -->
-    
-    <section id="Books" class="container">
-        <img src="../assets/img/logo.jpg" alt="Logo" class="logoPage">
-        <p class="marginTitle">Your gateway to knowledge and culture. Accessible for everyone.</p>
-        
-        <!-- Programming Category -->
-        <div class="booktype">
-            <div class="header-container">
-                <h2>Programming Books :-</h2>
-                <button class="addBookBtn">Add Book</button>
-            </div>
-            
-            <div class="cards">
-                <div class="card">
-                    <img src="../assets/img/Books/Programming/P  (1).jpg" alt="Book 1">
-                    <div class="card-body">
-                        <h5>John Hebeler, Matthew Fisher
-                            <br> Ryan Blace, Andrew Parex</h5>
-                        <p>50$</p>
-                        <button class="cardBtn edit"><i class="fas fa-edit"></i></button>
-                        <button class="cardBtn delete"><i class="fas fa-trash-alt"></i></button>
-                    </div>
-                </div>
-                
-                <div class="card">
-                    <img src="../assets/img/Books/Programming/P  (2).jpg" alt="Book 2">
-                    <div class="card-body">
-                        <h5>Mastery, White Belt</h5>
-                        <p>70$</p>
-                        <button class="cardBtn edit"><i class="fas fa-edit"></i></button>
-                        <button class="cardBtn delete"><i class="fas fa-trash-alt"></i></button>
-                    </div>
-                </div>
-    
-                <div class="card">
-                    <img src="../assets/img/Books/Programming/P  (3).jpg" alt="Book 3">
-                    <div class="card-body">
-                        <h5>Jonathan Bartlett</h5>
-                        <p>65$</p>
-                        <button class="cardBtn edit"><i class="fas fa-edit"></i></button>
-                        <button class="cardBtn delete"><i class="fas fa-trash-alt"></i></button>
-                    </div>
-                </div>
 
-                <div class="card">
-                    <img src="../assets/img/Books/Programming/P  (4).jpg" alt="Book 4">
-                    <div class="card-body">
-                        <h5>Bjarne Stroustrup</h5>
-                        <p>100$</p>
-                        <button class="cardBtn edit"><i class="fas fa-edit"></i></button>
-                        <button class="cardBtn delete"><i class="fas fa-trash-alt"></i></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Novel Category -->
-        <div class="booktype">
-            <div class="header-container">
-                <h2>Novel Books :-</h2>
-                <button class="addBookBtn">Add Book</button>
-            </div>
-            
-            <div class="cards">
-                <div class="card">
-                    <img src="../assets/img/Books/Novel/N  (1).jpg" alt="Book 1">
-                    <div class="card-body">
-                        <h5>Pual Hoffman</h5>
-                        <p>30$</p>
-                        <button class="cardBtn edit"><i class="fas fa-edit"></i></button>
-                        <button class="cardBtn delete"><i class="fas fa-trash-alt"></i></button>
-                    </div>
-                </div>
-    
-                <div class="card">
-                    <img src="../assets/img/Books/Novel/N  (2).jpg" alt="Book 2">
-                    <div class="card-body">
-                        <h5>L . D . Goffigan</h5>
-                        <p>110$</p>
-                        <button class="cardBtn edit"><i class="fas fa-edit"></i></button>
-                        <button class="cardBtn delete"><i class="fas fa-trash-alt"></i></button>
-                    </div>
-                </div>
-    
-                <div class="card">
-                    <img src="../assets/img/Books/Novel/N  (3).jpg" alt="Book 3">
-                    <div class="card-body">
-                        <h5>Kimbra Swain</h5>
-                        <p>90$</p>
-                        <button class="cardBtn edit"><i class="fas fa-edit"></i></button>
-                        <button class="cardBtn delete"><i class="fas fa-trash-alt"></i></button>
-                    </div>
-                </div>
+<!-- -------------------------------------------- Books  -->
+ 
+<section id="Books" class="container">
+    <img src="../assets/img/logo.jpg" alt="Logo" class="logoPage">
+    <p class="marginTitle">Your gateway to knowledge and culture. Accessible for everyone.</p>
+    <br>
 
-                <div class="card">
-                    <img src="../assets/img/Books/Novel/N  (4).jpg" alt="Book 4">
-                    <div class="card-body">
-                        <h5>Kristen Martin</h5>
-                        <p>100$</p>
-                        <button class="cardBtn edit"><i class="fas fa-edit"></i></button>
-                        <button class="cardBtn delete"><i class="fas fa-trash-alt"></i></button>
-                    </div>
-                </div>
+    <div id="manage-books" class="container"></div>
 
-                <div class="card">
-                    <img src="../assets/img/Books/Novel/N (5).jpg" alt="Book 5">
-                    <div class="card-body">
-                        <h5>Fyodor Dostoyevsky</h5>
-                        <p>210$</p>
-                        <button class="cardBtn edit"><i class="fas fa-edit"></i></button>
-                        <button class="cardBtn delete"><i class="fas fa-trash-alt"></i></button>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <img src="../assets/img/Books/Novel/N (6).jpg" alt="Book 6">
-                    <div class="card-body">
-                        <h5>Fyodor Dostoyevsky</h5>
-                        <p>300$</p>
-                        <button class="cardBtn edit"><i class="fas fa-edit"></i></button>
-                        <button class="cardBtn delete"><i class="fas fa-trash-alt"></i></button>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <img src="../assets/img/Books/Novel/N (7).jpg" alt="Book 7">
-                    <div class="card-body">
-                        <h5>Fyodor Dostoyevsky</h5>
-                        <p>250$</p>
-                        <button class="cardBtn edit"><i class="fas fa-edit"></i></button>
-                        <button class="cardBtn delete"><i class="fas fa-trash-alt"></i></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Psychology Category -->
-        <div class="booktype">
-            <div class="header-container">
-                <h2>Psychology Books :-</h2>
-                <button class="addBookBtn">Add Book</button>
-            </div>
-            
-            <div class="cards">
-                <div class="card">
-                    <img src="../assets/img/Books/Psychology/ps (1).jpg" alt="Book 1">
-                    <div class="card-body">
-                        <h5>David G. Myers 
-                            <br>C.Nathan Dewall</h5>
-                        <p>85$</p>
-                        <button class="cardBtn edit"><i class="fas fa-edit"></i></button>
-                        <button class="cardBtn delete"><i class="fas fa-trash-alt"></i></button>
-                    </div>
-                </div>
-    
-                <div class="card">
-                    <img src="../assets/img/Books/Psychology/ps (2).jpg" alt="Book 2">
-                    <div class="card-body">
-                        <h5>Claudia Gray</h5>
-                        <p>20$</p>
-                        <button class="cardBtn edit"><i class="fas fa-edit"></i></button>
-                        <button class="cardBtn delete"><i class="fas fa-trash-alt"></i></button>
-                    </div>
-                </div>
-    
-                <div class="card">
-                    <img src="../assets/img/Books/Psychology/ps (3).jpg" alt="Book 3">
-                    <div class="card-body">
-                        <h5>Eric Berne, M.D. </h5>
-                        <p>65$</p>
-                        <button class="cardBtn edit"><i class="fas fa-edit"></i></button>
-                        <button class="cardBtn delete"><i class="fas fa-trash-alt"></i></button>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <img src="../assets/img/Books/Psychology/ps (4).jpg" alt="Book 4">
-                    <div class="card-body">
-                        <h5>Galen E.Cole</h5>
-                        <p>100$</p>
-                        <button class="cardBtn edit"><i class="fas fa-edit"></i></button>
-                        <button class="cardBtn delete"><i class="fas fa-trash-alt"></i></button>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <img src="../assets/img/Books/Psychology/ps (5).jpg" alt="Book 5">
-                    <div class="card-body">
-                        <h5>Baird McCarthy</h5>
-                        <p>100$</p>
-                        <button class="cardBtn edit"><i class="fas fa-edit"></i></button>
-                        <button class="cardBtn delete"><i class="fas fa-trash-alt"></i></button>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <img src="../assets/img/Books/Psychology/ps (6).jpg" alt="Book 6">
-                    <div class="card-body">
-                        <h5>James Clear</h5>
-                        <p>100$</p>
-                        <button class="cardBtn edit"><i class="fas fa-edit"></i></button>
-                        <button class="cardBtn delete"><i class="fas fa-trash-alt"></i></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+</section>
 
     <!-- -------------------------------------------- footer  -->
     <footer id="footer">
@@ -275,11 +76,11 @@
             </div>
 
             <div class="foot1">
-                <a href="../index.html">Home</a>
+                <a href="../Home.html">Home</a>
                 <a href="List-Page.html">Books</a>
                 <a href="Manage-Books.html">Manage Books</a>
                 <a href="Profile.html">Profile</a>
-                <a href="About-Us.html">About US</a>
+                <a href="About-Us.html">About Us</a>
             </div>
             
             <div class="foot2">
@@ -289,5 +90,7 @@
             </div>
         </section>
     </footer>
+<script src="../assets/js/Storing.js"></script>
+
 </body>
 </html>
