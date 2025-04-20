@@ -249,7 +249,7 @@ let bookStore = {
                         <a href="Book-Review.html?title=${encodeURIComponent(book.title)}&author=${encodeURIComponent(book.author)}">
                            <button class="Book-Review-btn">Book Review</button></a>
                            
-                        <a href="Borrow-Page.html?title=${encodeURIComponent(book.title)}&author=${encodeURIComponent(book.author)}">
+                        <a id="borrow" href="Borrow-Page.html?title=${encodeURIComponent(book.title)}&author=${encodeURIComponent(book.author)}">
                             <button class="borrow-btn" ${!book.isAvailable ? 'disabled' : ''}>
                                 <i class="fas fa-hand-holding"></i>Borrow
                             </button>
@@ -257,6 +257,12 @@ let bookStore = {
                     </div>
                 </div>
             `;
+
+            const currentUser = userStore.getCurrentUser();
+            const borrowButton = card.querySelector(".borrow-btn");
+            if (currentUser && currentUser.isAdmin) {
+                borrowButton.closest("a").style.display = "none";  // Hide the whole link (button inside)
+            }
                 cardsContainer.appendChild(card);
             });
 
@@ -270,7 +276,14 @@ let bookStore = {
         // Get search value from URL parameters
         const urlParams = new URLSearchParams(window.location.search);
         const searchValue = urlParams.get('q') ? urlParams.get('q').toLowerCase().trim() : '';
-        
+
+        if (searchValue) {
+            const searchInput = document.getElementById("search");
+            if (searchInput) {
+                searchInput.value = searchValue;
+            }
+        }
+
         const container = document.getElementById("search-page");
         if (!container) {
             console.error("Search container not found");
@@ -348,7 +361,7 @@ let bookStore = {
                             <a href="Book-Review.html?title=${encodeURIComponent(book.title)}&author=${encodeURIComponent(book.author)}">
                                 <button class="Book-Review-btn"><i class="fas fa-book-open"></i> Book Review</button>
                             </a>
-                            <a href="Borrow-Page.html?title=${encodeURIComponent(book.title)}&author=${encodeURIComponent(book.author)}">
+                            <a id="borrow" href="Borrow-Page.html?title=${encodeURIComponent(book.title)}&author=${encodeURIComponent(book.author)}">
                                 <button class="borrow-btn" ${!book.isAvailable ? 'disabled' : ''}>
                                     <i class="fas fa-hand-holding"></i> Borrow
                                 </button>
@@ -356,6 +369,12 @@ let bookStore = {
                         </div>
                     </div>
                 `;
+
+                const currentUser = userStore.getCurrentUser();
+                const borrowButton = card.querySelector(".borrow-btn");
+                if (currentUser && currentUser.isAdmin) {
+                    borrowButton.closest("a").style.display = "none";  
+                }
                 cardsContainer.appendChild(card);
             });
     
@@ -658,7 +677,7 @@ if (bookStore.books.length === 0) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-
+    updateNavVisibility();
     // -------------------------- Handle Add Book form if on Add-Book page
 
     if (document.getElementById('add-book-form')) {
@@ -838,11 +857,21 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         // Logout handler
-        document.getElementById('logout').addEventListener('click', function(e) {
-            e.preventDefault();
-            console.log("Logout clicked"); // <-- check this
-            userStore.logout();
-            window.location.href = '../index.html';
+        document.getElementById('logout')?.addEventListener('click', function(e) {
+        e.preventDefault();
+        userStore.logout();
+
+        const currentPath = window.location.pathname;
+    
+        // Check if we're in the pages directory (path includes '/pages/')
+        const isInPagesDir = currentPath.includes('/pages/');
+        
+        // Redirect to index.html with appropriate path
+        if (isInPagesDir) {
+            window.location.href = "../index.html"; // Go up one level from /pages/
+        } else {
+            window.location.href = "index.html"; // Same directory
+        }
         });
 
         // Initial load
@@ -1293,4 +1322,68 @@ function formatDate(dateString) {
     const options = { year: 'numeric', month: 'short', day: 'numeric' };
     return new Date(dateString).toLocaleDateString(undefined, options);
 }
+
+//-------------------------------------------------- Update navigation based on login status
+
+function updateNavVisibility() {
+    const currentUser = userStore.getCurrentUser();
+    const logoutLink = document.getElementById('logout');
+    const loginLink = document.getElementById('login');
+    const signupLink = document.getElementById('sign');
+    const profileLink = document.getElementById('profile');
+    const manageLink = document.getElementById('manage');
+    const borrowed = document.getElementById('borrowed');
+    const borrow = document.getElementById('borrow');
+
+    if (currentUser) {
+        // User is logged in
+        if (logoutLink) logoutLink.style.display = 'inline-block';
+        if (loginLink) loginLink.style.display = 'none';
+        if (signupLink) signupLink.style.display = 'none';
+        if (profileLink) profileLink.style.display = 'inline-block';
+        
+        // Show/hide manage link based on admin status
+        if (manageLink) {
+            manageLink.style.display = currentUser.isAdmin ? 'inline-block' : 'none';
+        }
+
+        if (borrowed) {
+            borrowed.style.display = currentUser.isAdmin ? 'none' : 'inline-block';
+        }
+
+        if (borrow) {
+            borrow.style.display = currentUser.isAdmin ? 'none' : 'inline-block';
+        }
+
+    } else {
+        // User is not logged in
+        if (logoutLink) logoutLink.style.display = 'none';
+        if (loginLink) loginLink.style.display = 'inline-block';
+        if (signupLink) signupLink.style.display = 'inline-block';
+        if (profileLink) profileLink.style.display = 'none';
+        if (manageLink) manageLink.style.display = 'none';
+    }
+}
+
+// Call it initially
+updateNavVisibility();
+
+// Also call it after logout
+document.getElementById('logout')?.addEventListener('click', function(e) {
+    e.preventDefault();
+    userStore.logout();
+    updateNavVisibility();
+
+    const currentPath = window.location.pathname;
+    
+    // Check if we're in the pages directory (path includes '/pages/')
+    const isInPagesDir = currentPath.includes('/pages/');
+    
+    // Redirect to index.html with appropriate path
+    if (isInPagesDir) {
+        window.location.href = "../index.html"; // Go up one level from /pages/
+    } else {
+        window.location.href = "index.html"; // Same directory
+    }
+});
 
