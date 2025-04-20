@@ -802,15 +802,21 @@ document.addEventListener('DOMContentLoaded', function() {
             readingGoalInput.value = goal;
             goalNumberSpan.textContent = goal;
             completedBooksSpan.textContent = completed;
+            const progress = Math.min(Math.round((completed / goal) * 100), 100);
 
-            if (goal > 0) {
-                const progress = Math.min(Math.round((completed / goal) * 100), 100);
+            if (progress < 100) {
                 progressBar.style.width = `${progress}%`;
+                progressBar.style.backgroundColor = '#4f88ba';
                 progressBar.textContent = `${progress}%`;
-            } else {
-                progressBar.style.width = '0%';
+            } else if (goal == 0) {
+                progressBar.style.width = '100%';
+                progressBar.style.backgroundColor = 'transparent';
                 progressBar.textContent = 'Set a goal';
-            }
+            } else if (progress == 100) {
+                progressBar.style.width = `${progress}%`;
+                progressBar.style.backgroundColor = 'green';
+                progressBar.textContent = `${progress}%`;
+            } 
         }
 
         // Edit button handler
@@ -1024,9 +1030,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         <p class="author">${book.author}</p>
                         <div class="borrowing-info">
                             <p><i class="fas fa-clock"></i> Due Date: ${formatDate(book.returnDate)}</p>
-                            <div class="progress-container">
-                                <div class="progress-bar" style="width: ${progress}%"></div>
-                            </div>
                             <p class="time-left ${timeLeft.includes('Overdue') ? 'overdue' : ''}">
                                 ${timeLeft}
                             </p>
@@ -1252,7 +1255,6 @@ function handleReturnBook(event) {
     if (userStore.returnBook(currentUser.email, bookauthor , booktitle)) {
         alert('Book returned successfully!');
         displayUserBorrowedBooks(); // Refresh the display
-        updateReadingProgress(); // Update reading progress if needed
     } else {
         alert('Failed to return book. Please try again.');
     }
@@ -1263,23 +1265,6 @@ function handleBookReview(event) {
     const booktitle = event.currentTarget.getAttribute('data-title');
 
     window.location.href = `Book-Review.html?title=${encodeURIComponent(booktitle)}&author=${encodeURIComponent(bookauthor)}`;
-}
-
-function updateReadingProgress() {
-    if (document.getElementById('readingProgress')) {
-        const currentUser = userStore.getCurrentUser();
-        if (currentUser) {
-            const completed = userStore.getCompletedBooks(currentUser.email);
-            const goal = userStore.getReadingGoal(currentUser.email);
-            
-            if (goal > 0) {
-                const progress = Math.min(Math.round((completed / goal) * 100), 100);
-                const progressBar = document.getElementById('readingProgress');
-                progressBar.style.width = `${progress}%`;
-                progressBar.textContent = `${progress}%`;
-            }
-        }
-    }
 }
 
 function calculateProgress(borrowDate, returnDate) {
