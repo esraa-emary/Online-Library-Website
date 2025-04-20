@@ -61,51 +61,6 @@
     }
 }
 
-/* ------------------------- search-bar */
-
-.search-bar input {
-    width: 400px;
-    border: none;
-    background: var(--third-color);
-    color: var(--first-color);
-    height: 40px;
-    padding: 0 0 0 30px;
-    font-size: 15px;
-    border-radius: 10px;
-    border: 1px solid var(--first-color);
-    transition: all 0.3s ease-in-out;
-}
-
-.search-bar input::placeholder {
-    color: var(--first-color);
-    font-style: italic;
-    font-size: 15px;
-}
-
-.search-bar input:focus,
-.search-bar input:active,
-.search-bar input:hover {
-    outline: none;
-}
-
-.search-bar:focus,
-.search-bar:active,
-.search-bar:hover {
-    box-shadow: 0 0 30px var(--second-color);
-    border-radius: 10px;
-}
-
-.search-bar{
-    position: relative;
-}
-
-.search-bar a{
-    color: var(--first-color);
-    position: absolute;
-    left: 10px;
-    top: 10px;
-}
-
 /* ------------------------- nav */
 
 .nav {
