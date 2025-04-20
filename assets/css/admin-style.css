@@ -28,62 +28,7 @@
     border-radius: 15px;
 }
 
-/* -------------------------------------------- header */
-
-.header {
-    width: 100%;
-    height: 7vh;
-    background: var(--third-color);
-    top: 0;
-    right: 0;
-    z-index: 1;
-    position: fixed;
-    display: flex;
-    align-items: center;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    
-    section {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        justify-content: space-between;
-        padding: 0 30px;
-    }
-    
-    /* ------------------------- logo */
-
-    h3 {
-        color: var(--fourth-color);
-        font-weight: 600;
-        font-size: 1.5rem;
-    }
-}
-
-/* ------------------------- nav */
-
-.nav {
-    display: flex;
-    gap: 10px;
-}
-
-.nav a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    color: var(--first-color);
-}
-
-.nav a:hover{
-    color: var(--fourth-color);
-    transform: scale(1.1);
-    transition: all 0.3 ease-in-out;
-}
-
 /* ------------------------- Add */
-
 
 .AddBookpage {
     background-color: white;

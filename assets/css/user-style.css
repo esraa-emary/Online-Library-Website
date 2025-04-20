@@ -332,10 +332,9 @@
 
         .buttons{
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            padding-right: 7rem;
-            padding-left: 7rem;
+            gap: 2rem;
 
             button,a{
                 border: none;

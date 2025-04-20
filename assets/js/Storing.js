@@ -247,7 +247,7 @@ let bookStore = {
                     </span>
                     <div class="card-actions">
                         <a href="Book-Review.html?title=${encodeURIComponent(book.title)}&author=${encodeURIComponent(book.author)}">
-                           <button class="Book-Review-btn">Book Review</button></a>
+                           <button class="Book-Review-btn"><i class="fas fa-book-open"></i>Book Review</button></a>
                            
                         <a id="borrow" href="Borrow-Page.html?title=${encodeURIComponent(book.title)}&author=${encodeURIComponent(book.author)}">
                             <button class="borrow-btn" ${!book.isAvailable ? 'disabled' : ''}>
