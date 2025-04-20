@@ -101,6 +101,10 @@
                 
                 .card-actions{
                     margin-top: 25px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 5px;
 
                     a{
                         .borrow-btn{
@@ -354,6 +358,47 @@
             }
         }
     }
+}
+
+/* -------------------------------------------- search page */
+
+/* Search page styles */
+.search-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.search-header h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.no-results {
+    text-align: center;
+    padding: 3rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    margin: 2rem 0;
+}
+
+.no-results p {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.browse-btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background 0.3s;
+}
+
+.browse-btn:hover {
+    background: #0056b3;
 }
 
 /* -------------------------------------------- Profile */

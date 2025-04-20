@@ -280,74 +280,114 @@ export let bookStore = {
         }
     },
 
-    //-------------------------------------------Function Print Books For Search Page
+ //-------------------------------------------Function Print Books For Search Page
     
-PrintSearch: function(books) {
-    const searchValue = document.getElementById("search").value.trim().toLowerCase();
-    const container = document.getElementById("search-page");
-
-    if (!container) return;
-
-    container.innerHTML = '';
-
-    const filteredBooks = books.filter(book =>
-        book.title.toLowerCase().includes(searchValue) ||
-        book.author.toLowerCase().includes(searchValue) ||
-        book.category.toLowerCase().includes(searchValue)
-    );
-
-    if (filteredBooks.length === 0) {
-        container.innerHTML = `<p>No results found for "<strong>${searchValue}</strong>"</p>`;
-        return;
-    }
-
-    const grouped = {};
-    filteredBooks.forEach(book => {
-        if (!grouped[book.category]) {
-            grouped[book.category] = [];
+    PrintSearch: function(books) {
+        // Get search value from URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const searchValue = urlParams.get('q') ? urlParams.get('q').toLowerCase().trim() : '';
+        
+        const container = document.getElementById("search-page");
+        if (!container) {
+            console.error("Search container not found");
+            return;
         }
-        grouped[book.category].push(book);
-    });
 
-    for (const category in grouped) {
-        const section = document.createElement("div");
-        section.className = "booktype";
-        section.innerHTML = `
-            <h2>${category} Books</h2>
-            <div class="cards"></div>
-        `;
-        const cardsContainer = section.querySelector(".cards");
+        // Clear previous results
+        container.innerHTML = '';
 
-        grouped[category].forEach(book => {
-            const card = document.createElement("div");
-            card.className = "card";
-            card.innerHTML = `
-                <img src="${book.cover}" alt="${book.title}">
-                <div class="card-body">
-                    <h5 class="title">${book.title}</h5>
-                    <p class="author">${book.author}</p>
-                    <p class="price">${book.price}$</p>
-                    <span class="availability ${book.isAvailable ? 'available' : 'unavailable'}">
-                        ${book.isAvailable ? 'Available' : 'Not available until ' + book.returnDate}
-                    </span>
-                    <div class="card-actions">
-                        <a href="Book-Review.html?title=${encodeURIComponent(book.title)}&author=${encodeURIComponent(book.author)}">
-                            <button class="Book-Review-btn"><i class="fas fa-book-open"></i> Book Review</button>
-                        </a>
-                        <a href="Borrow-Page.html?title=${encodeURIComponent(book.title)}&author=${encodeURIComponent(book.author)}">
-                            <button class="borrow-btn" ${!book.isAvailable ? 'disabled' : ''}>
-                                <i class="fas fa-hand-holding"></i>Borrow
-                            </button>
-                        </a>
-                    </div>
+        if (!searchValue) {
+            container.innerHTML = `
+                <div class="no-results">
+                    <p>Please enter a search term to find books</p>
+                    <a href="List-Page.html" class="browse-btn">Browse All Books</a>
                 </div>
             `;
-            cardsContainer.appendChild(card);
-        });
+            console.log("Test case: No search term");
+            return;
+        } else {
+            console.log(`Test case: Search term = "${searchValue}"`);
+            // Continue with rest of your function...
+        }
 
-        container.appendChild(section);
-    }
-},
+        // // Filter books
+        // const filteredBooks = books.filter(book =>
+        //     book.title.toLowerCase().includes(searchValue) ||
+        //     book.author.toLowerCase().includes(searchValue) ||
+        //     book.category.toLowerCase().includes(searchValue)
+        // );
+
+        // if (filteredBooks.length === 0) {
+        //     container.innerHTML = `
+        //         <div class="no-results">
+        //             <p>No results found for "<strong>${searchValue}</strong>"</p>
+        //             <a href="List-Page.html" class="browse-btn">Browse All Books</a>
+        //         </div>
+        //     `;
+        //     return;
+        // }
+
+        // // Create search header
+        // const header = document.createElement('div');
+        // header.className = 'search-header';
+        // header.innerHTML = `
+        //     <h1>Search Results for "${searchValue}"</h1>
+        //     <p>${filteredBooks.length} book${filteredBooks.length !== 1 ? 's' : ''} found</p>
+        // `;
+        // container.appendChild(header);
+
+        // // Group by category
+        // const grouped = {};
+        // filteredBooks.forEach(book => {
+        //     if (!grouped[book.category]) {
+        //         grouped[book.category] = [];
+        //     }
+        //     grouped[book.category].push(book);
+        // });
+
+        // // Create book sections
+        // for (const category in grouped) {
+        //     const section = document.createElement("div");
+        //     section.className = "booktype";
+            
+        //     const h2 = document.createElement("h2");
+        //     h2.textContent = `${category} Books`;
+        //     section.appendChild(h2);
+            
+        //     const cardsContainer = document.createElement("div");
+        //     cardsContainer.className = "cards";
+        //     section.appendChild(cardsContainer);
+
+        //     grouped[category].forEach(book => {
+        //         const card = document.createElement("div");
+        //         card.className = "card";
+        //         card.innerHTML = `
+        //             <img src="${book.cover}" alt="${book.title}" onerror="this.src='../assets/img/default-book.jpg'">
+        //             <div class="card-body">
+        //                 <h5 class="title">${book.title}</h5>
+        //                 <p class="author">${book.author}</p>
+        //                 <p class="price">${book.price}$</p>
+        //                 <span class="availability ${book.isAvailable ? 'available' : 'unavailable'}">
+        //                     ${book.isAvailable ? 'Available' : 'Unavailable until ' + book.returnDate}
+        //                 </span>
+        //                 <div class="card-actions">
+        //                     <a href="Book-Review.html?title=${encodeURIComponent(book.title)}&author=${encodeURIComponent(book.author)}">
+        //                         <button class="Book-Review-btn"><i class="fas fa-book-open"></i> Book Review</button>
+        //                     </a>
+        //                     <a href="Borrow-Page.html?title=${encodeURIComponent(book.title)}&author=${encodeURIComponent(book.author)}">
+        //                         <button class="borrow-btn" ${!book.isAvailable ? 'disabled' : ''}>
+        //                             <i class="fas fa-hand-holding"></i> Borrow
+        //                         </button>
+        //                     </a>
+        //                 </div>
+        //             </div>
+        //         `;
+        //         cardsContainer.appendChild(card);
+        //     });
+
+            // container.appendChild(section);
+        // }
+    },
     
  //-------------------------------------------Function Print Books For Manage Page
 

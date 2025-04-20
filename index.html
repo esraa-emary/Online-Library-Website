@@ -36,9 +36,9 @@
             </div>
 
             <div class="ajax" style="position: relative;">
-                <form class="search-bar" action="./pages/Search.html">
-                    <a href="./pages/Search.html" onclick="PrintSearch()"><i class="bx bx-search" title="Search"></i></a>
-                    <input id="search" type="text" placeholder="Search by Title, Author or Category" title="Search" onkeyup="showHint(this.value)" autocomplete="off">
+                <form class="search-bar" action="./pages/Search.html" method="GET">
+                    <a type="submit" class="search-icon"><i class="bx bx-search" title="Search"></i></a>
+                    <input id="search" name="q" type="text" placeholder="Search by Title, Author or Category" title="Search" onkeyup="showHint(this.value)" autocomplete="off">
                 </form>
                 <div id="txtHint" class="results-container"></div>
             </div>
@@ -51,7 +51,7 @@
                 <a href="./pages/About-Us.html">About US</a>
                 <a id="sign" class="first-button" href="./pages/Sign-Up.html" title="Sign-Up">Sign-Up</a>
                 <a id="login" href="./pages/Log-In.html" title="Log-In">Log-In</a>
-                <a id="logout" href="index.html">Log-Out</a>
+                <a id="logout">Log-Out</a>
             </nav>
         </section>
     </header>
@@ -81,12 +81,9 @@
                             <h5>The Left Hand of God</h5>
                             <p class="author">Paul Hoffman</p>
                             <p class="price">30$</p>
-                            <span class="availability available">Available</span>
                             <div class="card-actions">
                                 <a href="./pages/Book-Review.html?title=The%20Left%20Hand%20of%20God&author=Paul%20Hoffman">
-                                    <button class="Book-Review-btn">
-                                        <i class="fas fa-book-open"></i> Book Review
-                                    </button>
+                                    <button class="Book-Review-btn">Book Review</button>
                                 </a>
                             </div>
                         </div>
@@ -98,8 +95,6 @@
                             <h5>Winter's Arrow</h5>
                             <p class="author">Kimbra Swain</p>
                             <p class="price">90$</p>
-                            <span class="availability available">Available</span>
-                            <div class="due-date">Due back: 10/06/2025</div>
                             <div class="card-actions">
                                 <a href="./pages/Book-Review.html?title=Winter's%20Arrow&author=Kimbra%20Swain">
                                     <button class="Book-Review-btn">
@@ -116,7 +111,6 @@
                             <h5>The Beast of the Highlands</h5>
                             <p class="author">L.D. Goffigan</p>
                             <p class="price">110$</p>
-                            <span class="availability available">Available</span>
                             <div class="card-actions">
                                 <a href="./pages/Book-Review.html?title=The%20Beast%20of%20the%20Highlands&author=L.D.%20Goffigan">
                                     <button class="Book-Review-btn">
@@ -133,7 +127,6 @@
                             <h5>The Waning</h5>
                             <p class="author">Kristen Martin</p>
                             <p class="price">100$</p>
-                            <span class="availability available">Available</span>
                             <div class="card-actions">
                                 <a href="./pages/Book-Review.html?title=The%20Waning&author=Kristen%20Martin">
                                     <button class="Book-Review-btn">
@@ -150,8 +143,6 @@
                             <h5>Crime and Punishment</h5>
                             <p class="author">Fyodor Dostoyevsky</p>
                             <p class="price">210$</p>
-                            <span class="availability unavailable">Unavailable</span>
-                            <div class="due-date">Due back: 05/07/2025</div>
                             <div class="card-actions">
                                 <a href="./pages/Book-Review.html?title=Crime%20and%20Punishment&author=Fyodor%20Dostoyevsky">
                                     <button class="Book-Review-btn">
@@ -168,8 +159,6 @@
                             <h5>Defy the Stars</h5>
                             <p class="author">Claudia Gray</p>
                             <p class="price">20$</p>
-                            <span class="availability available">Available</span>
-                            <div class="due-date">Due back: 18/06/2025</div>
                             <div class="card-actions">
                                 <a href="./pages/Book-Review.html?title=Defy%20the%20Stars&author=Claudia%20Gray">
                                     <button class="Book-Review-btn">
@@ -186,7 +175,6 @@
                             <h5>Programming from the Ground Up</h5>
                             <p class="author">Jonathan Bartlett</p>
                             <p class="price">65$</p>
-                            <span class="availability available">Available</span>
                             <div class="card-actions">
                                 <a href="./pages/Book-Review.html?title=Programming%20from%20the%20Ground%20Up&author=Jonathan%20Bartlett">
                                     <button class="Book-Review-btn">
@@ -203,7 +191,6 @@
                             <h5>Mastery, White Belt</h5>
                             <p class="author">Anonymous</p>
                             <p class="price">70$</p>
-                            <span class="availability available">Available</span>
                             <div class="card-actions">
                                 <a href="./pages/Book-Review.html?title=Mastery%2C%20White%20Belt&author=Anonymous">
                                     <button class="Book-Review-btn">
@@ -220,7 +207,6 @@
                             <h5>Games People Play</h5>
                             <p class="author">Eric Berne, M.D.</p>
                             <p class="price">65$</p>
-                            <span class="availability available">Available</span>
                             <div class="card-actions">
                                 <a href="./pages/Book-Review.html?title=Games%20People%20Play&author=Eric%20Berne%2C%20M.D.">
                                     <button class="Book-Review-btn">

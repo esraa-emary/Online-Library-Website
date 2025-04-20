@@ -17,14 +17,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/user-style.css">
     <link rel="icon" href="img/icon.jpg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Tangerine:wght@400;700&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Prata&display=swap">
-    <script src="../assets/js/script.js" defer></script>
-    <script src="../assets/js/bookStore.js" defer></script>
+    <script src="../assets/js/Storing.js" defer></script>
     <title>Search</title>
 </head>
 <body>
@@ -37,7 +36,7 @@
             
             <div class="ajax" style="position: relative;">
                 <form class="search-bar" action="./pages/Search.html">
-                    <a href="./pages/Search.html" onclick="PrintSearch()"><i class="bx bx-search" title="Search"></i></a>
+                    <a href="./pages/Search.html"><i class="bx bx-search" title="Search"></i></a>
                     <input id="search" type="text" placeholder="Search by Title, Author or Category" title="Search" onkeyup="showHint(this.value)" autocomplete="off">
                 </form>
                 <div id="txtHint" class="results-container"></div>
@@ -57,7 +56,8 @@
     </header>
 
     <!-- -------------------------------------------- main  -->
-   <main style="min-height: 70vh;">
+    <!-- In the main section of Search.html -->
+    <main style="min-height: 70vh;">
         <section class="search" id="Books">
             <img src="../assets/img/logo.jpg" alt="LibraSphere Logo" class="logoPage">
             <p class="marginTitle"><Bold>Your gateway to knowledge and culture. Accessible for everyone.</Bold></p>
@@ -66,6 +66,34 @@
             <div id="search-page"></div>
         </section>
     </main>
+
+    <!-- Add this script at the end of the body -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize book store
+        bookStore.loadFromLocalStorage();
+        
+        // Get search query from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const searchQuery = urlParams.get('q');
+        
+        if (searchQuery) {
+            // Display search results
+            bookStore.PrintSearch(bookStore.getBooks());
+        } else {
+            // Show message if no search query
+            const container = document.getElementById("search-page");
+            if (container) {
+                container.innerHTML = `
+                    <div class="no-results">
+                        <p>Please enter a search term to find books</p>
+                        <a href="List-Page.html" class="browse-btn">Browse All Books</a>
+                    </div>
+                `;
+            }
+        }
+    });
+    </script>
 
     <!-- -------------------------------------------- footer  -->
     <footer id="footer">

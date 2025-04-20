@@ -59,7 +59,6 @@ export let userStore = {
             }));
             alert("Welcome, " + user.name);
             window.location.href = "index.html";
-            // window.location.href = user.isAdmin ? "Manage-Books.html" : "Home.html";
         } else {
             alert("Invalid credentials. Please try again or Create a new account.");
         }
