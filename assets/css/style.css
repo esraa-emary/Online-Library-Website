@@ -436,20 +436,20 @@
     
     a:hover, i:hover{
         color: var(--fourth-color);
-        transform: scale(1.075);
+        transform: scale(1.05);
     }
-}
-
-.foot1{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 25px;
-    padding-bottom: 30px;
-}
-
-.accounts{
-    padding-bottom: 20px;
+    
+    .accounts{
+        padding-bottom: 20px;
+    }
+    
+    .foot1{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 25px;
+        padding-bottom: 30px;
+    }
 }
 
 /* -------------------------------------------- Log-In */
@@ -757,7 +757,7 @@
             }
             
             a:hover {
-                transform: scale(1.05);
+                transform: scale(1.025);
                 color: var(--fourth-color);
                 box-shadow: var(--fourth-color) 0px 5px 15px;
             }

@@ -408,12 +408,22 @@ let bookStore = {
             });
     
             section.innerHTML = `
-                <h2>${category} Books:-</h2>
+                <div id="categoryName">
+                    <h2>${category} Books:-</h2>
+                </div>
                 <div class="cards"></div>
+                
+                <style>
+                    #categoryName{
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                    }
+                </style>
             `;
-    
-            section.insertBefore(addButton, section.querySelector("h2"));
-    
+        
+            section.querySelector("#categoryName").append(addButton);
+        
             const cardsContainer = section.querySelector(".cards");
     
             grouped[category].forEach(book => {

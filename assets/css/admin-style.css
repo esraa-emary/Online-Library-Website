@@ -1,104 +1,78 @@
-/* ------------------------------------------------------------------------------------- GENERAL CLASSES */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-}
-
-:root {
-    --first-color: #000;
-    --second-color: rgba(106, 105, 105, 0.6);
-    --third-color: #fefefe;
-    --fourth-color: #4f88ba;
-    --card-background: #b49d65;
-}
-
-::-webkit-scrollbar {
-    width: 15px; 
-}
-
-::-webkit-scrollbar-track {
-    background-color: var(--third-color); 
-}
-
-::-webkit-scrollbar-thumb {
-    background-color: var(--fourth-color);
-    border-radius: 15px;
-}
+@import url('./style.css');
 
 /* ------------------------- Add */
 
 .AddBookpage {
-    background-color: white;
     border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     padding: 30px;
     margin-top: 30px;
+    background-color: #f1f1f1;
 }
 
 .AddBookForm {
     display: flex;
     flex-direction: column;
     gap: 20px;
-}
-
-.AddBookForm h1 {
-    color: #2c3e50;
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 2rem;
-}
-
-.AddBookForm div {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.AddBookForm label {
-    font-weight: 500;
-    color: #2c3e50;
-}
-
-.AddBookForm input[type="text"],
-.AddBookForm input[type="number"],
-.AddBookForm input[type="text"],
-.AddBookForm textarea, .AddBookForm select {
-    padding: 12px 15px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 1rem;
-    transition: border-color 0.3s;
-}
-
-.AddBookForm input[type="text"]:focus,
-.AddBookForm input[type="number"]:focus,
-.AddBookForm input[type="text"]:focus,
-.AddBookForm textarea:focus,
-.AddBookForm select:focus {
-    border-color: #3498db;
-    outline: none;
-}
-
-.AddBookForm textarea {
-    min-height: 120px;
-    resize: vertical;
-    font-size: 1rem;
-    padding: 10px;
-    line-height: 1.4;
-    width: 100%;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    transition: all 0.3s ease;
-    font-family: 'Poppins', sans-serif;
-}
-
-.AddBookForm textarea:focus {
-    border-color: #3498db;
-    box-shadow: 0 0 0 1px rgba(52, 152, 219, 0.2);
-    outline: none;
+    
+    h1 {
+        color: #2c3e50;
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 2rem;
+    }
+    
+    div {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    label {
+        font-weight: 500;
+        color: #2c3e50;
+    }
+    
+    textarea {
+        min-height: 120px;
+        resize: vertical;
+        font-size: 1rem;
+        padding: 10px;
+        line-height: 1.4;
+        width: 100%;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        transition: all 0.3s ease-in-out;
+    }
+    
+    textarea:focus {
+        border-color: var(--fourth-color);
+        box-shadow: 0 0 0 1px rgba(52, 152, 219, 0.2);
+        outline: none;
+    }
+    
+    select {
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 1rem;
+        transition: all 0.3s ease-in-out;
+    }
+    
+    input[type="text"], input[type="number"],
+    input[type="text"] {
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 1rem;
+        transition: all 0.3s ease-in-out;
+    }
+    
+    input[type="text"]:focus, input[type="number"]:focus,
+    input[type="text"]:focus, select:focus {
+        border-color: var(--fourth-color);
+        outline: none;
+    }
 }
 
 .FormBtn {
@@ -108,42 +82,29 @@
 }
 
 .AddBtn {
-    background-color: #3498db;
-    color: white;
     border: none;
-    padding: 12px 25px;
-    border-radius: 4px;
+    background-color: var(--fourth-color);
+    font-weight: 600;
     font-size: 1rem;
+    padding: 10px 20px;
+    border-radius: 10px;
     cursor: pointer;
-    transition: background-color 0.3s;
-    font-weight: 500;
+    transition: all 0.3s ease-in-out;
+    color: var(--third-color);
 }
 
 .AddBtn:hover {
-    background-color: #2980b9;
+    background-color: var(--first-color);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    color: white;
 }
-
-.AddBookForm select {
-    padding: 12px 15px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 2rem;
-    transition: border-color 0.3s;
-    background-color: white;
-}
-
-.AddBookForm select:focus {
-    border-color: #3498db;
-    outline: none;
-}
-
 
 /* -------------------------Edit */
 
 .EditBookpage {
-    background-color: white;
+    background-color: #f1f1f1;
     border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     padding: 30px;
     margin-top: 30px;
 }
@@ -152,66 +113,66 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-}
-
-.EditBookForm h1 {
-    color: #2c3e50;
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 2rem;
-}
-
-.EditBookForm div {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.EditBookForm label {
-    font-weight: 500;
-    color: #2c3e50;
-}
-
-.EditBookForm input[type="text"],
-.EditBookForm input[type="number"],
-.EditBookForm input[type="text"],
-
-.EditBookForm textarea, .EditBookForm select {
-
-    padding: 12px 15px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 1rem;
-    transition: border-color 0.3s;
-
-}
-
-.EditBookForm input[type="text"]:focus,
-.EditBookForm input[type="number"]:focus,
-.EditBookForm input[type="text"]:focus,
-.EditBookForm textarea:focus,
-.EditBookForm select:focus {
-    border-color: #3498db;
-    outline: none;
-}
-
-.EditBookForm textarea {
-    min-height: 120px;
-    resize: vertical;
-    font-size: 1rem;
-    padding: 10px;
-    line-height: 1.4;
-    width: 100%;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    transition: all 0.3s ease;
-    font-family: 'Poppins', sans-serif;
-}
-
-.EditBookForm textarea:focus {
-    border-color: #3498db;
-    box-shadow: 0 0 0 1px rgba(52, 152, 219, 0.2);
-    outline: none;
+    
+    h1 {
+        color: #2c3e50;
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 2rem;
+    }
+    
+    div {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    label {
+        font-weight: 500;
+        color: #2c3e50;
+    }
+    
+    textarea {
+        min-height: 120px;
+        resize: vertical;
+        font-size: 1rem;
+        padding: 10px;
+        line-height: 1.4;
+        width: 100%;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        transition: all 0.3s ease-in-out;
+    }
+    
+    textarea:focus {
+        border-color: #3498db;
+        box-shadow: 0 0 0 1px rgba(52, 152, 219, 0.2);
+        outline: none;
+    }
+    
+    select {
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 1rem;
+        transition: all 0.3s ease-in-out;
+        background-color: white;
+    }
+    
+    input[type="text"], input[type="number"],
+    input[type="text"] {
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 1rem;
+        transition: all 0.3s ease-in-out;
+    }
+    
+    input[type="text"]:focus, input[type="number"]:focus,
+    input[type="text"]:focus, select:focus{
+        border-color: var(--fourth-color);
+        outline: none;
+    }
 }
 
 .FormBtn {
@@ -221,78 +182,21 @@
 }
 
 .EditBtn {
-    background-color: #3498db;
-    color: white;
     border: none;
-    padding: 12px 25px;
-    border-radius: 4px;
+    background-color: var(--fourth-color);
+    font-weight: 600;
     font-size: 1rem;
+    padding: 10px 20px;
+    border-radius: 10px;
     cursor: pointer;
-    transition: background-color 0.3s;
-    font-weight: 500;
+    transition: all 0.3s ease-in-out;
+    color: var(--third-color);
 }
 
 .EditBtn:hover {
-    background-color: #2980b9;
-}
-
-.EditBookForm select {
-    padding: 12px 15px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 2rem;
-    transition: border-color 0.3s;
-    background-color: white;
-}
-
-.EditBookForm select:focus {
-    border-color: #3498db;
-    outline: none;
-}
-
-
-/* ------------------------- footer */
-
-.footer{
-    background-color: rgb(27, 26, 26);
-    width: 100%;
-    height: 30vh;
-    color: var(--third-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.foot1{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 25px;
-    padding-bottom: 30px;
-}
-
-.footer h2{
-    font-weight: 500;
-}
-
-.footer a{
-    text-decoration: none;
-    color: var(--third-color);
-}
-
-.accounts a{
-    font-size: 2rem;
-}
-
-.footer a:hover, .footer i:hover{
-    color: var(--fourth-color);
-    transform: scale(1.1);
-    transition: all 0.3 ease-in-out;
-}
-
-.accounts{
-    padding-bottom: 20px;
+    background-color: var(--first-color);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    color: white;
 }
 
 /* ------------------------- nav-icons */
