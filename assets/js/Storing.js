@@ -512,7 +512,7 @@ let bookStore = {
 let userStore = {
     users: [],
 
-    addUser: function(name, email, password, isAdmin) {
+    addUser: function(name, email, password, isAdmin , phonenumber = "") {
         if (this.users.some(user => user.email === email)) {
             alert("User with this email already exists!");
             return false;
@@ -529,7 +529,8 @@ let userStore = {
             isAdmin,
             borrowedBooks: [],
             readingGoal: 0,
-            completedBooks: 0
+            completedBooks: 0,
+            phoneNumber 
         });
         this.saveToLocalStorage();
         return true;
@@ -824,6 +825,7 @@ document.addEventListener('DOMContentLoaded', function() {
             nameInput.disabled = false;
             maleRadio.disabled = false;
             femaleRadio.disabled = false;
+            phoneInput.disabled = false ;
             readingGoalInput.disabled = false;
             editBtn.style.display = 'none';
             saveBtn.style.display = 'inline-block';
@@ -848,6 +850,7 @@ document.addEventListener('DOMContentLoaded', function() {
             maleRadio.disabled = true;
             femaleRadio.disabled = true;
             readingGoalInput.disabled = true;
+             phoneInput.disabled = true ;
             
             // Switch buttons
             editBtn.style.display = 'inline-block';
