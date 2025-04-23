@@ -512,7 +512,7 @@ let bookStore = {
 let userStore = {
     users: [],
 
-    addUser: function(name, email, password, isAdmin , phonenumber = "") {
+    addUser: function(name, email, password, isAdmin ) {
         if (this.users.some(user => user.email === email)) {
             alert("User with this email already exists!");
             return false;
@@ -521,7 +521,6 @@ let userStore = {
             alert("Username already taken!");
             return false;
         }
-
         this.users.push({
             name,
             email,
@@ -529,8 +528,7 @@ let userStore = {
             isAdmin,
             borrowedBooks: [],
             readingGoal: 0,
-            completedBooks: 0,
-            phoneNumber 
+            completedBooks: 0
         });
         this.saveToLocalStorage();
         return true;
@@ -756,7 +754,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (document.getElementById('profileForm')) {
         const currentUser = userStore.getCurrentUser();
-        
+
         if (!currentUser) {
             alert('Please login first');
             window.location.href = 'Log-In.html';
@@ -769,9 +767,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const phoneInput = document.getElementById('phone');
         const maleRadio = document.getElementById('male');
         const femaleRadio = document.getElementById('female');
+
         const editBtn = document.getElementById('editBtn');
         const saveBtn = document.getElementById('saveBtn');
         const cancelBtn = document.getElementById('cancelBtn');
+
         const readingGoalInput = document.getElementById('readingGoal');
         const completedBooksSpan = document.getElementById('completedBooks');
         const goalNumberSpan = document.getElementById('goalNumber');
@@ -785,7 +785,7 @@ document.addEventListener('DOMContentLoaded', function() {
             nameInput.value = user.name || '';
             emailInput.value = user.email || '';
             phoneInput.value = user.phone || '';
-            
+
             if (user.gender === 'female') {
                 femaleRadio.checked = true;
             } else {
@@ -799,7 +799,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Reading goal
             const goal = userStore.getReadingGoal(currentUser.email) || 0;
             const completed = userStore.getCompletedBooks(currentUser.email) || 0;
-            
+
             readingGoalInput.value = goal;
             goalNumberSpan.textContent = goal;
             completedBooksSpan.textContent = completed;
@@ -817,7 +817,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 progressBar.style.width = `${progress}%`;
                 progressBar.style.backgroundColor = 'green';
                 progressBar.textContent = `${progress}%`;
-            } 
+            }
         }
 
         // Edit button handler
@@ -841,7 +841,7 @@ document.addEventListener('DOMContentLoaded', function() {
             user.name = nameInput.value;
             user.gender = femaleRadio.checked ? 'female' : 'male';
             user.phone = phoneInput.value;
-            
+
             // Update reading goal
             userStore.setReadingGoal(currentUser.email, parseInt(readingGoalInput.value));
 
@@ -850,8 +850,8 @@ document.addEventListener('DOMContentLoaded', function() {
             maleRadio.disabled = true;
             femaleRadio.disabled = true;
             readingGoalInput.disabled = true;
-             phoneInput.disabled = true ;
-            
+            phoneInput.disabled = true ;
+
             // Switch buttons
             editBtn.style.display = 'inline-block';
             saveBtn.style.display = 'none';
@@ -859,7 +859,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Reload data to reflect changes
             loadUserData();
-            
+
             alert('Profile updated successfully!');
         });
 
@@ -881,10 +881,10 @@ document.addEventListener('DOMContentLoaded', function() {
         userStore.logout();
 
         const currentPath = window.location.pathname;
-    
+
         // Check if we're in the pages directory (path includes '/pages/')
         const isInPagesDir = currentPath.includes('/pages/');
-        
+
         // Redirect to index.html with appropriate path
         if (isInPagesDir) {
             window.location.href = "../index.html"; // Go up one level from /pages/
