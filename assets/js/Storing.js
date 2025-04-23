@@ -1332,6 +1332,7 @@ function updateNavVisibility() {
     const manageLink = document.getElementById('manage');
     const borrowed = document.getElementById('borrowed');
     const borrow = document.getElementById('borrow');
+    const readingSection = document.getElementById('readingSection');
 
     if (currentUser) {
         // User is logged in
@@ -1343,6 +1344,7 @@ function updateNavVisibility() {
         // Show/hide manage link based on admin status
         if (manageLink) {
             manageLink.style.display = currentUser.isAdmin ? 'inline-block' : 'none';
+            readingSection.style.display = currentUser.isAdmin ? 'none' : 'inline-block';
         }
 
         if (borrowed) {
