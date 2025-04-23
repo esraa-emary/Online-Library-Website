@@ -1344,7 +1344,10 @@ function updateNavVisibility() {
         // Show/hide manage link based on admin status
         if (manageLink) {
             manageLink.style.display = currentUser.isAdmin ? 'inline-block' : 'none';
-            readingSection.style.display = currentUser.isAdmin ? 'none' : 'inline-block';
+        }
+
+        if (readingSection){
+            readingSection.style.display = currentUser.isAdmin ? 'none' : 'block';
         }
 
         if (borrowed) {
