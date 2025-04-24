@@ -542,6 +542,11 @@ let userStore = {
     findUserByEmail: function(email) {
         return this.users.find(user => user.email === email);
     },
+    
+    isValidPhoneNumber: function(phone) {
+        const regex = /^(010|011|012|015)\d{8}$/;
+        return regex.test(phone);
+    },
 
     Checkuser: function(name, password) {
         return this.users.find(user => user.name === name && user.password === password);
@@ -840,6 +845,12 @@ document.addEventListener('DOMContentLoaded', function() {
             // Update user data
             user.name = nameInput.value;
             user.gender = femaleRadio.checked ? 'female' : 'male';
+            
+            // Validate phone number before saving it.
+            if (!userStore.isValidPhoneNumber(phoneInput.value) && phoneInput.value !== '') {
+                alert("Invalid phone number format. \nPlease enter a valid Egyptian phone number. \nIt should start with 010, 011, 012, or 015 and be followed by 8 digits.");
+                return;
+            }
             user.phone = phoneInput.value;
 
             // Update reading goal
