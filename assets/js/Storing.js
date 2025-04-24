@@ -870,6 +870,8 @@ document.addEventListener('DOMContentLoaded', function() {
             maleRadio.disabled = true;
             femaleRadio.disabled = true;
             readingGoalInput.disabled = true;
+            phoneInput.disabled = true;
+            
             editBtn.style.display = 'inline-block';
             saveBtn.style.display = 'none';
             cancelBtn.style.display = 'none';
