@@ -793,7 +793,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (user.gender === 'female') {
                 femaleRadio.checked = true;
-            } else {
+            } else if (user.gender === 'male'){
                 maleRadio.checked = true;
             }
 
@@ -828,10 +828,18 @@ document.addEventListener('DOMContentLoaded', function() {
         // Edit button handler
         editBtn.addEventListener('click', function() {
             nameInput.disabled = false;
-            maleRadio.disabled = false;
-            femaleRadio.disabled = false;
-            phoneInput.disabled = false ;
+            phoneInput.disabled = false;
             readingGoalInput.disabled = false;
+            
+            if (maleRadio.checked || femaleRadio.checked) {
+                maleRadio.disabled = true;
+                femaleRadio.disabled = true;
+            }
+            else {
+                maleRadio.disabled = false;
+                femaleRadio.disabled = false;
+            }
+            
             editBtn.style.display = 'none';
             saveBtn.style.display = 'inline-block';
             cancelBtn.style.display = 'inline-block';
@@ -844,7 +852,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Update user data
             user.name = nameInput.value;
-            user.gender = femaleRadio.checked ? 'female' : 'male';
+            
+            if (!user.gender && (femaleRadio.checked || maleRadio.checked)) {
+                const confirmation = confirm("Are you sure? \nYou will not be able to change the gender again...");
+                if (!confirmation) return;
+            }
+            if (femaleRadio.checked) user.gender = 'female';
+            else if (maleRadio.checked) user.gender = 'male';
             
             // Validate phone number before saving it.
             if (!userStore.isValidPhoneNumber(phoneInput.value) && phoneInput.value !== '') {
