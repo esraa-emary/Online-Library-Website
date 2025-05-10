@@ -42,14 +42,13 @@
             </div>
 
             <nav class="nav">
-                <a href="../index.html">Home</a>
-                <a href="List-Page.html">Books</a>
-                <a id="manage" href="Manage-Books.html">Manage Books</a>
-                <a id="profile" href="Profile.html">Profile</a>
-                <a href="About-Us.html">About US</a>
-                <a id="sign" class="first-button" href="Sign-Up.html" title="Sign-Up">Sign-Up</a>
-                <a id="login" href="Log-In.html" title="Log-In">Log-In</a>
-                <a id="logout" href="../index.html">Log-Out</a>
+                <a href="{%url 'Home'%}">Home</a>
+                <a href="{%url 'ListPage'%}">Books</a>
+                <a id="profile" href="{%url 'Profile'%}">Profile</a>
+                <a href="{%url 'About'%}">About US</a>
+                <a id="sign" class="first-button" href= "{%url 'Signup'%}" title="Sign-Up">Sign-Up</a>
+                <a id="login" href="{%url 'Login'%}" title="Log-In">Log-In</a>
+                <a id="logout"href="{%url 'Home'%}">Log-Out</a>
             </nav>
         </section>
     </header>

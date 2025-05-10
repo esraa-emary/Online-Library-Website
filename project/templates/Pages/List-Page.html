@@ -18,13 +18,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Books</title>
-    <link rel="stylesheet" href="../assets/css/user-style.css">
-    <link rel="icon" href="../assets/img/icon.jpg">
+    {% load static%}
+    <link rel="stylesheet" href="{%static 'css/user-style.css'%}">
+    {% comment %} <link rel="icon" href="{% static'img/icon.jpg'%}"> {% endcomment %}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Tangerine:wght@400;700&display=swap">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
-    <script src="../assets/js/script.js" defer></script>
-    <script src="../assets/js/Storing.js" defer></script>
+    {% comment %} {% load static%}
+    <script src="{%static 'js/script.js'%}" defer></script> {% endcomment %}
+    {% comment %} {% load static %}
+    <script src="{% static 'js/Storing.js' %}" defer></script> {% endcomment %}
+    
 </head>
 <body >
     <!-- -------------------------------------------- header  -->
@@ -43,14 +47,13 @@
             </div>
 
             <nav class="nav">
-                <a href="../index.html">Home</a>
-                <a style="color: #4f88ba;" href="List-Page.html">Books</a>
-                <a id="manage" href="Manage-Books.html">Manage Books</a>
-                <a id="profile" href="Profile.html">Profile</a>
-                <a href="About-Us.html">About US</a>
-                <a id="sign" class="first-button" href="Sign-Up.html" title="Sign-Up">Sign-Up</a>
-                <a id="login" href="Log-In.html" title="Log-In">Log-In</a>
-                <a id="logout" href="../index.html">Log-Out</a>
+                <a href="{%url 'Home'%}">Home</a>
+                <a href="{%url 'ListPage'%}">Books</a>
+                <a id="profile" href="{%url 'Profile'%}">Profile</a>
+                <a href="{%url 'About'%}">About US</a>
+                <a id="sign" class="first-button" href= "{%url 'Signup'%}" title="Sign-Up">Sign-Up</a>
+                <a id="login" href="{%url 'Login'%}" title="Log-In">Log-In</a>
+                <a id="logout"href="{%url 'Home'%}">Log-Out</a>
             </nav>
         </section>
     </header>
@@ -60,8 +63,45 @@
     <img src="../assets/img/logo.jpg" alt="LibraSphere Logo" class="logoPage">
     <p class="marginTitle"><Bold>Your gateway to knowledge and culture. Accessible for everyone.</Bold></p>
     <br>
-    
-    <div id="list-books" class="container"></div>
+    {%for category in categories%}
+  
+   <div id="list-books" class="container">
+    <div class="booktype">
+    <h2>{{category.category}} Books</h2>
+    <div class="cards"></div>
+   </div>
+   {%for book in books%}
+   {% if book.category.id == category.id %}
+   <div  class="card">
+       <img src="{{book.image.url}}" alt="{{book.Title}}">
+                <div class="card-body">
+                    <h5 class="title">{{book.Title}}</h5>
+                    <p class="author">{{book.author}}</p>
+                    <p class="price">{{book.price}}</p>
+                    <span class="availability ${book.available ? 'available' : 'unavailable'}">
+                        {% comment %} {{book.available ? 'Available' : 'Unavailable until ' + book.returnDate}} {% endcomment %}
+                    </span>
+                    <div class="card-actions">
+                        <a href="{%url 'Bookreview'%}?title={{book.Title|urlencode}}">
+                            
+                            
+                            
+                           <button class="Book-Review-btn"><i class="fas fa-book-open"></i>Book Review</button></a>
+                           
+                        <a id="borrow" href="Borrow-Page.html?title=${encodeURIComponent(book.title)}&author=${encodeURIComponent(book.author)}">
+                            <button class="borrow-btn" ${!book.isAvailable ? 'disabled' : ''}>
+                                <i class="fas fa-hand-holding"></i>Borrow
+                            </button>
+                        </a>
+                    </div>
+                </div>
+   </div>
+     {% endif %}
+        {% endfor %}
+    </div>
+    {% endfor %}
+     
+     
 
 </section>
 
@@ -93,6 +133,6 @@
         </section>
     </footer>
     
-   <script src="../assets/js/Storing.js"></script>
+   {% comment %} <script src="../assets/js/Storing.js"></script> {% endcomment %}
 </body>
 </html>
