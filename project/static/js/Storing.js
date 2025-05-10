@@ -19,7 +19,7 @@ let bookStore = {
         const newBook = {title,author,category, 
             price: parseFloat(price).toFixed(2),
             description,
-            cover: cover || '../assets/img/default-book.jpg',
+            // cover: cover || '../assets/img/default-book.jpg',
             isAvailable,
             returnDate: isAvailable ? null : returnDate || this.calculateReturnDate()
         };
@@ -237,13 +237,13 @@ let bookStore = {
                 const card = document.createElement("div");
                 card.className = "card";
                 card.innerHTML = `
-                <img src="${book.cover}" alt="${book.title}">
+                <img src="${book.cover}" alt="${book.Title}">
                 <div class="card-body">
-                    <h5 class="title">${book.title}</h5>
+                    <h5 class="title">${book.Title}</h5>
                     <p class="author">${book.author}</p>
                     <p class="price">${book.price}$</p>
-                    <span class="availability ${book.isAvailable ? 'available' : 'unavailable'}">
-                        ${book.isAvailable ? 'Available' : 'Unavailable until ' + book.returnDate}
+                    <span class="availability ${book.available ? 'available' : 'unavailable'}">
+                        ${book.available ? 'Available' : 'Unavailable until ' + book.returnDate}
                     </span>
                     <div class="card-actions">
                         <a href="Book-Review.html?title=${encodeURIComponent(book.title)}&author=${encodeURIComponent(book.author)}">
@@ -349,7 +349,7 @@ let bookStore = {
                 const card = document.createElement("div");
                 card.className = "card";
                 card.innerHTML = `
-                    <img src="${book.cover}" alt="${book.title}" onerror="this.src='../assets/img/default-book.jpg'">
+                    // <img src="${book.cover}" alt="${book.title}" onerror="this.src='../assets/img/default-book.jpg'">
                     <div class="card-body">
                         <h5 class="title">${book.title}</h5>
                         <p class="author">${book.author}</p>
@@ -389,7 +389,7 @@ let bookStore = {
         container.innerHTML = '';
     
         const grouped = {};
-        books.forEach(book => {
+        books1.forEach(book => {
             if (!grouped[book.category]) {
                 grouped[book.category] = [];
             }
@@ -669,26 +669,7 @@ bookStore.loadFromLocalStorage();
 userStore.loadFromLocalStorage();
 
 // Initialize with sample data if empty
-if (bookStore.books.length === 0) {
-    // Programming Books
-    bookStore.addBook("Semantic Web Programming", "John Hebeler, Matthew Fisher, Ryan Blace, Andrew Parex", 50, "Programming", true, "", "../assets/img/Books/Programming/P (1).jpg");
-    bookStore.addBook("Mastery, White Belt", "Anonymous", 70, "Programming", true, "", "../assets/img/Books/Programming/P (2).jpg");
-    bookStore.addBook("Programming from the Ground Up", "Jonathan Bartlett", 65, "Programming", true, "", "../assets/img/Books/Programming/P (3).jpg");
-    bookStore.addBook("The C++ Programming Language", "Bjarne Stroustrup", 100, "Programming", true, "", "../assets/img/Books/Programming/P (4).jpg");
 
-    // Novel Books
-    bookStore.addBook("The Left Hand of God", "Paul Hoffman", 30, "Novel", true, "", "../assets/img/Books/Novel/N (1).jpg");
-    bookStore.addBook("The Beast of the Highlands", "L.D. Goffigan", 110, "Novel", true, "", "../assets/img/Books/Novel/N (2).jpg");
-    bookStore.addBook("Winter's Arrow", "Kimbra Swain", 90, "Novel", true, "", "../assets/img/Books/Novel/N (3).jpg");
-    bookStore.addBook("The Waning", "Kristen Martin", 100, "Novel", true, "", "../assets/img/Books/Novel/N (4).jpg");
-    bookStore.addBook("Crime and Punishment", "Fyodor Dostoyevsky", 210, "Novel", false, "", "../assets/img/Books/Novel/N (5).jpg");
-
-    // Psychology Books
-    bookStore.addBook("Psychology", "David G. Myers, C. Nathan Dewall", 85, "Psychology", true, "", "../assets/img/Books/Psychology/ps (1).jpg");
-    bookStore.addBook("Defy the Stars", "Claudia Gray", 20, "Psychology", true, "", "../assets/img/Books/Psychology/ps (2).jpg");
-    bookStore.addBook("Games People Play", "Eric Berne, M.D.", 65, "Psychology", true, "", "../assets/img/Books/Psychology/ps (3).jpg");
-    bookStore.addBook("Psychology and You", "Galen E. Cole", 100, "Psychology", true, "", "../assets/img/Books/Psychology/ps (4).jpg");
-}
 
 document.addEventListener('DOMContentLoaded', function() {
     updateNavVisibility();
@@ -970,7 +951,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('bookPrice').textContent = `$${book.price}`;
     }
     if (document.getElementById('bookCover')) {
-        document.getElementById('bookCover').src = book.cover || '../assets/img/default-book.jpg';
+        // document.getElementById('bookCover').src = book.cover || '../assets/img/default-book.jpg';
         document.getElementById('bookCover').alt = book.title;
     }
     if (document.getElementById('bookDescription')) {
@@ -1195,7 +1176,7 @@ function displayUserBorrowedBooks() {
     }
     
     let html = `
-        <img src="../assets/img/logo.jpg" alt="LibraSphere Logo" class="logoPage">
+        // <img src="../assets/img/logo.jpg" alt="LibraSphere Logo" class="logoPage">
         <div class="section-header">
             <h1>Your Borrowed Books</h1>
             <div class="borrowing-info">

@@ -8,8 +8,7 @@ class User(models.Model):
     Phone=models.IntegerField(null=True)
     def __str__(self):
         return self.Name
-    def __str__(self):
-        return self.Title
+
 class Category(models.Model):
    category=models.CharField()
    def __str__(self):
