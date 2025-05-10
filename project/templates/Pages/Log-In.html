@@ -1,0 +1,130 @@
+<!--  
+ * Authors:
+    * Author1: Esraa Emary Abd El-Salam      ID: 20230054
+    * Author2: Mariam Badr Yehia             ID: 20230391
+    * Author3: John Ayman Demian             ID: 20230109
+    * Author4: Mohammed Atef Abd El-Kader    ID: 20231143
+    * Author5: George Malak Magdy            ID: 20231042
+    * Author6: Mohammed Nabil El-Sayed       ID: 20230358
+ * Date : 
+ * Prof : Dr. Neamat El Tazi
+ * Description: 
+ * Version: V1.0
+-->
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log-In</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="icon" href="../assets/img/icon.jpg">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Tangerine:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+    <script src="../assets/js/script.js" defer></script>
+    <script src="../assets/js/Storing.js" defer></script>
+</head>
+<body >
+    <!-- -------------------------------------------- header  -->
+    <header class="header">
+        <section>
+            <div class="logo">
+                <h3>LibraSphere</h3>
+            </div>
+
+            <div class="ajax" style="position: relative;">
+                <form class="search-bar" action="Search.html" method="GET">
+                    <a style="cursor: auto;" type="submit" class="search-icon"><i class="bx bx-search" title="Search"></i></a>
+                    <input id="search" name="q" type="text" placeholder="Search by Title, Author or Category" title="Search" onkeyup="showHint2(this.value)" autocomplete="off">
+                </form>
+                <div id="txtHint" class="results-container"></div>
+            </div>
+
+            <nav class="nav">
+                <a href="../index.html">Home</a>
+                <a href="List-Page.html">Books</a>
+                <a id="manage" href="Manage-Books.html">Manage Books</a>
+                <a id="profile" href="Profile.html">Profile</a>
+                <a href="About-Us.html">About US</a>
+                <a id="sign" class="first-button" href="Sign-Up.html" title="Sign-Up">Sign-Up</a>
+                <a id="login" style="color: #4f88ba;" href="Log-In.html" title="Log-In">Log-In</a>
+                <a id="logout" href="../index.html">Log-Out</a>
+            </nav>
+        </section>
+    </header>
+
+     <!-- -------------------------------------------- Log In -->
+    <section class="logInPage">
+    
+        <div class="logInForm">
+            <h1>Log-In</h1>
+            <form action="../Home.html">
+                <div class="inputData">
+                    <div class="userName">
+                        <label for="userName">Username:</label>
+                        <input type="text" id="userName" name="userName" placeholder="Enter your username" required>
+                    </div>
+                    
+                    <div class="password">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                    </div>
+                    
+                    <div class="radioChoices">
+                        <label>Your are:</label>
+                        <div class="choices">
+                            <div class="">
+                                <input type="radio" name="role" id="admin" value="admin">
+                                <label for="admin">Admin</label>
+                            </div>
+                            
+                            <div class="">
+                                <input type="radio" name="role" id="user" value="user" required>
+                                <label for="user">User</label>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="formBtn">
+                    <button class="logInBtn">Log In</button>
+                    
+                    <p>Don't have an account? <a href="./Sign-Up.html">Sign-Up</a></p>
+                </div>
+            </form>
+        </div>
+    </section>
+    
+    <!-- -------------------------------------------- footer  -->
+    <footer id="footer">
+        <section  class="footer">
+            <h2>CONTACT WITH US</h2>
+
+            <div class="accounts">
+                <a title="Esraa Emary" href="https://www.linkedin.com/in/esraa-emary-b372b8303/" target="blank"><i class='bx bxl-linkedin-square'></i></a>
+                <a title="Mohammed Atef" href="https://www.linkedin.com/in/mohammed-atef-b0a408299/" target="blank"><i class='bx bxl-linkedin-square'></i></a>
+                <a title="Mohammed Nabil" href="https://www.linkedin.com/in/mohamed-nabil-196869326/" target="blank"><i class='bx bxl-linkedin-square'></i></a>
+                <a title="George Malak" href="https://www.linkedin.com/in/george-malak204/" target="blank"><i class='bx bxl-linkedin-square'></i></a>
+                <a title="John Ayman" href="https://www.linkedin.com/in/john-ayman-aa30842b7/" target="blank"><i class='bx bxl-linkedin-square'></i></a>
+                <a title="Mariam Badr" href="https://www.linkedin.com/in/mariambadr13/" target="blank"><i class='bx bxl-linkedin-square'></i></a>
+            </div>
+
+            <div class="foot1">
+                <a href="../index.html">Home</a>
+                <a href="List-Page.html">Books</a>
+                <a href="About-Us.html">About Us</a>
+            </div>
+            
+            <div class="foot2">
+                <p class="copyright">
+                    © LibraSphere | All Rights Reserved
+                </p>
+            </div>
+        </section>
+    </footer>
+    
+    <script src="../assets/js/Storing.js"></script>
+</body>
+</html>
