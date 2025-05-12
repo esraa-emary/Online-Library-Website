@@ -11,4 +11,5 @@ urlpatterns = [
     path('LibraSphere/Profile', views.Profile, name='Profile'),
     path('LibraSphere/Login', views.Login, name='Login'),
     path('LibraSphere/Signup', views.Signup, name='Signup'),
+    path('LibraSphere/BorrowedBooks', views.BorrowedBooks, name='BorrowedBooks'),
 ]

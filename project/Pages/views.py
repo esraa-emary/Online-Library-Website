@@ -4,40 +4,87 @@ from .models import User,Book,Category
 # Create your views here.
 # Home
 def Home(request):
-    return render(request, 'index.html')
+    try:
+        username= request.GET.get('user')
+        user= User.objects.get(Name=username)
+        return render(request, 'index.html',{'user': user})
+    except:   
+            return render(request, 'index.html')
 # About
 def About(request):
-    return render(request, 'Pages/About-Us.html')
+    try:
+        userName= request.GET.get('user')
+        if userName != None:
+            user = User.objects.get(Name=userName)
+            return render(request, 'Pages/About-Us.html',{'user': user})
+    except:
+        return render(request, 'Pages/About-Us.html')
 
 # Book Reveiw
 def Bookreveiw(request):
     title= request.GET.get('title')
     book = Book.objects.get(Title=title)
-    return render(request, 'Pages/Book-Review.html', {'book': book})
+    username= request.GET.get('user')
+    if username != None:
+        user = User.objects.get(Name=username)
+        return render(request, 'Pages/Book-Review.html', {'book': book,'user': user})
+    else:
+        user = None
+        return render(request, 'Pages/Book-Review.html', {'book': book})
 # Borrow Book
 def BorrowBook(request):
-    return render(request, 'Pages/Borrowed-Books.html')
+    username= request.GET.get('user')
+    user= User.objects.get(Name=username)
+    return render(request, 'Pages/Borrowed-Books.html',{'user': user})
+# borrowed books
+def BorrowedBooks(request):
+    username= request.GET.get('user')
+    user= User.objects.get(Name=username)
+    return render(request, 'Pages/Borrowed-Books.html',{'user': user})
 # Borrow Page
 def BorrowPage(request):
-    return render(request, 'Pages/Borrow-Page.html')
+    userName= request.GET.get('user')
+    if userName != None:
+        user = User.objects.get(Name=userName)
+        return render(request, 'Pages/Borrow-Page.html',{'user': user})
+    else:
+        return render(request, 'Pages/Borrow-Page.html')
 
 
 # List Book
 def ListPage(request):
     books = Book.objects.all()
     categories = Category.objects.all()
-    context = {
-        'books': books,
-        'categories': categories
-    }
+    try:
+        userName= request.GET.get('user')
+        if userName != None:
+            user = User.objects.get(Name=userName)
+            context = {
+            'books': books,
+            'categories': categories,
+            'user': user
+            }
+    except:
+        
+        context = {
+            'books': books,
+            'categories': categories,
+
+        }   
     return render(request, 'Pages/List-Page.html', context)
 
 # Search
 def Search(request):
-    return render(request, 'Pages/Search.html')
+    userName= request.GET.get('user')
+    if userName != None:
+        user = User.objects.get(Name=userName)
+    return render(request, 'Pages/Search.html',{'user': user})
 # Profile
 def Profile(request):
-    return render(request, 'Pages/Profile.html')
+    userName = request.GET.get('user')
+    user = User.objects.get(Name=userName)
+    return render(request, 'Pages/Profile.html',{'user':user})
+    
 # Login
 def Login(request):
     userName=request.POST.get('userName')
@@ -46,7 +93,7 @@ def Login(request):
         try:
                 user=User.objects.get(Name=userName)
                 if(user.Password==password):
-                    return render(request,"index.html")
+                    return render(request,"index.html",{'user':user})
                 else:
                     return render(request, 'Pages/Log-In.html',{'errormsg':'Invalid username or password'})
         except :        
@@ -55,7 +102,7 @@ def Login(request):
             
                 
 
-    return render(request, 'Pages/Log-In.html')
+
 
 # Signup
 def Signup(request):

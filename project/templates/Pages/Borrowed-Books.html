@@ -18,7 +18,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Borrowed-Books</title>
-    <link rel="stylesheet" href="../assets/css/user-style.css">
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/user-style.css' %}">
+    
     <link rel="icon" href="../assets/img/icon.jpg">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Tangerine:wght@400;700&display=swap">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
@@ -42,13 +45,18 @@
             </div>
 
             <nav class="nav">
-                <a href="{%url 'Home'%}">Home</a>
-                <a href="{%url 'ListPage'%}">Books</a>
-                <a id="profile" href="{%url 'Profile'%}">Profile</a>
-                <a href="{%url 'About'%}">About US</a>
-                <a id="sign" class="first-button" href= "{%url 'Signup'%}" title="Sign-Up">Sign-Up</a>
-                <a id="login" href="{%url 'Login'%}" title="Log-In">Log-In</a>
-                <a id="logout"href="{%url 'Home'%}">Log-Out</a>
+                    <a href="{% url 'Home' %}?user={{user.Name|urlencode}}">Home</a>
+                <a href="{% url 'ListPage' %}?user={{user.Name|urlencode}}">Books</a>
+                {% if user.Name %}
+                <a style="color: #4f88ba;" id="profile" href="{% url 'Profile' %}?user={{user.Name|urlencode}}">Profile</a>
+                <a href="{% url 'About' %}?user={{user.Name|urlencode}}">About US</a>
+                {% else %}
+                <a id="sign" class="first-button" href="{% url 'Signup' %}?user={{user.Name|urlencode}}" title="Sign-Up">Sign-Up</a>
+                <a id="login" href="{% url 'Login' %}?user={{user.Name|urlencode}}" title="Log-In">Log-In</a>
+                {%endif%}
+                {% if user.Name %}
+                <a id="logout" href="{% url 'Home' %}">Log-Out</a>
+                {% endif %}
             </nav>
         </section>
     </header>

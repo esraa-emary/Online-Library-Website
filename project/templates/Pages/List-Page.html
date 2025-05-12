@@ -47,13 +47,18 @@
             </div>
 
             <nav class="nav">
-                <a href="{%url 'Home'%}">Home</a>
-                <a href="{%url 'ListPage'%}">Books</a>
-                <a id="profile" href="{%url 'Profile'%}">Profile</a>
-                <a href="{%url 'About'%}">About US</a>
-                <a id="sign" class="first-button" href= "{%url 'Signup'%}" title="Sign-Up">Sign-Up</a>
-                <a id="login" href="{%url 'Login'%}" title="Log-In">Log-In</a>
-                <a id="logout"href="{%url 'Home'%}">Log-Out</a>
+                   <a href="{% url 'Home' %}?user={{user.Name|urlencode}}">Home</a>
+                <a style="color: #4f88ba;"  href="{% url 'ListPage' %}?user={{user.Name|urlencode}}">Books</a>
+                {% if user.Name %}
+                <a id="profile" href="{% url 'Profile' %}?user={{user.Name|urlencode}}">Profile</a>
+                <a href="{% url 'About' %}?user={{user.Name|urlencode}}">About US</a>
+                {% else %}
+                <a id="sign" class="first-button" href="{% url 'Signup' %}?user={{user.Name|urlencode}}" title="Sign-Up">Sign-Up</a>
+                <a id="login" href="{% url 'Login' %}?user={{user.Name|urlencode}}" title="Log-In">Log-In</a>
+                {%endif%}
+                {% if user.Name %}
+                <a id="logout" href="{% url 'Home' %}">Log-Out</a>
+                {% endif %}
             </nav>
         </section>
     </header>
@@ -65,40 +70,41 @@
     <br>
     {%for category in categories%}
   
-   <div id="list-books" class="container">
-    <div class="booktype">
-    <h2>{{category.category}} Books</h2>
-    <div class="cards"></div>
-   </div>
-   {%for book in books%}
-   {% if book.category.id == category.id %}
-   <div  class="card">
-       <img src="{{book.image.url}}" alt="{{book.Title}}">
-                <div class="card-body">
-                    <h5 class="title">{{book.Title}}</h5>
-                    <p class="author">{{book.author}}</p>
-                    <p class="price">{{book.price}}</p>
-                    <span class="availability ${book.available ? 'available' : 'unavailable'}">
-                        {% comment %} {{book.available ? 'Available' : 'Unavailable until ' + book.returnDate}} {% endcomment %}
-                    </span>
-                    <div class="card-actions">
-                        <a href="{%url 'Bookreview'%}?title={{book.Title|urlencode}}">
-                            
-                            
-                            
-                           <button class="Book-Review-btn"><i class="fas fa-book-open"></i>Book Review</button></a>
-                           
-                        <a id="borrow" href="Borrow-Page.html?title=${encodeURIComponent(book.title)}&author=${encodeURIComponent(book.author)}">
-                            <button class="borrow-btn" ${!book.isAvailable ? 'disabled' : ''}>
-                                <i class="fas fa-hand-holding"></i>Borrow
-                            </button>
-                        </a>
+        <div class="booktype">
+            <h2>{{category.category}} Books</h2>
+        </div>
+        {%for book in books%}
+        {% if book.category.id == category.id %}
+        <div class="cards">
+                    <div  class="card">
+                        <img src="{{book.image.url}}" alt="{{book.Title}}">
+                        <h5 class="title">{{book.Title}}</h5>
+                        <p class="author">{{book.Author}}</p>
+                        <p class="price">{{book.Price}}</p>
+                        <span class="availability ${book.available ? 'available' : 'unavailable'}">
+                            {% comment %} {{book.available ? 'Available' : 'Unavailable until ' + book.returnDate}} {% endcomment %}
+                        </span>
+                        <div class="card-actions">
+                            <a href="{%url 'Bookreview'%}?title={{book.Title|urlencode}}">
+                                
+                                
+                                
+                                <button class="Book-Review-btn"><i class="fas fa-book-open"></i>Book Review</button></a>
+                                
+                                <a id="borrow" href="Borrow-Page.html?title=${encodeURIComponent(book.title)}&author=${encodeURIComponent(book.author)}">
+                                    <button class="borrow-btn" ${!book.isAvailable ? 'disabled' : ''}>
+                                        <i class="fas fa-hand-holding"></i>Borrow</button>
+                                    </a>
+                        </div>
                     </div>
-                </div>
-   </div>
+                        
+                    </div>
+            </div>
+        </div>
+    </div>
+        
      {% endif %}
         {% endfor %}
-    </div>
     {% endfor %}
      
      
