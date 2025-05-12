@@ -18,7 +18,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Log-In</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/user-style.css' %}">
     <link rel="icon" href="../assets/img/icon.jpg">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Tangerine:wght@400;700&display=swap">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
@@ -58,7 +59,8 @@
     
         <div class="logInForm">
             <h1>Log-In</h1>
-            <form action="../Home.html">
+            <form action="" method="post">
+                {% csrf_token %}
                 <div class="inputData">
                     <div class="userName">
                         <label for="userName">Username:</label>
@@ -69,26 +71,13 @@
                         <label for="password">Password:</label>
                         <input type="password" id="password" name="password" placeholder="Enter your password" required>
                     </div>
-                    
-                    <div class="radioChoices">
-                        <label>Your are:</label>
-                        <div class="choices">
-                            <div class="">
-                                <input type="radio" name="role" id="admin" value="admin">
-                                <label for="admin">Admin</label>
-                            </div>
-                            
-                            <div class="">
-                                <input type="radio" name="role" id="user" value="user" required>
-                                <label for="user">User</label>
-                            </div>
-                            
-                        </div>
-                    </div>
+                    {%if errormsg%}
+                   <p style="color:red"> {{errormsg}}</p>
+                {%endif%}  
                 </div>
-                
+                 
                 <div class="formBtn">
-                    <button class="logInBtn">Log In</button>
+                    <button type ="submit" class="logInBtn">Log In</button>
                     
                     <p>Don't have an account? <a href="./Sign-Up.html">Sign-Up</a></p>
                 </div>

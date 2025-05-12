@@ -40,7 +40,23 @@ def Profile(request):
     return render(request, 'Pages/Profile.html')
 # Login
 def Login(request):
+    userName=request.POST.get('userName')
+    password=request.POST.get('password')
+    if userName and password: 
+        try:
+                user=User.objects.get(Name=userName)
+                if(user.Password==password):
+                    return render(request,"index.html")
+                else:
+                    return render(request, 'Pages/Log-In.html',{'errormsg':'Invalid username or password'})
+        except :        
+            return render(request, 'Pages/Log-In.html',{'errormsg':'Invalid username or password'})
     return render(request, 'Pages/Log-In.html')
+            
+                
+
+    return render(request, 'Pages/Log-In.html')
+
 # Signup
 def Signup(request):
     username = request.POST.get('userName')
