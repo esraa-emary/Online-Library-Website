@@ -6,6 +6,11 @@ class User(models.Model):
     Email=models.CharField()
     Password=models.CharField(default="123456")
     Phone=models.IntegerField(null=True)
+    gender=[
+        ("male","Male"),
+        ("female","female"),
+    ]
+    sex=models.CharField(max_length=10,choices=gender,null=True)
     def __str__(self):
         return self.Name
 
@@ -25,7 +30,12 @@ class Book(models.Model):
     def __str__(self):
         return self.Title
    
-
+class borrowedBook(models.Model):
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    book=models.ForeignKey(Book,on_delete=models.CASCADE)
+    date=models.DateField(auto_now_add=True)
+    def __str__(self):
+        return self.user.Name + " borrowed " + self.book.Title
     
 
 # Create your models here.
