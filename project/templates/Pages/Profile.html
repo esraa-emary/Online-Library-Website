@@ -68,23 +68,24 @@
                 <div class="profile-avatar" id="userAvatar"></div>
             </div>
             
-            <form id="profileForm">
+            <form id="profileForm" method="post" action="{% url 'Profile' %}">
+                {% csrf_token %}
                 <div class="profile-section">
                     <h2 class="section-title">Personal Information</h2>
                     <div class="profile-form">
                         <div class="form-group">
                             <label for="name">Full Name</label>
-                            <input id="name" type="text" value ="{{user.Name}}"disabled>
+                            <input name='user' id="name" type="text" value ="{{user.Name}}"disabled>
                         </div>
                         
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input id="email" type="email" value="{{user.Email}}"disabled>
+                            <input name="email" id="email" type="email" value="{{user.Email}}"disabled>
                         </div>
                         
                         <div class="form-group">
                             <label for="phone">Phone Number</label>
-                            <input id="phone" type="tel" placeholder="Not provided" disabled>
+                            <input name="phone" id="phone" type="tel" placeholder="Not provided" disabled value="{{user.Phone}}">
                         </div>
                         
                         <div class="form-group">
@@ -131,7 +132,7 @@
                     <a id="borrowed" href="{%url 'BorrowedBooks' %}?user={{user.Name|urlencode}}" class="btn btn-primary">
                         <i class="fas fa-book"></i> My Borrowed Books
                     </a>
-                    <button type="button" id="saveBtn" class="btn btn-primary" style="display:none">
+                    <button type="submit" id="saveBtn" class="btn btn-primary" style="display:none">
                         <i class="fas fa-save"></i> Save Changes
                     </button>
                     <button type="button" id="cancelBtn" class="btn btn-secondary" style="display:none">
@@ -169,7 +170,72 @@
             </div>
         </section>
     </footer>
-    
-    <script src="../assets/js/Storing.js"></script>
+       <script >
+        if("{{user.sex}}"=="male"){
+            document.getElementById('male').checked=true;
+        }
+        else if("{{user.sex}}"=="female"){
+            document.getElementById('female').checked=true
+        }
+
+        var name=document.getElementById('name').value;
+        var phone=document.getElementById('phone').value;
+        var email=document.getElementById('email').value;
+    document.getElementById('editBtn').addEventListener('click', function() {
+        document.getElementById('name').disabled = false;
+        document.getElementById('email').disabled = false;
+        document.getElementById('phone').disabled = false;
+        document.getElementById('female').disabled = false;
+        document.getElementById('male').disabled = false;
+        document.getElementById('saveBtn').style.display = 'block';
+        document.getElementById('cancelBtn').style.display = 'block';
+        document.getElementById('editBtn').style.display = 'none';
+    });
+    document.getElementById('cancelBtn').addEventListener('click', function() {
+        document.getElementById('name').disabled = true;
+        document.getElementById('email').disabled = true;
+        document.getElementById('phone').disabled = true;
+        document.getElementById('saveBtn').style.display='none';
+        document.getElementById('cancelBtn').style.display='none';
+        document.getElementById('editBtn').style.display='block';
+        document.getElementById('email').value=email;
+        document.getElementById('phone').value=phone;
+        document.getElementById('name').value=name;
+
+    })
+    document.getElementById('profileForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        var xml=new XMLHttpRequest();
+        xml.open('POST', '{% url "Profile" %}?user={{ user.Name|urlencode }}', true);
+        var data = new FormData(this);
+        xml.onload = function() {
+            if (xml.status === 200) {
+                var response = JSON.parse(xml.responseText);
+                if (response.success) {
+                    alert('Profile updated successfully');
+                    document.getElementById('name').disabled = true;
+                    document.getElementById('email').disabled = true;
+                    document.getElementById('phone').disabled = true;
+                    document.getElementById('saveBtn').style.display='none';
+                    document.getElementById('cancelBtn').style.display='none';
+                    document.getElementById('editBtn').style.display='block';
+                    name=document.getElementById('name').value;
+                   window.location.href = "/LibraSphere/Profile?user=" + encodeURIComponent(name);
+                } else {
+                    alert('Error updating profile: ' + response.error_message);
+                }
+            }
+            else {
+                alert('Error: ' + xml.statusText);
+            }
+        };
+        xml.send(data);
+
+    })
+
+
+
+ </script>
+
 </body>
 </html>

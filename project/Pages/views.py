@@ -82,8 +82,29 @@ def Search(request):
 # Profile
 def Profile(request):
     userName = request.GET.get('user')
-    user = User.objects.get(Name=userName)
-    return render(request, 'Pages/Profile.html',{'user':user})
+    currentuser = User.objects.get(Name=userName)
+    if request.method == "POST":  # When the form is submitted
+        userName = request.GET.get('user')
+        currentuser = User.objects.get(Name=userName)
+        newName = request.POST.get('user')
+        newEmail = request.POST.get('email')
+        newphone = request.POST.get('phone')
+        newgender = request.POST.get('gender')
+        users = User.objects.all()
+        for user in users:
+            if user.Name == newName and user.Name != currentuser.Name:
+                return JsonResponse({'type':'erroruser','error_message': 'Username or email already exists'})
+            if user.Email == newEmail and user.Email != currentuser.Email:
+                return JsonResponse({'type':'erroremail','error_message': 'Username or email already exists'})
+        if newName != None:
+            currentuser.Name = newName
+            currentuser.Email = newEmail
+            currentuser.Phone = newphone
+            currentuser.sex = newgender
+            currentuser.save()
+            return JsonResponse({'success': True, 'user': newName})
+   
+    return render(request, 'Pages/Profile.html',{'user':currentuser})
     
 # Login
 def Login(request):
