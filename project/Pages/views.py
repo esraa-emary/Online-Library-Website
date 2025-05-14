@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import JsonResponse
 from .models import User,Book,Category
 # Create your views here.
 # Home
@@ -87,20 +87,28 @@ def Profile(request):
     
 # Login
 def Login(request):
-    userName=request.POST.get('userName')
-    password=request.POST.get('password')
-    if userName and password: 
-        try:
-                user=User.objects.get(Name=userName)
-                if(user.Password==password):
-                    return render(request,"index.html",{'user':user})
+    if request.method == "POST":  # When the form is submitted
+        userName = request.POST.get('userName')
+        password = request.POST.get('password')
+
+        if userName and password:
+            try:
+                user = User.objects.get(Name=userName)
+                if user.Password == password:
+                    # Return a JSON response indicating success
+                    return JsonResponse({'success': True, 'user': userName})
                 else:
-                    return render(request, 'Pages/Log-In.html',{'errormsg':'Invalid username or password'})
-        except :        
-            return render(request, 'Pages/Log-In.html',{'errormsg':'Invalid username or password'})
+                    # Return an error message if username or password is incorrect
+                    return JsonResponse({'success': False, 'error_message': 'Invalid username or password.'})
+            except User.DoesNotExist:
+                # Return an error message if the user does not exist
+                return JsonResponse({'success': False, 'error_message': 'Invalid username or password.'})
+        else:
+            # Return an error message if fields are missing
+            return JsonResponse({'success': False, 'error_message': 'Both fields are required.'})
+
+    # For GET requests (when the login page is first loaded), render the login page
     return render(request, 'Pages/Log-In.html')
-            
-                
 
 
 
