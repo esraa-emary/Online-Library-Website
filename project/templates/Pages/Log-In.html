@@ -46,33 +46,42 @@
         <!-- Footer content here -->
     </footer>
 
+    
     <script>
-    $(document).ready(function() {
+    document.addEventListener("DOMContentLoaded", function() {
         // Handle form submission
-        $('#loginForm').on('submit', function(event) {
+        var loginForm = document.getElementById('loginForm');
+        loginForm.addEventListener('submit', function(event) {
             event.preventDefault();  // Prevent normal form submission
 
-            var formData = $(this).serialize();  // Get the form data
+            var formData = new FormData(loginForm);  // Get the form data
 
-            $.ajax({
-                url: '{% url "Login" %}',  // The URL where the request should go (update if needed)
-                method: 'POST',  // Sending data with POST method
-                data: formData,  // The form data
-                success: function(response) {
-                    // If login is successful, you can redirect to another page
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '{% url "Login" %}', true);  // The URL where the request should go
+
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText);  // Parse the response as JSON
                     if (response.success) {
                         window.location.href = "{%url 'Home'%}?user={{user|urlencode}}";  // Redirect to homepage
                     } else {
                         // Display the error message if login failed
-                        $('#error-msg').text(response.error_message);
+                        document.getElementById('error-msg').textContent = response.error_message;
                     }
-                },
-                error: function() {
-                    $('#error-msg').text('There was an error with the login request.');
+                } else {
+                    document.getElementById('error-msg').textContent = 'There was an error with the login request.';
                 }
-            });
+            };
+
+            xhr.onerror = function() {
+                document.getElementById('error-msg').textContent = 'There was an error with the request.';
+            };
+
+            xhr.send(formData);  // Send the form data
         });
     });
-    </script>
+</script>
+
+   
 </body>
 </html>
