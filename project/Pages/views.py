@@ -87,6 +87,7 @@ def Profile(request):
     
 # Login
 def Login(request):
+    
     if request.method == "POST":  # When the form is submitted
         userName = request.POST.get('userName')
         password = request.POST.get('password')
@@ -121,14 +122,14 @@ def Signup(request):
     users= User.objects.all()
     for user in users:
         if user.Name == username:
-            return render(request, 'Pages/Sign-Up.html', {'erroruser': 'Username already exists'})
+            return JsonResponse( {'type':'erroruser','error_message': 'Username already exists'})
         if user.Email == email:
-            return render(request, 'Pages/Sign-Up.html', {'erroremail': 'Email already exists'})
+            return JsonResponse( {'type':'erroremail','error_message': 'Email already exists'})
     if password != confirm:
-        return render(request, 'Pages/Sign-Up.html', {'errorpassword': 'Password does not match'})
+        return JsonResponse( {'type':'errorpassword','error_message': 'Password does not match'})
     if username and email and password and confirm:
         user = User(Name=username, Email=email, Password=password)
         user.save()
-        return render(request, 'Pages/Sign-Up.html',{'successmessage': 'account created successfully'})
+        return JsonResponse({ 'success': True})
     return render(request, 'Pages/Sign-Up.html')
     

@@ -48,13 +48,12 @@
 
     
     <script>
-    document.addEventListener("DOMContentLoaded", function() {
+  
         // Handle form submission
         var loginForm = document.getElementById('loginForm');
-        loginForm.addEventListener('submit', function(event) {
-            event.preventDefault();  // Prevent normal form submission
-
-            var formData = new FormData(loginForm);  // Get the form data
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();  // Prevent normal form submission
+            var formData = new FormData(this);  // Get the form data
 
             var xhr = new XMLHttpRequest();
             xhr.open('POST', '{% url "Login" %}', true);  // The URL where the request should go
@@ -79,7 +78,7 @@
 
             xhr.send(formData);  // Send the form data
         });
-    });
+    
 </script>
 
    
