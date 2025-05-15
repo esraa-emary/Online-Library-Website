@@ -85,10 +85,11 @@ def Profile(request):
     currentuser = User.objects.get(Name=userName)
     if request.method == "POST":  # When the form is submitted
         userName = request.GET.get('user')
-        currentuser = User.objects.get(Name=userName)
+        # currentuser = User.objects.get(Name=userName)
         newName = request.POST.get('user')
         newEmail = request.POST.get('email')
         newphone = request.POST.get('phone')
+
         newgender = request.POST.get('gender')
         users = User.objects.all()
         for user in users:
@@ -99,7 +100,10 @@ def Profile(request):
         if newName != None:
             currentuser.Name = newName
             currentuser.Email = newEmail
-            currentuser.Phone = newphone
+            if(newphone != ""):
+             currentuser.Phone = newphone
+            else:
+             currentuser.Phone = None 
             currentuser.sex = newgender
             currentuser.save()
             return JsonResponse({'success': True, 'user': newName})

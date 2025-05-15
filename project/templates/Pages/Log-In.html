@@ -62,7 +62,8 @@
                 if (xhr.status === 200) {
                     var response = JSON.parse(xhr.responseText);  // Parse the response as JSON
                     if (response.success) {
-                        window.location.href = "{%url 'Home'%}?user={{user|urlencode}}";  // Redirect to homepage
+                       
+                        window.location.href = "{% url 'Home' %}?user=" + encodeURIComponent(response.user);;  // Redirect to homepage
                     } else {
                         // Display the error message if login failed
                         document.getElementById('error-msg').textContent = response.error_message;
