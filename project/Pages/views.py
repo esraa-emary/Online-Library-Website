@@ -35,16 +35,14 @@ def Bookreveiw(request):
 def BorrowBook(request):
     title = request.GET.get('title')
     username = request.GET.get('user')
-
     book = Book.objects.get(Title=title)
     user= User.objects.get(Name=username)
-
     if request.method == 'POST':
-        bookborrowed = borrowedBook(user=user, book=book)
-        bookborrowed.save()
-
-        if(book.available == True):
+        if book.available == True:
+            bookborrowed = borrowedBook(user=user, book=book)
+            bookborrowed.save()
             book.available = False
+            book.save()
             return JsonResponse({})
 
     return render(request, 'Pages/Borrow-Page.html', {'user': user, 'book': book})
@@ -103,7 +101,6 @@ def Profile(request):
     currentuser = User.objects.get(Name=userName)
     if request.method == "POST":  # When the form is submitted
         userName = request.GET.get('user')
-        # currentuser = User.objects.get(Name=userName)
         newName = request.POST.get('user')
         newEmail = request.POST.get('email')
         newphone = request.POST.get('phone')
@@ -131,7 +128,7 @@ def Profile(request):
 # Login
 def Login(request):
     
-    if request.method == "POST":  # When the form is submitted
+    if request.method == "POST": 
         userName = request.POST.get('userName')
         password = request.POST.get('password')
 
