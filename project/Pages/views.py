@@ -1,6 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404, redirect
 from django.http import JsonResponse
-from .models import User,Book,Category
+from .models import User,Book,Category,borrowedBook
 # Create your views here.
 # Home
 def Home(request):
@@ -33,14 +33,32 @@ def Bookreveiw(request):
         return render(request, 'Pages/Book-Review.html', {'book': book})
 # Borrow Book
 def BorrowBook(request):
-    username= request.GET.get('user')
+    title = request.GET.get('title')
+    username = request.GET.get('user')
+
+    book = Book.objects.get(Title=title)
     user= User.objects.get(Name=username)
-    return render(request, 'Pages/Borrowed-Books.html',{'user': user})
+
+    if request.method == 'POST':
+        bookborrowed = borrowedBook(user=user, book=book)
+        bookborrowed.save()
+
+        if(book.available == True):
+            book.available = False
+            return JsonResponse({})
+
+    return render(request, 'Pages/Borrow-Page.html', {'user': user, 'book': book})
+
+
 # borrowed books
 def BorrowedBooks(request):
     username= request.GET.get('user')
+    title = request.GET.get('title')
+    book = Book.objects.get(Title=title)
     user= User.objects.get(Name=username)
-    return render(request, 'Pages/Borrowed-Books.html',{'user': user})
+    return render(request, 'Pages/Borrowed-Books.html',{'user': user })
+
+
 # Borrow Page
 def BorrowPage(request):
     userName= request.GET.get('user')

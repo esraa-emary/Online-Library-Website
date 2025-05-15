@@ -65,7 +65,7 @@
 
 <!-- -------------------------------------------- List Of Books  -->
 <section id="Books" class="container">
-    <img src="../assets/img/logo.jpg" alt="LibraSphere Logo" class="logoPage">
+    <img src="{% static 'img/logo.jpg' %}" alt="LibraSphere Logo" class="logoPage">
     <p class="marginTitle"><Bold>Your gateway to knowledge and culture. Accessible for everyone.</Bold></p>
     <br>
     {%for category in categories%}
@@ -85,13 +85,13 @@
                             {% comment %} {{book.available ? 'Available' : 'Unavailable until ' + book.returnDate}} {% endcomment %}
                         </span>
                         <div class="card-actions">
-                            <a href="{%url 'Bookreview'%}?title={{book.Title|urlencode}}">
+                            <a href="{%url 'Bookreview'%}?title={{book.Title|urlencode}}&user={{user.Name|urlencode}}">
                                 
                                 
                                 
                                 <button class="Book-Review-btn"><i class="fas fa-book-open"></i>Book Review</button></a>
                                 
-                                <a id="borrow" href="Borrow-Page.html?title=${encodeURIComponent(book.title)}&author=${encodeURIComponent(book.author)}">
+                                <a id="borrow" href="{%url 'BorrowBook'%}?title={{book.Title|urlencode}}&user={{user.Name|urlencode}}">
                                     <button class="borrow-btn" ${!book.isAvailable ? 'disabled' : ''}>
                                         <i class="fas fa-hand-holding"></i>Borrow</button>
                                     </a>

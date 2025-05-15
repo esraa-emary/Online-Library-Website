@@ -18,7 +18,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Borrowed-Book</title>
-    <link rel="stylesheet" href="../assets/css/user-style.css">
+    {% load static%}
+    <link rel="stylesheet" href="{%static 'css/user-style.css'%}">
     <link rel="icon" href="../assets/img/icon.jpg">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Tangerine:wght@400;700&display=swap">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
@@ -59,34 +60,40 @@
     </header>
 
 <!-- -------------------------------------------- Borrow -->
-
-      <section class="borrow">
-        <div class="container">
-            <h1>Borrow Book</h1>
-            <form id="borrowForm">
-                <div class="form-group">
-                    <label for="title">Book Title:</label>
-                    <input type="text" id="title" readonly>
+<form id="borrowForm" method="post" action="{% url 'BorrowBook' %}?user={{ user.Name|urlencode }}&title={{ book.Title|urlencode }}">
+    {% csrf_token %}
+    <section class="borrow">
+        <div id="bookReview"> 
+            <div class="r-p-main">
+                <div class="book-box">
+                    <div class="book-box-img">
+                        <img id="bookCover" src="{{ book.image.url }}" alt="Book Cover"> 
+                    </div>
+                    <div class="book-box-content">
+                        <div class="book-details">
+                            <div id="bookDetailsContainer">
+                                <h3>Book Title: <span id="bookTitle">{{ book.Title }}</span></h3>
+                                <h3>Book Category: <span id="bookCategory">{{ book.category }}</span></h3>
+                                <h3>Author: <span id="bookAuthor">{{ book.Author }}</span></h3>
+                                <h3>Price: <span id="bookPrice">{{ book.Price }}</span></h3> 
+                                <h3>Description: <span id="bookDescription">{{ book.description }}</span></h3>
+                                <p id="bookStatus" class="status-badge"></p>
+                            </div>
+                        </div>
+                        <div style="display: flex;">
+                            <a href="{% url 'ListPage' %}?user={{ user.Name|urlencode }}">
+                                <button type="button" style="width: 200px; margin: 20px;">Back to list</button>
+                            </a>
+                            <button type="submit" style="width: 200px; margin: 20px;">Borrow</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="author">Author:</label>
-                    <input type="text" id="author" readonly>
-                </div>
-                <div class="form-group">
-                    <label for="category">Category:</label>
-                    <input type="text" id="category" readonly>
-                </div>
-                <div class="form-group">
-                    <label for="price">Price:</label>
-                    <input type="text" id="price" readonly>
-                </div>
-                <div class="buttons">
-                    <button type="button" id="borrowBtn" class="borrow-btn">Borrow</button>
-                    <a onclick="window.location.href='List-Page.html'">Back to Books</a>
-                </div>
-            </form>
-        </div>    
+            </div>
+        </div>
     </section>
+</form>
+
+    
        
        
     <!-- -------------------------------------------- footer  -->
@@ -117,6 +124,16 @@
         </section>
     </footer>
     
-    <script src="../assets/js/Storing.js"></script>
+    <script>
+        let user = '{{user.Name}}'
+        myform = document.getElementById('borrowForm');
+        myform.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert(" Book Borrowed Successfully");
+            window.location.href = "{% url 'ListPage' %}?user=" + user;
+        
+    });
+        
+    </script>
 </body>
 </html>
