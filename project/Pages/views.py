@@ -51,10 +51,17 @@ def BorrowBook(request):
 # borrowed books
 def BorrowedBooks(request):
     username= request.GET.get('user')
-    title = request.GET.get('title')
-    book = Book.objects.get(Title=title)
     user= User.objects.get(Name=username)
-    return render(request, 'Pages/Borrowed-Books.html',{'user': user })
+    borrowed= borrowedBook.objects.filter(user=user)
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        book = Book.objects.get(Title=title)
+        borrowedBook.objects.filter(user=user, book=book).delete()
+        book.available = True
+        book.save()
+        return JsonResponse({'success': True})
+
+    return render(request, 'Pages/Borrowed-Books.html',{'user': user ,'borrowed': borrowed})
 
 
 # Borrow Page
