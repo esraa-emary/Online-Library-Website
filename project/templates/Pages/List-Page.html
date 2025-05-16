@@ -73,14 +73,14 @@
         <div class="booktype">
             <h2>{{category.category}} Books</h2>
         </div>
+        <div class="cards">
         {%for book in books%}
         {% if book.category.id == category.id %}
-        <div class="cards">
                     <div  class="card">
                         <img src="{{book.image.url}}" alt="{{book.Title}}">
                         <h5 class="title">{{book.Title}}</h5>
                         <p class="author">{{book.Author}}</p>
-                        <p class="price">{{book.Price}}</p>
+                        <p class="price">{{book.Price}}$</p>
                         <span class="availability ${book.available ? 'available' : 'unavailable'}">
                             {% comment %} {{book.available ? 'Available' : 'Unavailable until ' + book.returnDate}} {% endcomment %}
                         </span>
@@ -98,13 +98,10 @@
                         </div>
                     </div>
                         
-                    </div>
-            </div>
-        </div>
-    </div>
-        
-     {% endif %}
-        {% endfor %}
+                    
+                    {% endif %}
+                    {% endfor %}
+                </div>
     {% endfor %}
      
      

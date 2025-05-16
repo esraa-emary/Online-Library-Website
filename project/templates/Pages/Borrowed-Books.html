@@ -65,56 +65,61 @@
     <section id="Books" class="container">
         <img src="../assets/img/logo.jpg" alt="LibraSphere Logo" class="logoPage">
         <p class="marginTitle"><Bold>Your gateway to knowledge and culture. Accessible for everyone.</Bold></p>
+        {% if not borrowed %}
         
             <div class="container">
     <div class="borrowed-books-container">
         <h1>My Borrowed Books</h1>
+         <p>You haven't borrowed any books yet.</p>
+    </div>
+</div>
+    
 
-        {% if borrowed %}
 
-        
+        {%else%}
+    <section id="books">
         <div class="booktype">
             <h2>{{ group.grouper }} Books</h2>
-            <div class="cards">
+        </div>
+        <div class="cards">
                         {% for borrow in borrowed %}
-                            <form method="POST"  id="return-form">
-                                {% csrf_token %}
+                        <form method="POST"  id="return-form">
+                            {% csrf_token %}
+                            <input type="hidden" id="title" name="title" value="{{ borrow.book.Title }}">
+                         </form>
+                        <div class="card">
                             
-                        
-                            <div class="card">
-                                <img src="{{ borrow.book.image.url }}" alt="{{ book.Title }}">
-                                <div class="card-body">
-                                    <h5 class="title"  >{{ borrow.book.Title }}</h5>
-                                    <input type="hidden" id="title" name="title" value="{{ borrow.book.Title }}">
-
-                                    <p class="author">{{ borrow.book.Author }}</p>
-                                    <p class="price">{{ borrow.book.Price }}$</p>
-                                   
-                                    <div class="card-actions">
-                                        <a href="{% url 'Bookreview' %}?title={{ borrow.book.Title|urlencode }}&author={{ borrow.book.author|urlencode }}">
-                                            <button class="Book-Review-btn"><i class="fas fa-book-open"></i>Book Review</button>
-                                        </a>
-                                       
-                                          
+                            
+                            <img src="{{ borrow.book.image.url }}" alt="{{ book.Title }}">
+                            <h5 class="title"  >{{ borrow.book.Title }}</h5>
+                            
+                            <p class="author">{{ borrow.book.Author }}</p>
+                            <p class="price">{{ borrow.book.Price }}$</p>
+                            
+                            <div class="card-actions">
+                                <a href="{% url 'Bookreview' %}?title={{ borrow.book.Title|urlencode }}&author={{ borrow.book.author|urlencode }}">
+                                    <button class="Book-Review-btn"><i class="fas fa-book-open"></i>Book Review</button>
+                                </a>
+                                
+                                
                                                 <button class="return-btn" name="return" id="return" type="submit" >
                                                     <i class="fas fa-hand-holding"></i>return book
                                                 </button>
                                             
                                     
                                     </div>
-                                </div>
                             </div>
+        </div>
                       
-                    </div>
-                </div>
+                    
+      
                 </form>
+    </section>
             {% endfor %}    
     
-        {% else %}
-            <p>You haven't borrowed any books yet.</p>
+                   
         {% endif %}
-    </div>
-</div>
+  
 
         </section>
     </footer>
