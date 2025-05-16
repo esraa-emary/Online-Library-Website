@@ -92,7 +92,7 @@
                                 <button class="Book-Review-btn"><i class="fas fa-book-open"></i>Book Review</button></a>
                                 
                                 <a id="borrow" href="{%url 'BorrowBook'%}?title={{book.Title|urlencode}}&user={{user.Name|urlencode}}">
-                                    <button class="borrow-btn" ${!book.isAvailable ? 'disabled' : ''}>
+                                    <button class="borrow-btn" {% if not book.available %} disabled {% endif %}>
                                         <i class="fas fa-hand-holding"></i>Borrow</button>
                                     </a>
                         </div>
