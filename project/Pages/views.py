@@ -99,9 +99,19 @@ def ListPage(request):
 # Search
 def Search(request):
     userName= request.GET.get('user')
-    if userName != None:
-        user = User.objects.get(Name=userName)
-    return render(request, 'Pages/Search.html',{'user': user})
+    
+    user = User.objects.get(Name=userName)
+    query = request.GET.get('q')
+    # Proceed with filtering (example for books)
+    results = Book.objects.filter(
+        Title__icontains=query
+    ) 
+    return render(request, 'Pages/Search.html', {
+        'query': query,
+        'books': results,
+        'user':user
+    })    
+   
 # Profile
 def Profile(request):
     userName = request.GET.get('user')

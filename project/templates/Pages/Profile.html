@@ -35,10 +35,14 @@
             </div>
 
             <div class="ajax" style="position: relative;">
-                <form class="search-bar" action="Search.html" method="GET">
-                    <a style="cursor: auto;" type="submit" class="search-icon"><i class="bx bx-search" title="Search"></i></a>
-                    <input id="search" name="q" type="text" placeholder="Search by Title, Author or Category" title="Search" onkeyup="showHint2(this.value)" autocomplete="off">
-                </form>
+               <form class="search-bar" action="{% url 'Search' %}" method="GET">
+    <input type="hidden" name="user" value="{{ user.Name }}">
+    <button type="submit" class="search-icon" style="background: none; border: none;">
+        <i class="bx bx-search" title="Search"></i>
+    </button>
+    <input id="search" name="q" type="text" placeholder="Search by Title, Author or Category" title="Search" onkeyup="showHint2(this.value)" autocomplete="off">
+</form>
+
                 <div id="txtHint" class="results-container"></div>
             </div>
 

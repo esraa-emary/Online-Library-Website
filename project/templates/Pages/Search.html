@@ -17,6 +17,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/user-style.css' %}">
+  
     <link rel="stylesheet" href="../assets/css/user-style.css">
     <link rel="icon" href="img/icon.jpg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
@@ -36,10 +39,14 @@
             </div>
             
             <div class="ajax" style="position: relative;">
-                <form class="search-bar" action="Search.html" method="GET">
-                    <a style="cursor: auto;" type="submit" class="search-icon"><i class="bx bx-search" title="Search"></i></a>
-                    <input id="search" name="q" type="text" placeholder="Search by Title, Author or Category" title="Search" onkeyup="showHint2(this.value)" autocomplete="off">
-                </form>
+               <form class="search-bar" action="{% url 'Search' %}" method="GET">
+                <input type="hidden" name="user" value="{{ user.Name }}">
+                <button type="submit" class="search-icon" style="background: none; border: none;">
+                    <i class="bx bx-search" title="Search"></i>
+                </button>
+                <input id="search" name="q" type="text" placeholder="Search by Title, Author or Category" title="Search" onkeyup="showHint2(this.value)" autocomplete="off">
+</form>
+
                 <div id="txtHint" class="results-container"></div>
             </div>
 
@@ -71,33 +78,50 @@
             <div id="search-page"></div>
         </section>
     </main>
+    <section id="Books" class="container">
+    <img src="{% static 'img/logo.jpg' %}" alt="LibraSphere Logo" class="logoPage">
+    <p class="marginTitle"><Bold>Your gateway to knowledge and culture. Accessible for everyone.</Bold></p>
+    <br>
+        <div class="cards">
+        {% for book in books %}
+            <div class="card">
+            <img src="{{ book.image.url }}" alt="{{ book.Title }}">
+            <h5 class="title">{{ book.Title }}</h5>
+            <p class="author">{{ book.Author }}</p>
+            <p class="price">{{ book.Price }}$</p>
+
+            <span class="availability {% if book.available %}available{% else %}unavailable{% endif %}">
+                {% if book.available %}
+                    Available
+                {% else %}
+                    Unavailable until {{ book.returnDate }}
+                {% endif %}
+            </span>
+
+            <div class="card-actions">
+                <a href="{% url 'Bookreview' %}?title={{ book.Title|urlencode }}&user={{ user.Name|urlencode }}">
+                    <button class="Book-Review-btn">
+                        <i class="fas fa-book-open"></i>Book Review
+                    </button>
+                </a>
+                <a id="borrow" href="{% url 'BorrowBook' %}?title={{ book.Title|urlencode }}&user={{ user.Name|urlencode }}">
+                    <button class="borrow-btn" {% if not book.available %}disabled{% endif %}>
+                        <i class="fas fa-hand-holding"></i>Borrow
+                    </button>
+                </a>
+            </div>
+    </div>
+</div>    
+{% endfor %}
+
+     
+     
+
+</section>
 
     <!-- Add this script at the end of the body -->
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Initialize book store
-        bookStore.loadFromLocalStorage();
-        
-        // Get search query from URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const searchQuery = urlParams.get('q');
-        
-        if (searchQuery) {
-            // Display search results
-            bookStore.PrintSearch(bookStore.getBooks());
-        } else {
-            // Show message if no search query
-            const container = document.getElementById("search-page");
-            if (container) {
-                container.innerHTML = `
-                    <div class="no-results">
-                        <p>Please enter a search term to find books</p>
-                        <a href="List-Page.html" class="browse-btn">Browse All Books</a>
-                    </div>
-                `;
-            }
-        }
-    });
+  
     </script>
 
     <!-- -------------------------------------------- footer  -->
