@@ -24,7 +24,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Tangerine:wght@400;700&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Prata&display=swap">
     <script src="{% static 'js/script.js' %}" defer></script>
-    <script src="{% static 'js/Storing.js' %}" defer></script>
     <title>LibraSphere</title>
 </head>
 <body>
@@ -79,150 +78,24 @@
         <section id="Books" class="slider-books">
             <h2>Books</h2>
             <div class="slider">
-                <a onclick="prevSlide1()" class="slider-btn prev1"></a>
+                <a onclick="prevSlide1()" class="slider-btn prev1"><</a>
 
                 <div class="cards">
-                    <div class="card">
-                        <img src="{% static 'img/Books/Novel/N (1).jpg' %}" alt="The Left Hand of God">
+                    {% for book in books %}
+                    <div class="card" >
+                        <img src={{book.image.url}} alt="">
                         <div class="card-body">
-                            <h5>The Left Hand of God</h5>
-                            <p class="author">Paul Hoffman</p>
-                            <p class="price">30$</p>
+                            <h5>{{book.Title}}</h5>
+                            <p class="author">{{book.Author}}</p>
+                            <p class="price">{{book.Price}}$</p>
                             <div class="card-actions">
-                                <a href="Pages/Book-Review.html?title=The%20Left%20Hand%20of%20God&author=Paul%20Hoffman">
+                                <a href="{% url 'Bookreview' %}?title={{book.Title|urlencode}}">
                                     <button class="Book-Review-btn"><i class="fas fa-book-open"></i>Book Review</button>
                                 </a>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="card">
-                        <img src="{% static 'img/Books/Novel/N (3).jpg' %}" alt="Winter's Arrow">
-                        <div class="card-body">
-                            <h5>Winter's Arrow</h5>
-                            <p class="author">Kimbra Swain</p>
-                            <p class="price">90$</p>
-                            <div class="card-actions">
-                                <a href="Pages/Book-Review.html?title=Winter's%20Arrow&author=Kimbra%20Swain">
-                                    <button class="Book-Review-btn">
-                                        <i class="fas fa-book-open"></i> Book Review
-                                    </button>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="card">
-                        <img src="{% static 'img/Books/Novel/N (2).jpg' %}" alt="The Beast of the Highlands">
-                        <div class="card-body">
-                            <h5>The Beast of the Highlands</h5>
-                            <p class="author">L.D. Goffigan</p>
-                            <p class="price">110$</p>
-                            <div class="card-actions">
-                                <a href="Pages/Book-Review.html?title=The%20Beast%20of%20the%20Highlands&author=L.D.%20Goffigan">
-                                    <button class="Book-Review-btn">
-                                        <i class="fas fa-book-open"></i> Book Review
-                                    </button>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="card">
-                        <img src="{% static 'img/Books/Novel/N (4).jpg' %}" alt="The Waning">
-                        <div class="card-body">
-                            <h5>The Waning</h5>
-                            <p class="author">Kristen Martin</p>
-                            <p class="price">100$</p>
-                            <div class="card-actions">
-                                <a href="Pages/Book-Review.html?title=The%20Waning&author=Kristen%20Martin">
-                                    <button class="Book-Review-btn">
-                                        <i class="fas fa-book-open"></i> Book Review
-                                    </button>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="card">
-                        <img src="{% static 'img/Books/Novel/N (5).jpg' %}" alt="Crime and Punishment">
-                        <div class="card-body">
-                            <h5>Crime and Punishment</h5>
-                            <p class="author">Fyodor Dostoyevsky</p>
-                            <p class="price">210$</p>
-                            <div class="card-actions">
-                                <a href="Pages/Book-Review.html?title=Crime%20and%20Punishment&author=Fyodor%20Dostoyevsky">
-                                    <button class="Book-Review-btn">
-                                        <i class="fas fa-book-open"></i> Book Review
-                                    </button>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="card">
-                        <img src="{% static 'img/Books/Psychology/ps (2).jpg' %}" alt="Defy the Stars">
-                        <div class="card-body">
-                            <h5>Defy the Stars</h5>
-                            <p class="author">Claudia Gray</p>
-                            <p class="price">20$</p>
-                            <div class="card-actions">
-                                <a href="Pages/Book-Review.html?title=Defy%20the%20Stars&author=Claudia%20Gray">
-                                    <button class="Book-Review-btn">
-                                        <i class="fas fa-book-open"></i> Book Review
-                                    </button>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="card">
-                        <img src="{% static 'img/Books/Programming/P (3).jpg' %}" alt="Programming from the Ground Up">
-                        <div class="card-body">
-                            <h5>Programming from the Ground Up</h5>
-                            <p class="author">Jonathan Bartlett</p>
-                            <p class="price">65$</p>
-                            <div class="card-actions">
-                                <a href="Pages/Book-Review.html?title=Programming%20from%20the%20Ground%20Up&author=Jonathan%20Bartlett">
-                                    <button class="Book-Review-btn">
-                                        <i class="fas fa-book-open"></i> Book Review
-                                    </button>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="card">
-                        <img src="{% static 'img/Books/Programming/P (2).jpg' %}" alt="White Belt">
-                        <div class="card-body">
-                            <h5>Mastery, White Belt</h5>
-                            <p class="author">Anonymous</p>
-                            <p class="price">70$</p>
-                            <div class="card-actions">
-                                <a href="Pages/Book-Review.html?title=Mastery%2C%20White%20Belt&author=Anonymous">
-                                    <button class="Book-Review-btn">
-                                        <i class="fas fa-book-open"></i> Book Review
-                                    </button>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="card">
-                        <img src="{% static 'img/Books/Psychology/ps (3).jpg' %}" alt="Games People Play">
-                        <div class="card-body">
-                            <h5>Games People Play</h5>
-                            <p class="author">Eric Berne, M.D.</p>
-                            <p class="price">65$</p>
-                            <div class="card-actions">
-                                <a href="Pages/Book-Review.html?title=Games%20People%20Play&author=Eric%20Berne%2C%20M.D.">
-                                    <button class="Book-Review-btn">
-                                        <i class="fas fa-book-open"></i> Book Review
-                                    </button>
-                                </a>
-                            </div>
-                        </div>
-                    </div>                                        
+                    </div>       
+                    {% endfor %}                              
                 </div>
 
                 <a onclick="nextSlide1()" class="slider-btn next1">></a>
@@ -245,7 +118,7 @@
                     <center><p class="customerFeedback">“Excellent delivery.
                         What made the difference for me to buy this product from this store were low shipping costs. Even though my product was only € 15.
                         For another large chain, shipping costs were charged below a certain amount.”</p></center><br>
-                    <center><h3>Mahy Farook</h3></center>
+                    <centenr><h3>Mahy Farook</h3></centner>
                 </div>
 
                 <div class="slide">

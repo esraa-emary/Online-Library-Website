@@ -5,12 +5,13 @@ from django.db.models import Q
 # Create your views here.
 # Home
 def Home(request):
+    books=Book.objects.all()
     try:
         username= request.GET.get('user')
         user= User.objects.get(Name=username)
-        return render(request, 'index.html',{'user': user})
+        return render(request, 'index.html',{'user': user,'books':books})
     except:   
-            return render(request, 'index.html')
+            return render(request, 'index.html',{'books':books})
 # About
 def About(request):
     try:
@@ -103,7 +104,6 @@ def Search(request):
     
     user = User.objects.get(Name=userName)
     query = request.GET.get('q')
-    # Proceed with filtering (example for books)
     results = Book.objects.filter(
         Q(Title__icontains=query)|
         Q(Author__icontains=query)|
