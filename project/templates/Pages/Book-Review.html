@@ -25,8 +25,8 @@
     <link rel="icon" href="{% static 'img/icon.jpg'%}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Tangerine:wght@400;700&display=swap">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
-    <script src="{%static 'js/script.js'%}" defer></script>
-    <script src="../assets/js/Storing.js" defer></script>
+   
+    
 </head>
 <body >
     <!-- -------------------------------------------- header  -->
@@ -37,8 +37,11 @@
             </div>
 
             <div class="ajax" style="position: relative;">
-                <form class="search-bar" action="Search.html" method="GET">
-                    <a style="cursor: auto;" type="submit" class="search-icon"><i class="bx bx-search" title="Search"></i></a>
+               <form class="search-bar" action="{% url 'Search' %}" method="GET">
+                    <input type="hidden" name="user" value="{{ user.Name }}">
+                    <button type="submit" class="search-icon" style="background: none; border: none;">
+                    <i class="bx bx-search" title="Search"></i>
+                    </button>
                     <input id="search" name="q" type="text" placeholder="Search by Title, Author or Category" title="Search" onkeyup="showHint2(this.value)" autocomplete="off">
                 </form>
                 <div id="txtHint" class="results-container"></div>
@@ -76,7 +79,7 @@
                         <h3>Book Title: <span id="bookTitle">{{book.Title}}</span></h3>
                         <h3>Book Category: <span id="bookCategory">{{book.category}}</span></h3>
                         <h3>Author: <span id="bookAuthor">{{book.Author}}</span></h3>
-                        <h3>Price: <span id="bookPrice">{{book.Price}}</span></h3> 
+                        <h3>Price: <span id="bookPrice">{{book.Price}}$</span></h3> 
                         <h3>Description: <span id="bookDescription">{{book.description}}</span></h3>
                         <p id="bookStatus" class="status-badge"></p>
                         </div>

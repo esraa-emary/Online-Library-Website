@@ -1,6 +1,7 @@
 from django.shortcuts import render,get_object_or_404, redirect
 from django.http import JsonResponse
 from .models import User,Book,Category,borrowedBook
+from django.db.models import Q
 # Create your views here.
 # Home
 def Home(request):
@@ -104,7 +105,10 @@ def Search(request):
     query = request.GET.get('q')
     # Proceed with filtering (example for books)
     results = Book.objects.filter(
-        Title__icontains=query
+        Q(Title__icontains=query)|
+        Q(Author__icontains=query)|
+        Q(category__category__icontains=query)
+
     ) 
     return render(request, 'Pages/Search.html', {
         'query': query,

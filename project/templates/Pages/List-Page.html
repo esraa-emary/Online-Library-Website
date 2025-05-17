@@ -20,14 +20,11 @@
     <title>Books</title>
     {% load static%}
     <link rel="stylesheet" href="{%static 'css/user-style.css'%}">
-    {% comment %} <link rel="icon" href="{% static'img/icon.jpg'%}"> {% endcomment %}
+     <link rel="icon" href="{% static 'img/icon.jpg' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Tangerine:wght@400;700&display=swap">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
-    {% comment %} {% load static%}
-    <script src="{%static 'js/script.js'%}" defer></script> {% endcomment %}
-    {% comment %} {% load static %}
-    <script src="{% static 'js/Storing.js' %}" defer></script> {% endcomment %}
+ 
     
 </head>
 <body >
@@ -39,8 +36,11 @@
             </div>
 
             <div class="ajax" style="position: relative;">
-                <form class="search-bar" action="Search.html" method="GET">
-                    <a style="cursor: auto;" type="submit" class="search-icon"><i class="bx bx-search" title="Search"></i></a>
+                <form class="search-bar" action="{% url 'Search' %}" method="GET">
+                    <input type="hidden" name="user" value="{{ user.Name }}">
+                    <button type="submit" class="search-icon" style="background: none; border: none;">
+                    <i class="bx bx-search" title="Search"></i>
+                    </button>
                     <input id="search" name="q" type="text" placeholder="Search by Title, Author or Category" title="Search" onkeyup="showHint2(this.value)" autocomplete="off">
                 </form>
                 <div id="txtHint" class="results-container"></div>
@@ -82,7 +82,12 @@
                         <p class="author">{{book.Author}}</p>
                         <p class="price">{{book.Price}}$</p>
                         <span class="availability ${book.available ? 'available' : 'unavailable'}">
-                            {% comment %} {{book.available ? 'Available' : 'Unavailable until ' + book.returnDate}} {% endcomment %}
+                        <span class="availability {% if book.available %}available{% else %}unavailable{% endif %}">
+                        {% if book.available %}
+                            Available
+                        {% else %}
+                            Unavailable 
+                        {% endif %}
                         </span>
                         <div class="card-actions">
                             <a href="{%url 'Bookreview'%}?title={{book.Title|urlencode}}&user={{user.Name|urlencode}}">
