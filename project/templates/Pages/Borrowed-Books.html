@@ -48,14 +48,19 @@
 
             <nav class="nav">
                     <a href="{% url 'Home' %}?user={{user.Name|urlencode}}">Home</a>
-                <a href="{% url 'ListPage' %}?user={{user.Name|urlencode}}">Books</a>
+               
                 {% if user.Name %}
-                <a style="color: #4f88ba;" id="profile" href="{% url 'Profile' %}?user={{user.Name|urlencode}}">Profile</a>
+                <a  style="color: #4f88ba;" id="profile" href="{% url 'Profile' %}?user={{user.Name|urlencode}}">Profile</a>
                 <a href="{% url 'About' %}?user={{user.Name|urlencode}}">About US</a>
                 {% else %}
                 <a id="sign" class="first-button" href="{% url 'Signup' %}?user={{user.Name|urlencode}}" title="Sign-Up">Sign-Up</a>
                 <a id="login" href="{% url 'Login' %}?user={{user.Name|urlencode}}" title="Log-In">Log-In</a>
                 {%endif%}
+                {% if user.isadmin %}
+                <a  href="{% url "ManageBooks" %}?user={{user.Name|urlencode}}">Manage Books</a>
+                {%elif user.Name%}
+                    <a  href="{% url 'ListPage' %}?user={{user.Name|urlencode}}">Books</a>
+                {% endif %}
                 {% if user.Name %}
                 <a id="logout" href="{% url 'Home' %}">Log-Out</a>
                 {% endif %}

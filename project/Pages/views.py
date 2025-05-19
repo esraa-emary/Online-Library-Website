@@ -145,6 +145,16 @@ def Profile(request):
             return JsonResponse({'success': True, 'user': newName})
    
     return render(request, 'Pages/Profile.html',{'user':currentuser})
+def ManageBooks(request):
+    userName= request.GET.get('user')
+    user=User.objects.get(Name=userName)
+    books=Book.objects.all()
+
+    return render(request,'Pages\Manage-Books.html',{'user':user,'books':books})
+def AddBooks(request):
+    return render(request,'Pages\Add-Book.html')
+def EditBooks(request):
+    return render(request,'Pages\Edit-Book.html')
     
 # Login
 def Login(request):
@@ -181,6 +191,7 @@ def Signup(request):
     password = request.POST.get('password')
     confirm = request.POST.get('confirmPassword')
     users= User.objects.all()
+    isadmin=request.POST.get('role')
     for user in users:
         if user.Name == username:
             return JsonResponse( {'type':'erroruser','error_message': 'Username already exists'})
@@ -189,8 +200,12 @@ def Signup(request):
     if password != confirm:
         return JsonResponse( {'type':'errorpassword','error_message': 'Password does not match'})
     if username and email and password and confirm:
-        user = User(Name=username, Email=email, Password=password)
-        user.save()
+        if(isadmin=='admin'):
+            user = User(Name=username, Email=email, Password=password,isadmin=True)
+            user.save()
+        else:
+            user = User(Name=username, Email=email, Password=password,isadmin=False)
+            user.save()
         return JsonResponse({ 'success': True})
     return render(request, 'Pages/Sign-Up.html')
     

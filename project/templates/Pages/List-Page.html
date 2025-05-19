@@ -47,8 +47,8 @@
             </div>
 
             <nav class="nav">
-                   <a href="{% url 'Home' %}?user={{user.Name|urlencode}}">Home</a>
-                <a style="color: #4f88ba;"  href="{% url 'ListPage' %}?user={{user.Name|urlencode}}">Books</a>
+                    <a href="{% url 'Home' %}?user={{user.Name|urlencode}}">Home</a>
+                
                 {% if user.Name %}
                 <a id="profile" href="{% url 'Profile' %}?user={{user.Name|urlencode}}">Profile</a>
                 <a href="{% url 'About' %}?user={{user.Name|urlencode}}">About US</a>
@@ -56,6 +56,11 @@
                 <a id="sign" class="first-button" href="{% url 'Signup' %}?user={{user.Name|urlencode}}" title="Sign-Up">Sign-Up</a>
                 <a id="login" href="{% url 'Login' %}?user={{user.Name|urlencode}}" title="Log-In">Log-In</a>
                 {%endif%}
+                {% if user.isadmin %}
+                <a href="{% url "ManageBooks" %}?user={{user.Name|urlencode}}">Manage Books</a>
+                {%elif user.Name%}
+                    <a style="color: #4f88ba;" href="{% url 'ListPage' %}?user={{user.Name|urlencode}}">Books</a>
+                {% endif %}
                 {% if user.Name %}
                 <a id="logout" href="{% url 'Home' %}">Log-Out</a>
                 {% endif %}
@@ -72,7 +77,7 @@
   
         <div class="booktype">
             <h2>{{category.category}} Books</h2>
-        </div>
+
         <div class="cards">
         {%for book in books%}
         {% if book.category.id == category.id %}

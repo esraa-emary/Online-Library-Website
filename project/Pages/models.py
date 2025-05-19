@@ -11,6 +11,7 @@ class User(models.Model):
         ("female","female"),
     ]
     sex=models.CharField(max_length=10,choices=gender,null=True)
+    isadmin=models.BooleanField(default=False)
     def __str__(self):
         return self.Name
 

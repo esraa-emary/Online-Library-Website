@@ -12,4 +12,10 @@ urlpatterns = [
     path('LibraSphere/Login', views.Login, name='Login'),
     path('LibraSphere/Signup', views.Signup, name='Signup'),
     path('LibraSphere/BorrowedBooks', views.BorrowedBooks, name='BorrowedBooks'),
+    path('LibraSphere/ManageBooks',views.ManageBooks,name='ManageBooks'),
+    path('LibraSphere/EditBooks',views.EditBooks,name='edit'),
+    path('LibraSphere/AddBooks',views.AddBooks,name='Add'),
+
+
+
 ]
