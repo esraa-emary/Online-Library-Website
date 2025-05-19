@@ -68,7 +68,7 @@
             <div>
                 <p>COME AND JOIN THE READING CLUB</p>
                 <h1>Enjoy the silence <br> in our reading room</h1>
-                <a href="{% url 'ListPage' %}">
+                <a href="{% url 'ListPage' %}?user={{user.Name|urlencode}}">
                     <button>SEE MORE</button>
                 </a>
             </div>
