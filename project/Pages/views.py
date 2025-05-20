@@ -149,12 +149,79 @@ def ManageBooks(request):
     userName= request.GET.get('user')
     user=User.objects.get(Name=userName)
     books=Book.objects.all()
+    categories=Category.objects.all()
+    if request.method=="POST":
+        title=request.POST.get('title')
+        book=Book.objects.get(Title=title)
+        book.delete()
+        # Delete empty categories
+        for category in categories:
+            if not Book.objects.filter(category=category).exists():
+             category.delete()
 
-    return render(request,'Pages\Manage-Books.html',{'user':user,'books':books})
+    return render(request,'Pages\Manage-Books.html',{'user':user , 'books':books , 'categories':categories})
 def AddBooks(request):
-    return render(request,'Pages\Add-Book.html')
+
+    username=request.GET.get('user')
+    user=User.objects.get(Name=username)
+
+    if request.method == "POST": 
+        title=request.POST.get('title')
+        author=request.POST.get('author')
+        category=request.POST.get('category')
+        try :
+            findCategory=Category.objects.get(category=category)
+        except Book.DoesNotExist:
+            category1=Category(category=category)
+            category1.save() 
+        price=request.POST.get('price')
+        description=request.POST.get('description')
+        avaliable=request.POST.get('availability')
+        image=request.FILES.get('cover')
+        getcategory=Category.objects.get(category=category)
+        if avaliable == "available":
+            book=Book(Title=title,Author=author,category=getcategory,Price=price,available=True,image=image)
+            book.save()
+        else:
+            book=Book(
+                Title=title,
+                Author=author,
+                category=getcategory,
+                Price=price,
+                available=False,
+                description=description,
+                image=image
+            )
+            book.save()    
+    return render(request,'Pages\Add-Book.html',{'user':user})
 def EditBooks(request):
-    return render(request,'Pages\Edit-Book.html')
+    title=request.GET.get('title')
+    book=Book.objects.get(Title=title)
+    name=request.GET.get('user')
+    user=User.objects.get(Name=name)
+    if request.method == "POST": 
+        title=request.POST.get('title')
+        author=request.POST.get('author')
+        category=request.POST.get('category')
+        try :
+            findCategory=Category.objects.get(category=category)
+        except Book.DoesNotExist:
+            category1=Category(category=category)
+            category1.save() 
+        book.Author=author
+        book.Price=request.POST.get('price')
+        book.description=request.POST.get('description')
+        avaliable=request.POST.get('availability')
+        if avaliable == "available":
+            book.available=True
+        else:
+            book.available=False    
+        book.category=Category.objects.get(category=category)
+        book.save()
+        
+
+
+    return render(request,'Pages\Edit-Book.html',{'book':book,'user':user})
     
 # Login
 def Login(request):

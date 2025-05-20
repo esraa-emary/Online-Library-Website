@@ -73,21 +73,31 @@
     <img src="{% static 'img/logo.jpg' %}" alt="LibraSphere Logo" class="logoPage">
     <p class="marginTitle"><Bold>Your gateway to knowledge and culture. Accessible for everyone.</Bold></p>
     <br>
+    <button class="addBookBtn">Add Book</button>
     {%for category in categories%}
-  
+        {% if category.size != 0 %}
         <div class="booktype">
-            <h2>{{category.category}} Books</h2>
-             <button class="addBookBtn">Add Book</button>
+            <h2>{{ category.category }} Books</h2>
+            <a href="{% url 'Add' %}?user={{ user.Name|urlencode }}">
+            <button class="addBookBtn" type="button">Add Book</button>
+            </a>
         </div>
+        {% endif %}
         <div class="cards">
         {%for book in books%}
         {% if book.category.id == category.id %}
+            <form id="manageform" method="post" >
+                {% csrf_token %}
                     <div  class="card">
                         <img src="{{book.image.url}}" alt="{{book.Title}}">
-                        <h5 class="title">{{book.Title}}</h5>
+                        <h5 class="title" name ="title">{{book.Title}}</h5>
+                        <input type="hidden" name="title" value="{{ book.Title }}">
                         <p class="author">{{book.Author}}</p>
                         <p class="price">{{book.Price}}$</p>
-                        <span class="availability ${book.available ? 'available' : 'unavailable'}">
+                        <a href="{% url 'Edit' %}?user={{user.Name|urlencode}}&title={{book.Title}}" < i class="fas fa-edit" ></i> 
+                        
+                        </a>
+                        <button class="cardBtn delete" type="submit" id="deletebook"><i class="fas fa-trash-alt"></i></button>
                         <span class="availability {% if book.available %}available{% else %}unavailable{% endif %}">
                         {% if book.available %}
                             Available
@@ -111,6 +121,7 @@
                         
                     
                     {% endif %}
+                </form>
                     {% endfor %}
                 </div>
     {% endfor %}
@@ -147,6 +158,43 @@
         </section>
     </footer>
     
-   {% comment %} <script src="../assets/js/Storing.js"></script> {% endcomment %}
+    <style>
+.addBookBtn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #4f88ba; /* blue */
+    color: white;
+    border: none;
+    padding: 15px 25px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: background-color 0.3s ease;
+    margin-top:100px;
+}
+
+.addBookBtn:hover {
+    background-color: #3b6f99;
+}</style>
+ <script>
+    // Add confirmation dialog for delete buttons in all manage forms
+    document.querySelectorAll('#manageform').forEach(function(form) {
+        form.addEventListener('submit', function(e) {
+              if (window.history.replaceState) {
+                  window.history.replaceState(null, null, window.location.href);
+                }
+            var deleteBtn = form.querySelector('button.delete');
+            if (document.activeElement === deleteBtn) {
+                if (!confirm('Are you sure you want to delete this book?')) {
+                    e.preventDefault();
+                }
+            }
+        });
+    });
+
+    
+ </script> 
 </body>
 </html>
