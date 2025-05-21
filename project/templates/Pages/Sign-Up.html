@@ -149,7 +149,7 @@
     <script >
        
 
-    document.getElementById('signUpForm').addEventListener('submit', function(e) {
+    document.getElementById('signUpForm').addEventListener('input', function(e) {
         e.preventDefault();  
         
         var xml= new XMLHttpRequest();
@@ -158,13 +158,14 @@
         var formData = new FormData(this);
       xml.onload = function() {
         if (xml.status === 200) {
+            document.getElementById('erroruser').textContent = '';
+            document.getElementById('errorpassword').textContent = '';
+            document.getElementById('erroremail').textContent = '';
             var response = JSON.parse(xml.responseText);
             if (response.success) {
                 window.location.href = "{% url 'Login' %}?user={{ user.Name|urlencode }}";
-            } else {
-                document.getElementById('erroruser').textContent = '';
-                document.getElementById('errorpassword').textContent = '';
-                document.getElementById('erroremail').textContent = '';
+            } else if(response.type) {
+              
                 document.getElementById(response.type).textContent = response.error_message;
             }
         } else {

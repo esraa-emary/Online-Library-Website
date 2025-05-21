@@ -100,8 +100,7 @@ def ListPage(request):
 
 # Search
 def Search(request):
-    userName= request.GET.get('user')
-    
+    userName= request.GET.get('user')   
     user = User.objects.get(Name=userName)
     query = request.GET.get('q')
     results = Book.objects.filter(
@@ -171,7 +170,7 @@ def AddBooks(request):
         category=request.POST.get('category')
         try :
             findCategory=Category.objects.get(category=category)
-        except Book.DoesNotExist:
+        except :
             category1=Category(category=category)
             category1.save() 
         price=request.POST.get('price')
