@@ -257,6 +257,21 @@ def Signup(request):
     password = request.POST.get('password')
     confirm = request.POST.get('confirmPassword')
     users= User.objects.all()
+    for user in users:
+        if user.Name == username:
+            return JsonResponse( {'type':'erroruser','error_message': 'Username already exists'})
+        if user.Email == email:
+            return JsonResponse( {'type':'erroremail','error_message': 'Email already exists'})
+    if password != confirm:
+        return JsonResponse( {'type':'errorpassword','error_message': 'Password does not match'})
+    return render(request, 'Pages/Sign-Up.html')
+    
+def ValidateSignup(request):
+    username = request.POST.get('userName')
+    email = request.POST.get('email')
+    password = request.POST.get('password')
+    confirm = request.POST.get('confirmPassword')
+    users= User.objects.all()
     isadmin=request.POST.get('role')
     for user in users:
         if user.Name == username:
@@ -273,5 +288,3 @@ def Signup(request):
             user = User(Name=username, Email=email, Password=password,isadmin=False)
             user.save()
         return JsonResponse({ 'success': True})
-    return render(request, 'Pages/Sign-Up.html')
-    

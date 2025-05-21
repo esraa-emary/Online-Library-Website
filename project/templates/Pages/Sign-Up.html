@@ -108,7 +108,7 @@
                 <div id="error-message" style="color:red"></div>
                 <div class="formBtn">
                     
-                    <button type="submit" class="signUpBtn">Sign Up</button>
+                    <button id="signUpBtn"type="submit" class="signUpBtn">Sign Up</button>
 
                     
                     <p>Already have an account? <a href={% url "Login" %}>Log-In</a></p>
@@ -151,21 +151,18 @@
 
     document.getElementById('signUpForm').addEventListener('input', function(e) {
         e.preventDefault();  
-        
+        document.getElementById('erroruser').textContent = '';
+        document.getElementById('errorpassword').textContent = '';
+        document.getElementById('erroremail').textContent = '';
         var xml= new XMLHttpRequest();
         xml.open('POST', '{% url "Signup" %}', true);
 
         var formData = new FormData(this);
       xml.onload = function() {
         if (xml.status === 200) {
-            document.getElementById('erroruser').textContent = '';
-            document.getElementById('errorpassword').textContent = '';
-            document.getElementById('erroremail').textContent = '';
             var response = JSON.parse(xml.responseText);
-            if (response.success) {
-                window.location.href = "{% url 'Login' %}?user={{ user.Name|urlencode }}";
-            } else if(response.type) {
-              
+               
+                if(response.error_message){
                 document.getElementById(response.type).textContent = response.error_message;
             }
         } else {
@@ -179,7 +176,39 @@
     }
 
     )
+ document.getElementById('signUpBtn').addEventListener('click', function(e) {
+        e.preventDefault();  
+        var xml= new XMLHttpRequest();
+        xml.open('POST', '{% url "validate" %}', true);
 
+           const form = document.getElementById('signUpForm');
+           const formData = new FormData(form);
+      xml.onload = function() {
+        if (xml.status === 200) {
+            var response = JSON.parse(xml.responseText);
+            
+            if(response.success){
+                alert("user registered successfully");
+                window.location.href="{% url 'Login'%}";
+            }
+            else{ 
+                document.getElementById('erroruser').textContent = '';
+                document.getElementById('errorpassword').textContent = '';
+                document.getElementById('erroremail').textContent = '';
+                document.getElementById(response.type).textContent = response.error_message;
+            }
+
+        } else {
+            document.getElementById('error-msg').textContent = 'There was an error with the signup request.';
+        }
+    };
+          xml.onerror = function() {
+        document.getElementById('error-msg').textContent = 'There was an error with the request.';
+    };
+        xml.send(formData);  
+    }
+
+    )
     </script>
 </body>
 </html>
