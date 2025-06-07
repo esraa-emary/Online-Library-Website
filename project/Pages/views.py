@@ -118,8 +118,6 @@ def Search(request):
 # Profile
 def Profile(request):
     userName = request.session.get('user')
-    print(userName)
-    print("sssssssssssssssssssssssssssssssssssssssssssssssssssssssss")
     currentuser = User.objects.get(Name=userName)
     if request.method == "POST":  # When the form is submitted
         userName = request.GET.get('user')
