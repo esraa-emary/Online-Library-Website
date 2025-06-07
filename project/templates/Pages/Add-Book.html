@@ -60,7 +60,7 @@
                     <a href="{% url 'ListPage' %}?user={{user.Name|urlencode}}">Books</a>
                 {% endif %}
                 {% if user.Name %}
-                <a id="logout" href="{% url 'Home' %}">Log-Out</a>
+                <a id="logout" href="{% url 'Login' %}">Log-Out</a>
                 {% endif %}
             </nav>
         </section>

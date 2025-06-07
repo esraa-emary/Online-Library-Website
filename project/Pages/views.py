@@ -3,11 +3,11 @@ from django.http import JsonResponse
 from .models import User,Book,Category,borrowedBook
 from django.db.models import Q
 # Create your views here.
-# Home
+# Homez
 def Home(request):
     books=Book.objects.all()
     try:
-        username= request.GET.get('user')
+        username= request.session.get('user')
         user= User.objects.get(Name=username)
         return render(request, 'index.html',{'user': user,'books':books})
     except:   
@@ -15,7 +15,7 @@ def Home(request):
 # About
 def About(request):
     try:
-        userName= request.GET.get('user')
+        userName= request.session.get('user')
         if userName != None:
             user = User.objects.get(Name=userName)
             return render(request, 'Pages/About-Us.html',{'user': user})
@@ -26,7 +26,7 @@ def About(request):
 def Bookreveiw(request):
     title= request.GET.get('title')
     book = Book.objects.get(Title=title)
-    username= request.GET.get('user')
+    username= request.session.get('user')
     if username != None:
         user = User.objects.get(Name=username)
         return render(request, 'Pages/Book-Review.html', {'book': book,'user': user})
@@ -36,7 +36,7 @@ def Bookreveiw(request):
 # Borrow Book
 def BorrowBook(request):
     title = request.GET.get('title')
-    username = request.GET.get('user')
+    username = request.session.get('user')
     book = Book.objects.get(Title=title)
     user= User.objects.get(Name=username)
     if request.method == 'POST':
@@ -52,7 +52,7 @@ def BorrowBook(request):
 
 # borrowed books
 def BorrowedBooks(request):
-    username= request.GET.get('user')
+    username= request.session.get('user')
     user= User.objects.get(Name=username)
     borrowed= borrowedBook.objects.filter(user=user)
     if request.method == 'POST':
@@ -68,7 +68,7 @@ def BorrowedBooks(request):
 
 # Borrow Page
 def BorrowPage(request):
-    userName= request.GET.get('user')
+    userName= request.session.get('user')
     if userName != None:
         user = User.objects.get(Name=userName)
         return render(request, 'Pages/Borrow-Page.html',{'user': user})
@@ -81,7 +81,7 @@ def ListPage(request):
     books = Book.objects.all()
     categories = Category.objects.all()
     try:
-        userName= request.GET.get('user')
+        userName= request.session.get('user')
         if userName != None:
             user = User.objects.get(Name=userName)
             context = {
@@ -100,7 +100,7 @@ def ListPage(request):
 
 # Search
 def Search(request):
-    userName= request.GET.get('user')   
+    userName= request.session.get('user')   
     user = User.objects.get(Name=userName)
     query = request.GET.get('q')
     results = Book.objects.filter(
@@ -117,7 +117,9 @@ def Search(request):
    
 # Profile
 def Profile(request):
-    userName = request.GET.get('user')
+    userName = request.session.get('user')
+    print(userName)
+    print("sssssssssssssssssssssssssssssssssssssssssssssssssssssssss")
     currentuser = User.objects.get(Name=userName)
     if request.method == "POST":  # When the form is submitted
         userName = request.GET.get('user')
@@ -141,11 +143,13 @@ def Profile(request):
              currentuser.Phone = None 
             currentuser.sex = newgender
             currentuser.save()
+            request.session.flush()  
+            request.session['user'] = newName 
             return JsonResponse({'success': True, 'user': newName})
    
     return render(request, 'Pages/Profile.html',{'user':currentuser})
 def ManageBooks(request):
-    userName= request.GET.get('user')
+    userName= request.session.get('user')
     user=User.objects.get(Name=userName)
     books=Book.objects.all()
     categories=Category.objects.all()
@@ -161,7 +165,7 @@ def ManageBooks(request):
     return render(request,'Pages\Manage-Books.html',{'user':user , 'books':books , 'categories':categories})
 def AddBooks(request):
 
-    username=request.GET.get('user')
+    username=request.session.get('user')
     user=User.objects.get(Name=username)
 
     if request.method == "POST": 
@@ -194,9 +198,10 @@ def AddBooks(request):
             book.save()    
     return render(request,'Pages\Add-Book.html',{'user':user})
 def EditBooks(request):
+    
     title=request.GET.get('title')
     book=Book.objects.get(Title=title)
-    name=request.GET.get('user')
+    name=request.session.get('user')
     user=User.objects.get(Name=name)
     if request.method == "POST": 
         title=request.POST.get('title')
@@ -224,7 +229,7 @@ def EditBooks(request):
     
 # Login
 def Login(request):
-    
+    request.session.flush()  
     if request.method == "POST": 
         userName = request.POST.get('userName')
         password = request.POST.get('password')
@@ -233,19 +238,15 @@ def Login(request):
             try:
                 user = User.objects.get(Name=userName)
                 if user.Password == password:
-                    # Return a JSON response indicating success
+                    request.session['user'] = userName
                     return JsonResponse({'success': True, 'user': userName})
                 else:
-                    # Return an error message if username or password is incorrect
                     return JsonResponse({'success': False, 'error_message': 'Invalid username or password.'})
             except User.DoesNotExist:
-                # Return an error message if the user does not exist
                 return JsonResponse({'success': False, 'error_message': 'Invalid username or password.'})
         else:
-            # Return an error message if fields are missing
-            return JsonResponse({'success': False, 'error_message': 'Both fields are required.'})
 
-    # For GET requests (when the login page is first loaded), render the login page
+            return JsonResponse({'success': False, 'error_message': 'Both fields are required.'})
     return render(request, 'Pages/Log-In.html')
 
 
