@@ -20,6 +20,8 @@
     <title>Books</title>
     {% load static%}
     <link rel="stylesheet" href="{%static 'css/user-style.css'%}">
+    <link rel="stylesheet" href="{%static 'css/admin-style.css'%}">
+
      <link rel="icon" href="{% static 'img/icon.jpg' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Tangerine:wght@400;700&display=swap">
@@ -94,8 +96,8 @@
                         <input type="hidden" name="title" value="{{ book.Title }}">
                         <p class="author">{{book.Author}}</p>
                         <p class="price">{{book.Price}}$</p>
-                        <a href="{% url 'Edit' %} &title={{book.Title}}" < i class="fas fa-edit" ></i> 
-                        
+                        <a id="editbook"  class="cardBtn edit" href="{% url 'Edit' %}?title={{book.Title}}"> <i class="fas fa-edit"></i> 
+                 
                         </a>
                         <button class="cardBtn delete" type="submit" id="deletebook"><i class="fas fa-trash-alt"></i></button>
                         <span class="availability {% if book.available %}available{% else %}unavailable{% endif %}">
@@ -105,18 +107,7 @@
                             Unavailable 
                         {% endif %}
                         </span>
-                        <div class="card-actions">
-                            <a href="{%url 'Bookreview'%}?title={{book.Title|urlencode}}&user={{user.Name|urlencode}}">
-                                
-                                
-                                
-                                <button class="Book-Review-btn"><i class="fas fa-book-open"></i>Book Review</button></a>
-                                
-                                <a id="borrow" href="{%url 'BorrowBook'%}?title={{book.Title|urlencode}}&user={{user.Name|urlencode}}">
-                                    <button class="borrow-btn" {% if not book.available %} disabled {% endif %}>
-                                        <i class="fas fa-hand-holding"></i>Borrow</button>
-                                    </a>
-                        </div>
+                   
                     </div>
                         
                     
@@ -158,26 +149,7 @@
         </section>
     </footer>
     
-    <style>
-.addBookBtn {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background-color: #4f88ba; /* blue */
-    color: white;
-    border: none;
-    padding: 15px 25px;
-    border-radius: 6px;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    transition: background-color 0.3s ease;
-    margin-top:100px;
-}
-
-.addBookBtn:hover {
-    background-color: #3b6f99;
-}</style>
+  
  <script>
     // Add confirmation dialog for delete buttons in all manage forms
     document.querySelectorAll('#manageform').forEach(function(form) {

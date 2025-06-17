@@ -224,23 +224,27 @@
         color: dimgray;
     }
 
-    .booktype {
-        .addBookBtn {
-            border: none;
-            background-color: var(--fourth-color);
-            color: white;
-            font-size: 1rem;
-            font-weight: 600;
-            padding: 10px 20px;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease-in-out;
-        }
+    
+      
+    .addBookBtn {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background-color: #4f88ba; /* blue */
+        color: white;
+        border: none;
+        padding: 15px 25px;
+        border-radius: 6px;
+        font-weight: bold;
+        cursor: pointer;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        transition: background-color 0.3s ease;
+        margin-top:100px;
+    }
 
-        .addBookBtn:hover {
-            background-color: var(--first-color);
-            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-        }
+    .addBookBtn:hover {
+        background-color: #3b6f99;
+    }
 
         .header-container{
             display: flex;
@@ -272,7 +276,7 @@
                 display: flex;
                 justify-content: space-between;
                 flex-direction: column;
-                gap: 25px;
+                gap: 10px;
                 padding: 1rem;
                 max-width: 350px;
                 border-radius: 40px;
@@ -333,9 +337,10 @@
                 .delete{
                     margin-top: 50px;
                 }
+                
             }
         }
-    }
+    
 
     .availability {
         display: inline-block;
