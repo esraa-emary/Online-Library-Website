@@ -1,7 +1,7 @@
-# LibraSphere
+# Online Library Website
 
 ## 📚 Overview
-The **LibraSphere** is a web application that allows users to browse, search, and borrow books online. It provides a seamless experience for book lovers to explore various categories and manage their borrowed lists.
+The **Online Library Website** is a web application that allows users to browse, search, and borrow books online. It provides a seamless experience for book lovers to explore various categories and manage their borrowed lists.
 
 ## 🌟 Features
 - 🔍 **Search Books**: Find books by title, author, or category.
