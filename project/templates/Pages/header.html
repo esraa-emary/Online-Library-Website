@@ -1,0 +1,43 @@
+<header class="header">
+    <section>
+        <div class="logo">
+            <h3>LibraSphere</h3>
+        </div>
+        
+        <div class="ajax" style="position: relative;">
+            <form class="search-bar" action="{% url 'Search' %}" method="GET">
+                <input type="hidden" name="user" value="{{ user.Name }}">
+                <button type="submit" class="search-icon" style="background: none; border: none;">
+                    <i class="bx bx-search" title="Search"></i>
+                </button>
+                <input id="search" name="q" type="text" placeholder="Search by Title, Author or Category" title="Search" onkeyup="showHint2(this.value)" autocomplete="off">
+            </form>
+            <div id="txtHint" class="results-container"></div>
+        </div>
+        
+        <nav class="nav">
+            <a href="{% url 'Home' %} ">Home</a>
+            
+            {% if user.Fname %}
+            <a id="profile" href="{% url 'Profile' %} ">Profile</a>
+            <a href="{% url 'About' %} ">About US</a>
+            {% else %}
+            <a id="sign" class="first-button" href="{% url 'Signup' %} " title="Sign-Up">Sign-Up</a>
+            <a id="login" href="{% url 'Login' %} " title="Log-In">Log-In</a>
+            {%endif%}
+            {% if user.isadmin %}
+            <a href="{% url "ManageBooks" %} ">Manage Books</a>
+            {%elif user.Fname%}
+            <a  href="{% url 'ListPage' %} ">Books</a>
+            {% endif %}
+            {% if user.Fname %}
+            <a id="logout" href="{% url 'Login' %}">Log-Out</a>
+            {% endif %}
+        </nav>
+        
+        {% load static %}
+
+        <script src="{% static 'js/search.js' %}" defer></script>
+
+    </section>
+</header>

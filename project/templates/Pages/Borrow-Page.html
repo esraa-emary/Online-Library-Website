@@ -27,47 +27,9 @@
 </head>
 <body>
     <!-- -------------------------------------------- header  -->
-    <header class="header">
-        <section>
-            <div class="logo">
-                <h3>LibraSphere</h3>
-            </div>
-
-            <div class="ajax" style="position: relative;">
-                <form class="search-bar" action="{% url 'Search' %}" method="GET">
-                    <input type="hidden" name="user" value="{{ user.Name }}">
-                    <button type="submit" class="search-icon" style="background: none; border: none;">
-                    <i class="bx bx-search" title="Search"></i>
-                    </button>
-                    <input id="search" name="q" type="text" placeholder="Search by Title, Author or Category" title="Search" onkeyup="showHint2(this.value)" autocomplete="off">
-                </form>
-                <div id="txtHint" class="results-container"></div>
-            </div>
-
-            <nav class="nav">
-                  <a  href="{% url 'Home' %}?user={{user.Name|urlencode}}">Home</a>
-              
-                {% if user.Name %}
-                <a id="profile" href="{% url 'Profile' %}?user={{user.Name|urlencode}}">Profile</a>
-                <a href="{% url 'About' %}?user={{user.Name|urlencode}}">About US</a>
-                {% else %}
-                <a id="sign" class="first-button" href="{% url 'Signup' %}?user={{user.Name|urlencode}}" title="Sign-Up">Sign-Up</a>
-                <a id="login" href="{% url 'Login' %}?user={{user.Name|urlencode}}" title="Log-In">Log-In</a>
-                {%endif%}
-                  {% if user.isadmin %}
-                <a href="{% url "ManageBooks" %}?user={{user.Name|urlencode}}">Manage Books</a>
-                {%elif user.Name%}
-                    <a style="color: #4f88ba;" href="{% url 'ListPage' %}?user={{user.Name|urlencode}}">Books</a>
-                {% endif %}
-                {% if user.Name %}
-                <a id="logout" href="{% url 'Home' %}">Log-Out</a>
-                {% endif %}
-            </nav>
-        </section>
-    </header>
-
-<!-- -------------------------------------------- Borrow -->
-<form id="borrowForm" method="post" action="{% url 'BorrowBook' %}?user={{ user.Name|urlencode }}&title={{ book.Title|urlencode }}">
+     {%include "Pages/header.html"%}
+     <!-- -------------------------------------------- Borrow -->
+<form id="borrowForm" method="post" action="{% url 'BorrowBook' %}title={{ book.Title|urlencode }}">
     {% csrf_token %}
     <section class="borrow">
         <div id="bookReview"> 
@@ -79,6 +41,7 @@
                     <div class="book-box-content">
                         <div class="book-details">
                             <div id="bookDetailsContainer">
+                                <input type="hidden" name="title" value="{{ book.Title }}">
                                 <h3>Book Title: <span name="title" id="bookTitle">{{ book.Title }}</span></h3>
                                 <h3>Book Category: <span id="bookCategory">{{ book.category }}</span></h3>
                                 <h3>Author: <span id="bookAuthor">{{ book.Author }}</span></h3>
@@ -105,7 +68,9 @@
     
        
        
+
     <!-- -------------------------------------------- footer  -->
+
     <footer id="footer">
         <section  class="footer">
             <h2>CONTACT WITH US</h2>
@@ -133,28 +98,8 @@
         </section>
     </footer>
     
-    <script>
-        let user = '{{user.Name}}'
-        myform = document.getElementById('borrowForm');
-        myform.addEventListener('submit', function(e) {
-            e.preventDefault(); 
-            var xml=new XMLHttpRequest();
-            var formData = new FormData(this);
-            xml.open("POST",this.action, true);
-            xml.onload = function(){ 
-            if(xml.status === 200) {   
-            alert(" Book Borrowed Successfully");
-            window.location.href = "{% url 'ListPage' %}?user=" + encodeURIComponent(user);
-           }
-            }
-        
-            xml.onerror = function() {
-                alert("Error occurred while borrowing the book.");
-            }
-            xml.send(formData);
-        
-    });
-        
+    <script src={% static "js/Borrow-Page.js" %}>
+ 
     </script>
 </body>
 </html>

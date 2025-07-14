@@ -19,6 +19,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/user-style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/List-Page.css' %}">
+
   
     <link rel="stylesheet" href="../assets/css/user-style.css">
     <link rel="icon" href="img/icon.jpg">
@@ -30,45 +32,7 @@
 </head>
 <body>
     <!-- -------------------------------------------- header  -->
-    <header class="header">
-        <section>
-            <div class="logo">
-                <h3>LibraSphere</h3>
-            </div>
-            
-            <div class="ajax" style="position: relative;">
-               <form class="search-bar" action="{% url 'Search' %}" method="GET">
-                    <input type="hidden" name="user" value="{{ user.Name }}">
-                    <button type="submit" class="search-icon" style="background: none; border: none;">
-                    <i class="bx bx-search" title="Search"></i>
-                    </button>
-                    <input id="search" name="q" type="text" placeholder="Search by Title, Author or Category" title="Search" onkeyup="showHint2(this.value)" autocomplete="off">
-                </form>
-
-                <div id="txtHint" class="results-container"></div>
-            </div>
-
-            <nav class="nav">
-                    <a href="{% url 'Home' %}?user={{user.Name|urlencode}}">Home</a>
-                <a href="{% url 'ListPage' %}?user={{user.Name|urlencode}}">Books</a>
-                {% if user.Name %}
-                <a  id="profile" href="{% url 'Profile' %}?user={{user.Name|urlencode}}">Profile</a>
-                <a href="{% url 'About' %}?user={{user.Name|urlencode}}">About US</a>
-                {% else %}
-                <a id="sign" class="first-button" href="{% url 'Signup' %}?user={{user.Name|urlencode}}" title="Sign-Up">Sign-Up</a>
-                <a id="login" href="{% url 'Login' %}?user={{user.Name|urlencode}}" title="Log-In">Log-In</a>
-                {%endif%}
-                {% if user.isadmin %}
-                <a style="color: #4f88ba;" href="{% url "ManageBooks" %}?user={{user.Name|urlencode}}">Manage Books</a>
-                {%elif user.Name%}
-                    <a href="{% url 'ListPage' %}?user={{user.Name|urlencode}}">Books</a>
-                {% endif %}
-                {% if user.Name %}
-                <a id="logout" href="{% url 'Home' %}">Log-Out</a>
-                {% endif %}
-            </nav>
-        </section>
-    </header>
+    {%include "Pages/header.html"%}
 
     <!-- -------------------------------------------- main  -->
     <!-- In the main section of Search.html -->
@@ -77,37 +41,51 @@
     <img src="{% static 'img/logo.jpg' %}" alt="LibraSphere Logo" class="logoPage">
     <p class="marginTitle"><Bold>Your gateway to knowledge and culture. Accessible for everyone.</Bold></p>
     <br>
-        <div class="cards">
-        {% for book in books %}
-            <div class="card">
-            <img src="{{ book.image.url }}" alt="{{ book.Title }}">
-            <h5 class="title">{{ book.Title }}</h5>
-            <p class="author">{{ book.Author }}</p>
-            <p class="price">{{ book.Price }}$</p>
 
-            <span class="availability {% if book.available %}available{% else %}unavailable{% endif %}">
-                {% if book.available %}
-                    Available
-                {% else %}
-                    Unavailable 
-                {% endif %}
-            </span>
-
-            <div class="card-actions">
-                <a href="{% url 'Bookreview' %}?title={{ book.Title|urlencode }}&user={{ user.Name|urlencode }}">
-                    <button class="Book-Review-btn">
-                        <i class="fas fa-book-open"></i>Book Review
-                    </button>
-                </a>
-                <a id="borrow" href="{% url 'BorrowBook' %}?title={{ book.Title|urlencode }}&user={{ user.Name|urlencode }}">
-                    <button class="borrow-btn" {% if not book.available %}disabled{% endif %}>
-                        <i class="fas fa-hand-holding"></i>Borrow
-                    </button>
-                </a>
+    <div class="booktype">
+       
+        <div class="cards"> 
+        {% for  book in books %}
+        
+   
+                <figure class="card">
+                    
+                        <img src="{{ book.image.url }}" alt="{{ book.Title }}">
+                        <figcaption>
+                            <h5 class="title">{{ book.Title }}</h5>
+                            <p class="author">{{ book.Author }}</p>
+                            <p class="price">{{ book.Price }}$</p>
+                             <span class="availability {% if book.available %}available{% else %}unavailable{% endif %}">
+                                {% if book.available %}
+                                    Available
+                                {% else %}
+                                    Unavailable 
+                                {% endif %}
+                            </span>
+                        </figcaption>    
+                        
+                        
+                        
+                        <div class="card-actions">
+                            <a href="{% url 'Bookreview' %}?title={{ book.Title|urlencode }}&user={{ user.Name|urlencode }}">
+                                <button class="Book-Review-btn">
+                                <i class="fas fa-book-open"></i>Book Review
+                            </button>
+                        </a>
+                        <a id="borrow" href="{% url 'BorrowBook' %}?title={{ book.Title|urlencode }}&user={{ user.Name|urlencode }}">
+                            <button class="borrow-btn" {% if not book.available %}disabled{% endif %}>
+                                <i class="fas fa-hand-holding"></i>Borrow
+                            </button>
+                        </a>
+                        
+                        </div>
+                    </figure>    
+                    
+                    
+                    {% endfor %}
+                </div > 
+                
             </div>
-    </div>
-    {% endfor %}
-</div>    
 
      
      

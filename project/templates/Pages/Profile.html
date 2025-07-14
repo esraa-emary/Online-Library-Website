@@ -27,45 +27,7 @@
 </head>
 <body >
     <!-- -------------------------------------------- header  -->
-    <header class="header">
-        <section>
-            <div class="logo">
-                <h3>LibraSphere</h3>
-            </div>
-
-            <div class="ajax" style="position: relative;">
-               <form class="search-bar" action="{% url 'Search' %}" method="GET">
-                    <input type="hidden" name="user" value="{{ user.Name }}">
-                    <button type="submit" class="search-icon" style="background: none; border: none;">
-                    <i class="bx bx-search" title="Search"></i>
-                    </button>
-                    <input id="search" name="q" type="text" placeholder="Search by Title, Author or Category" title="Search" onkeyup="showHint2(this.value)" autocomplete="off">
-            </form>
-
-                <div id="txtHint" class="results-container"></div>
-            </div>
-
-            <nav class="nav">
-                    <a href="{% url 'Home' %}?user={{user.Name|urlencode}}">Home</a>
-             
-                {% if user.Name %}
-                <a style="color: #4f88ba;" id="profile" href="{% url 'Profile' %}?user={{user.Name|urlencode}}">Profile</a>
-                <a href="{% url 'About' %}?user={{user.Name|urlencode}}">About US</a>
-                {% else %}
-                <a id="sign" class="first-button" href="{% url 'Signup' %}?user={{user.Name|urlencode}}" title="Sign-Up">Sign-Up</a>
-                <a id="login" href="{% url 'Login' %}?user={{user.Name|urlencode}}" title="Log-In">Log-In</a>
-                {%endif%}
-                {% if user.isadmin %}
-                <a  href="{% url "ManageBooks" %}?user={{user.Name|urlencode}}">Manage Books</a>
-                {%elif user.Name%}
-                    <a href="{% url 'ListPage' %}?user={{user.Name|urlencode}}">Books</a>
-                {% endif %}
-                {% if user.Name %}
-                <a id="logout" href="{% url 'Home' %}">Log-Out</a>
-                {% endif %}
-            </nav>
-        </section>
-    </header>
+ {%include "Pages/header.html"%}
 
 
     <!-- -------------------------------------------- Profile  -->
@@ -83,7 +45,7 @@
                     <div class="profile-form">
                         <div class="form-group">
                             <label for="name">Full Name</label>
-                            <input name='user' id="name" type="text" value ="{{user.Name}}"disabled>
+                            <input name='user' id="name" type="text" value ="{{user.Fname}}"disabled>
                         </div>
                         
                         <div class="form-group">
@@ -137,7 +99,7 @@
                     <button type="button" id="editBtn" class="btn btn-secondary">
                         <i class="fas fa-edit"></i> Edit Profile
                     </button>
-                    <a id="borrowed" href="{%url 'BorrowedBooks' %}?user={{user.Name|urlencode}}" class="btn btn-primary">
+                    <a id="borrowed" href="{%url 'BorrowedBooks' %} " class="btn btn-primary">
                         <i class="fas fa-book"></i> My Borrowed Books
                     </a>
                     <button type="submit" id="saveBtn" class="btn btn-primary" style="display:none">
@@ -178,70 +140,8 @@
             </div>
         </section>
     </footer>
-       <script >
-        if("{{user.sex}}"=="male"){
-            document.getElementById('male').checked=true;
-        }
-        else if("{{user.sex}}"=="female"){
-            document.getElementById('female').checked=true
-        }
-
-        var name=document.getElementById('name').value;
-        var phone=document.getElementById('phone').value;
-        var email=document.getElementById('email').value;
-    document.getElementById('editBtn').addEventListener('click', function() {
-        document.getElementById('name').disabled = false;
-        document.getElementById('email').disabled = false;
-        document.getElementById('phone').disabled = false;
-        document.getElementById('female').disabled = false;
-        document.getElementById('male').disabled = false;
-        document.getElementById('saveBtn').style.display = 'block';
-        document.getElementById('cancelBtn').style.display = 'block';
-        document.getElementById('editBtn').style.display = 'none';
-    });
-    document.getElementById('cancelBtn').addEventListener('click', function() {
-        document.getElementById('name').disabled = true;
-        document.getElementById('email').disabled = true;
-        document.getElementById('phone').disabled = true;
-        document.getElementById('saveBtn').style.display='none';
-        document.getElementById('cancelBtn').style.display='none';
-        document.getElementById('editBtn').style.display='block';
-        document.getElementById('email').value=email;
-        document.getElementById('phone').value=phone;
-        document.getElementById('name').value=name;
-
-    })
-    document.getElementById('profileForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        var xml=new XMLHttpRequest();
-        xml.open('POST', '{% url "Profile" %}?user={{ user.Name|urlencode }}', true);
-        var data = new FormData(this);
-        xml.onload = function() {
-            if (xml.status === 200) {
-                var response = JSON.parse(xml.responseText);
-                if (response.success) {
-                    alert('Profile updated successfully');
-                    document.getElementById('name').disabled = true;
-                    document.getElementById('email').disabled = true;
-                    document.getElementById('phone').disabled = true;
-                    document.getElementById('saveBtn').style.display='none';
-                    document.getElementById('cancelBtn').style.display='none';
-                    document.getElementById('editBtn').style.display='block';
-                    name=document.getElementById('name').value;
-                   window.location.href = "/LibraSphere/Profile?user=" + encodeURIComponent(name);
-                } else {
-                    alert('Error updating profile: ' + response.error_message);
-                }
-            }
-            else {
-                alert('Error: ' + xml.statusText);
-            }
-        };
-        xml.send(data);
-
-    })
-
-
+       <script src={%static "js/Profile.js"%} >
+       
 
  </script>
 

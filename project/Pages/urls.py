@@ -15,7 +15,9 @@ urlpatterns = [
     path('LibraSphere/ManageBooks',views.ManageBooks,name='ManageBooks'),
     path('LibraSphere/EditBooks',views.EditBooks,name='Edit'),
     path('LibraSphere/AddBooks',views.AddBooks,name='Add'),
-    path('nourlneeded',views.ValidateSignup,name='validate'),
+    path('LibraSphere/searchBooks',views.searchBooks,name='searchbook'),
+
+    
 
 
 

@@ -20,7 +20,8 @@
     <title>Books</title>
     {% load static%}
     <link rel="stylesheet" href="{%static 'css/user-style.css'%}">
-     <link rel="icon" href="{% static 'img/icon.jpg' %}">
+    <link rel="stylesheet" href="{%static 'css/List-Page.css'%}">
+    <link rel="icon" href="{% static 'img/icon.jpg' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Tangerine:wght@400;700&display=swap">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
@@ -29,45 +30,8 @@
 </head>
 <body >
     <!-- -------------------------------------------- header  -->
-    <header class="header">
-        <section>
-            <div class="logo">
-                <h3>LibraSphere</h3>
-            </div>
-
-            <div class="ajax" style="position: relative;">
-                <form class="search-bar" action="{% url 'Search' %}" method="GET">
-                    <input type="hidden" name="user" value="{{ user.Name }}">
-                    <button type="submit" class="search-icon" style="background: none; border: none;">
-                    <i class="bx bx-search" title="Search"></i>
-                    </button>
-                    <input id="search" name="q" type="text" placeholder="Search by Title, Author or Category" title="Search" onkeyup="showHint2(this.value)" autocomplete="off">
-                </form>
-                <div id="txtHint" class="results-container"></div>
-            </div>
-
-            <nav class="nav">
-                    <a href="{% url 'Home' %}?user={{user.Name|urlencode}}">Home</a>
-                
-                {% if user.Name %}
-                <a id="profile" href="{% url 'Profile' %}?user={{user.Name|urlencode}}">Profile</a>
-                <a href="{% url 'About' %}?user={{user.Name|urlencode}}">About US</a>
-                {% else %}
-                <a id="sign" class="first-button" href="{% url 'Signup' %}?user={{user.Name|urlencode}}" title="Sign-Up">Sign-Up</a>
-                <a id="login" href="{% url 'Login' %}?user={{user.Name|urlencode}}" title="Log-In">Log-In</a>
-                {%endif%}
-                {% if user.isadmin %}
-                <a href="{% url "ManageBooks" %}?user={{user.Name|urlencode}}">Manage Books</a>
-                {%elif user.Name%}
-                    <a style="color: #4f88ba;" href="{% url 'ListPage' %}?user={{user.Name|urlencode}}">Books</a>
-                {% endif %}
-                {% if user.Name %}
-                <a id="logout" href="{% url 'Home' %}">Log-Out</a>
-                {% endif %}
-            </nav>
-        </section>
-    </header>
-
+  
+    {%include "Pages/header.html"%}
 <!-- -------------------------------------------- List Of Books  -->
 <section id="Books" class="container">
     <img src="{% static 'img/logo.jpg' %}" alt="LibraSphere Logo" class="logoPage">
@@ -77,41 +41,44 @@
   
         <div class="booktype">
             <h2>{{category.category}} Books</h2>
-
-        <div class="cards">
+            <div class="cards"> 
+            
         {%for book in books%}
-        {% if book.category.id == category.id %}
-                    <div  class="card">
+            {% if book.category.id == category.id %}
+            <figure  class="card">
                         <img src="{{book.image.url}}" alt="{{book.Title}}">
-                        <h5 class="title">{{book.Title}}</h5>
-                        <p class="author">{{book.Author}}</p>
-                        <p class="price">{{book.Price}}$</p>
-                        <span class="availability ${book.available ? 'available' : 'unavailable'}">
-                        <span class="availability {% if book.available %}available{% else %}unavailable{% endif %}">
-                        {% if book.available %}
-                            Available
-                        {% else %}
-                            Unavailable 
-                        {% endif %}
-                        </span>
+                        <figcaption>
+                            <h5 class="title">{{book.Title}}</h5>
+                            <p class="price">{{book.Price}}$</p>
+                            <span class="availability ${book.available ? 'available' : 'unavailable'}">
+                            <span class="availability {% if book.available %}available{% else %}unavailable{% endif %}">
+                            {% if book.available %}
+                                <p>Available<p>
+                            {% else %}
+                               <p> Unavailable</p> 
+                            {% endif %}
+                            </span>
+                        </figcaption>
+
                         <div class="card-actions">
-                            <a href="{%url 'Bookreview'%}?title={{book.Title|urlencode}}&user={{user.Name|urlencode}}">
+                            <a href="{%url 'Bookreview'%}?title={{book.Title|urlencode}}">
                                 
                                 
                                 
                                 <button class="Book-Review-btn"><i class="fas fa-book-open"></i>Book Review</button></a>
                                 
-                                <a id="borrow" href="{%url 'BorrowBook'%}?title={{book.Title|urlencode}}&user={{user.Name|urlencode}}">
+                                <a id="borrow" href="{%url 'BorrowBook'%}?title={{book.Title|urlencode}}">
                                     <button class="borrow-btn" {% if not book.available %} disabled {% endif %}>
                                         <i class="fas fa-hand-holding"></i>Borrow</button>
                                     </a>
                         </div>
-                    </div>
+                    </figure>
                         
                     
                     {% endif %}
                     {% endfor %}
                 </div>
+        </div>
     {% endfor %}
      
      
@@ -145,7 +112,5 @@
             </div>
         </section>
     </footer>
-    
-   {% comment %} <script src="../assets/js/Storing.js"></script> {% endcomment %}
 </body>
 </html>

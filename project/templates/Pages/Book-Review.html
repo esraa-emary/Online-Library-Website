@@ -30,44 +30,7 @@
 </head>
 <body >
     <!-- -------------------------------------------- header  -->
-    <header class="header">
-        <section>
-            <div class="logo">
-                <h3>LibraSphere</h3>
-            </div>
-
-            <div class="ajax" style="position: relative;">
-               <form class="search-bar" action="{% url 'Search' %}" method="GET">
-                    <input type="hidden" name="user" value="{{ user.Name }}">
-                    <button type="submit" class="search-icon" style="background: none; border: none;">
-                    <i class="bx bx-search" title="Search"></i>
-                    </button>
-                    <input id="search" name="q" type="text" placeholder="Search by Title, Author or Category" title="Search" onkeyup="showHint2(this.value)" autocomplete="off">
-                </form>
-                <div id="txtHint" class="results-container"></div>
-            </div>
-
-            <nav class="nav">
-                  <a  href="{% url 'Home' %}?user={{user.Name|urlencode}}">Home</a>
-           
-                {% if user.Name %}
-                <a id="profile" href="{% url 'Profile' %}?user={{user.Name|urlencode}}">Profile</a>
-                <a href="{% url 'About' %}?user={{user.Name|urlencode}}">About US</a>
-                {% else %}
-                <a id="sign" class="first-button" href="{% url 'Signup' %}?user={{user.Name|urlencode}}" title="Sign-Up">Sign-Up</a>
-                <a id="login" href="{% url 'Login' %}?user={{user.Name|urlencode}}" title="Log-In">Log-In</a>
-                {%endif%}
-                {% if user.isadmin %}
-                <a style="color: #4f88ba;" href="{% url "ManageBooks" %}?user={{user.Name|urlencode}}">Manage Books</a>
-                {%elif not user.isadmin %}
-                    <a style="color: #4f88ba;" href="{% url 'ListPage' %}?user={{user.Name|urlencode}}">Books</a>
-                {% endif %}
-                {% if user.Name %}
-                <a id="logout" href="{% url 'Home' %}">Log-Out</a>
-                {% endif %}
-            </nav>
-        </section>
-    </header>
+    {%include "Pages/header.html"%}
 
     <!-- -------------------------------------------- Book review  -->  
 
@@ -89,7 +52,7 @@
                         <p id="bookStatus" class="status-badge"></p>
                         </div>
                     </div>
-                    <a href="{%url 'ListPage'%}?user={{user|urlencode}}"><button>Back to list</button></a>
+                    <a href="{%url 'Home'%}"><button>Back to list</button></a>
                 </div>
             </div>
         </div>
@@ -123,6 +86,5 @@
         </section>
     </footer>
     
-    <script src="../assets/js/Storing.js"></script>
 </body>
 </html>

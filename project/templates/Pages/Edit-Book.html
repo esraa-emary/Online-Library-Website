@@ -27,42 +27,7 @@
     <script src="../assets/js/Storing.js" defer></script>
 </head>
 <body >
-    <!-- -------------------------------------------- header  -->
-    <header class="header">
-        <section>
-            <div class="logo">
-                <h3>LibraSphere</h3>
-            </div>
-
-            <div class="ajax" style="position: relative;">
-                <form class="search-bar" action="Search.html" method="GET">
-                    <a style="cursor: auto;" type="submit" class="search-icon"><i class="bx bx-search" title="Search"></i></a>
-                    <input id="search" name="q" type="text" placeholder="Search by Title, Author or Category" title="Search" onkeyup="showHint2(this.value)" autocomplete="off">
-                </form>
-                <div id="txtHint" class="results-container"></div>
-            </div>
-  <nav class="nav">
-                    <a href="{% url 'Home' %}?user={{user.Name|urlencode}}">Home</a>
-              
-                {% if user.Name %}
-                <a style="color: #4f88ba;" id="profile" href="{% url 'Profile' %}?user={{user.Name|urlencode}}">Profile</a>
-                <a href="{% url 'About' %}?user={{user.Name|urlencode}}">About US</a>
-                {% else %}
-                <a id="sign" class="first-button" href="{% url 'Signup' %}?user={{user.Name|urlencode}}" title="Sign-Up">Sign-Up</a>
-                <a id="login" href="{% url 'Login' %}?user={{user.Name|urlencode}}" title="Log-In">Log-In</a>
-                {%endif%}
-                {% if user.isadmin %}
-                <a style="color: #4f88ba;" href="{% url "ManageBooks" %}?user={{user.Name|urlencode}}">Manage Books</a>
-                {%elif user.Name%}
-                    <a href="{% url 'ListPage' %}?user={{user.Name|urlencode}}">Books</a>
-                {% endif %}
-                {% if user.Name %}
-                <a id="logout" href="{% url 'Home' %}">Log-Out</a>
-                {% endif %}
-            </nav>
-        </section>
-    </header>
-
+   {%include "Pages/header.html"%}
      <!-- -------------------------------------------- Edit Books  -->
 <section id="Books" class="container">
     <img src="../assets/img/logo.jpg" alt="LibraSphere Logo" class="logoPage">
@@ -150,22 +115,8 @@
         </section>
     </footer>
     
-    <script>
-    const form = document.getElementById("add-book-form");
-    if (form) {
-        form.addEventListener("submit", function(e) {
-           
-
-            if (window.history.replaceState) {
-                window.history.replaceState(null, null, window.location.href);
-            }
-
-            alert("Book edited successfully");
-
-          
-            window.location.href = "{% url 'ManageBooks' %}?user={{ user.Name|urlencode }}";
-        });
-    }
+    <script src={%static "js/Edit-Book.js"%}>
+    
 </script>
 
  

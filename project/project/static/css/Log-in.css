@@ -1,0 +1,168 @@
+.logInPage {
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    align-content: center;
+    
+    .logInForm {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 auto;
+        padding: 2.5rem;
+        border-radius: 15px;
+        max-width: 35%;
+        background-color: #f1f1f1;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        
+        h1 {
+            font-size: 2.5rem;
+        }
+        
+        h1, label {
+            color: var(--first-color);
+        }
+        
+        form {
+            width: 100%;
+            .inputData {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+                margin: 3rem auto;
+                .userName, .password{
+                    display: flex;
+                    flex-direction: column;
+                    input {
+                        border: 1px solid var(--first-color);
+                        height: 40px;
+                        padding: 0 10px;
+                        font-size: 15px;
+                        border-radius: 10px;
+                        transition: all 0.35s ease;
+                    }
+                    
+                    input::placeholder {
+                        font-style: italic;
+                        font-size: 15px;
+                    }
+                }
+                
+                .radioChoices{
+                    display: flex;
+                    label{
+                        min-width: fit-content;
+                        cursor: pointer;
+                    }
+                    .choices{
+                        width: 100%;
+                        display: flex;
+                        padding: 0 3.5rem;
+                        justify-content: space-between;
+                        input {
+                            accent-color: var(--fourth-color);
+                        }
+                    }
+                }
+            }
+            
+            .formBtn {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                text-align: center;
+                gap: 2rem;
+                .logInBtn{
+                    border: none;
+                    background-color: var(--fourth-color);
+                    color: var(--third-color);
+                    font-size: 1rem;
+                    font-weight: 600;
+                    padding: 10px 20px;
+                    border-radius: 10px;
+                    cursor: pointer;
+                    transition: all 0.3s ease-in-out;
+                }
+                
+                .logInBtn:hover {
+                    background-color: var(--first-color);
+                    color: white;
+                    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+                }
+                
+                p {
+                    color: var(--first-color);
+                    a {
+                        color: var(--fourth-color);
+                        margin-left: 0.5rem;
+                        transition: all 0.3s ease-in-out;
+                    }
+                    a:hover {
+                        color: var(--first-color);
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 768px) {
+    .logInPage {
+        .logInForm {
+            max-width: 80%;
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            form {
+                font-size: 0.8rem;
+                .inputData {
+                    margin: 2rem auto;
+                    
+                    .userName, .password {
+                        input {
+                            height: 30px;
+                        }
+                        
+                        input::placeholder {
+                            font-size: 0.75rem;
+                        }
+                    }
+                    .radioChoices {
+                        .choices {
+                            padding: 0 1.5rem;
+                        }
+                    }
+                }
+                
+                .formBtn{
+                    gap: 1rem;
+                                       
+                    .logInBtn {
+                        font-size: 0.85rem;
+                        padding: 7.5px 10px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .logInPage {
+        .logInForm {
+            max-width: 90%;
+            padding: 2rem 1.25rem;
+            
+            form {
+                .inputData .radioChoices {
+                    flex-direction: column;
+                    gap: 0.5rem;
+                    .choices {
+                        padding: 0;
+                    }
+                }
+            }
+        }
+    }
+}

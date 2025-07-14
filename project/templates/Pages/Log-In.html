@@ -5,16 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Log-In</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/user-style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Log-in.css' %}">
     <link rel="icon" href="../assets/img/icon.jpg">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>  <!-- Add jQuery -->
     <script src="../assets/js/script.js" defer></script>
 </head>
 <body>
-    <header class="header">
-        <!-- Header content here -->
-    </header>
-
+         {%include "Pages/header.html"%}
     <!-- Log-In Form -->
     <section class="logInPage">
         <div class="logInForm">
@@ -23,8 +21,8 @@
                 {% csrf_token %}
                 <div class="inputData">
                     <div class="userName">
-                        <label for="userName">Username:</label>
-                        <input type="text" id="userName" name="userName" placeholder="Enter your username" required>
+                        <label for="userName">Email:</label>
+                        <input type="Email" id="userName" name="email" placeholder="Enter your email" required>
                     </div>
                     
                     <div class="password">
@@ -47,40 +45,8 @@
     </footer>
 
     
-    <script>
-  
-        // Handle form submission
-        var loginForm = document.getElementById('loginForm');
-        loginForm.addEventListener('submit', function(e) {
-            e.preventDefault();  // Prevent normal form submission
-            var formData = new FormData(this);  // Get the form data
+      <script src="{% static 'js/Log-in.js' %}" defer></script>
 
-            var xhr = new XMLHttpRequest();
-            xhr.open('POST', '{% url "Login" %}', true);  // The URL where the request should go
-
-            xhr.onload = function() {
-                if (xhr.status === 200) {
-                    var response = JSON.parse(xhr.responseText);  // Parse the response as JSON
-                    if (response.success) {
-                       
-                        window.location.href = "{% url 'Home' %}?user=" + encodeURIComponent(response.user);;  // Redirect to homepage
-                    } else {
-                        // Display the error message if login failed
-                        document.getElementById('error-msg').textContent = response.error_message;
-                    }
-                } else {
-                    document.getElementById('error-msg').textContent = 'There was an error with the login request.';
-                }
-            };
-
-            xhr.onerror = function() {
-                document.getElementById('error-msg').textContent = 'There was an error with the request.';
-            };
-
-            xhr.send(formData);  // Send the form data
-        });
-    
-</script>
 
    
 </body>

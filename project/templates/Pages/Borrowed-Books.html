@@ -21,6 +21,7 @@
 
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/user-style.css' %}">
+    <link rel="stylesheet" href="{%static 'css/List-Page.css'%}">
     
     <link rel="icon" href="{% static 'img/icon.jpg' %}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Tangerine:wght@400;700&display=swap">
@@ -29,44 +30,7 @@
 </head>
 <body >
     <!-- -------------------------------------------- header  -->
-    <header class="header">
-        <section>
-            <div class="logo">
-                <h3>LibraSphere</h3>
-            </div>
-
-            <div class="ajax" style="position: relative;">
-               <form class="search-bar" action="{% url 'Search' %}" method="GET">
-                    <input type="hidden" name="user" value="{{ user.Name }}">
-                    <button type="submit" class="search-icon" style="background: none; border: none;">
-                    <i class="bx bx-search" title="Search"></i>
-                    </button>
-                    <input id="search" name="q" type="text" placeholder="Search by Title, Author or Category" title="Search" onkeyup="showHint2(this.value)" autocomplete="off">
-                </form>
-                <div id="txtHint" class="results-container"></div>
-            </div>
-
-            <nav class="nav">
-                    <a href="{% url 'Home' %}?user={{user.Name|urlencode}}">Home</a>
-               
-                {% if user.Name %}
-                <a  style="color: #4f88ba;" id="profile" href="{% url 'Profile' %}?user={{user.Name|urlencode}}">Profile</a>
-                <a href="{% url 'About' %}?user={{user.Name|urlencode}}">About US</a>
-                {% else %}
-                <a id="sign" class="first-button" href="{% url 'Signup' %}?user={{user.Name|urlencode}}" title="Sign-Up">Sign-Up</a>
-                <a id="login" href="{% url 'Login' %}?user={{user.Name|urlencode}}" title="Log-In">Log-In</a>
-                {%endif%}
-                {% if user.isadmin %}
-                <a  href="{% url "ManageBooks" %}?user={{user.Name|urlencode}}">Manage Books</a>
-                {%elif user.Name%}
-                    <a  href="{% url 'ListPage' %}?user={{user.Name|urlencode}}">Books</a>
-                {% endif %}
-                {% if user.Name %}
-                <a id="logout" href="{% url 'Home' %}">Log-Out</a>
-                {% endif %}
-            </nav>
-        </section>
-    </header>
+     {%include "Pages/header.html"%}
 
 <!-- -------------------------------------------- Borrowed Books  -->
     <section id="Books" class="container">
@@ -78,48 +42,55 @@
         {% if borrowed %}
 
         
+        <h2>My Borrowed Books</h2>
         <div class="booktype">
-            <h2>My Borrowed Books</h2>
         
-        </div>
             <div class="cards">
-                        {% for borrow in borrowed %}
-                            <form method="POST"  id="return-form">
-                                {% csrf_token %}
-                            
+                {% for borrow in borrowed %}
+                    
                         
-                            <div class="card">
-                                <img src="{{ borrow.book.image.url }}" alt="{{ book.Title }}">
-                                    <h5 class="title"  >{{ borrow.book.Title }}</h5>
-                                    <input type="hidden" id="title" name="title" value="{{ borrow.book.Title }}">
+                        <div class="card">
+                        
+                            <img src="{{ borrow.book.image.url }}" alt="{{ book.Title }}">
+                            
+                            <figcaption>
+                                <h5 class="title"  >{{ borrow.book.Title }}</h5>
+                                
+                                <p class="author">{{ borrow.book.Author }}</p>
+                                <p class="price">{{ borrow.book.Price }}$</p>
+                            </figcaption>
 
-                                    <p class="author">{{ borrow.book.Author }}</p>
-                                    <p class="price">{{ borrow.book.Price }}$</p>
-                                   
-                                    <div class="card-actions">
-                                        <a href="{% url 'Bookreview' %}?title={{ borrow.book.Title|urlencode }}&author={{ borrow.book.author|urlencode }}">
-                                            <button class="Book-Review-btn"><i class="fas fa-book-open"></i>Book Review</button>
-                                        </a>
-                                       
-                                          
-                                                <button class="return-btn" name="return" id="return" type="submit" >
+                     
+                        
+                        <div class="card-actions">
+                            <a href="{% url 'Bookreview' %}?title={{ borrow.book.Title|urlencode }}&author={{ borrow.book.author|urlencode }}">
+                                <button class="Book-Review-btn"><i class="fas fa-book-open"></i>Book Review</button>
+                            </a>
+                            
+                            <form method="POST"  id="return-form"> 
+                                {% csrf_token %}
+                                <input type="hidden" id="title" name="title" value="{{ borrow.book.Title }}">
+
+                                <h5 class="title" name ="title" style="display:none;" >{{ borrow.book.Title }} </h5>
+
+                                <button class="return-btn" name="return" id="return" type="submit" >
                                                     <i class="fas fa-hand-holding"></i>return book
                                                 </button>
-                                            
+                                                
                                     
-                                    </div>
-                            </div>
-                      
-                        </form>
-                    
-                
-            {% endfor %}    
-    
-        {% else %}
-            <p>You haven't borrowed any books yet.</p>
-        {% endif %}
+                            </form>   
+                        </div>
+                    </div>
 
-</div>
+                                    
+                                    
+                {% endfor %}    
+                                    
+                                    {% else %}
+                                    <p>You haven't borrowed any books yet.</p>
+                                    {% endif %}
+             </div>
+    </div>
 
         </section>
     </footer>
@@ -128,31 +99,8 @@
 <!-- Pass data to JavaScript safely -->
 
 
-<script>
-document.querySelectorAll("#return-form").forEach(function(form) {
-    form.addEventListener("submit", function(event) {
-        event.preventDefault();
-        var xml = new XMLHttpRequest();
-        xml.open("POST", form.action, true);
-        var data = new FormData(form);
+<script src={%static "js/Borrowed-Books.js"%}>
 
-        xml.onload = function() {
-            if (xml.status == 200) {
-                var response = JSON.parse(xml.responseText);
-                if (response.success) {
-                    alert("Book returned successfully!");
-                    window.location.href = "{% url 'BorrowedBooks' %}?user={{ user.Name|urlencode }}";
-                } else {
-                    alert("Error returning book: " + response.error);
-                }
-            } else {
-                alert("Error: " + xml.statusText);
-            }
-        };
-
-        xml.send(data);
-    });
-});
 </script>
 
 </body>

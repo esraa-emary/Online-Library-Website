@@ -20,6 +20,8 @@
     <title>Sign-Up</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <link rel="stylesheet" href="{% static 'css/Sign-up.css'%}">
+
     <link rel="icon" href="../assets/img/icon.jpg">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Tangerine:wght@400;700&display=swap">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
@@ -146,69 +148,9 @@
         </section>
     </footer>
     
-    <script >
+    <script src={%static "js/Sign-up.js"%}>
        
-
-    document.getElementById('signUpForm').addEventListener('input', function(e) {
-        e.preventDefault();  
-        document.getElementById('erroruser').textContent = '';
-        document.getElementById('errorpassword').textContent = '';
-        document.getElementById('erroremail').textContent = '';
-        var xml= new XMLHttpRequest();
-        xml.open('POST', '{% url "Signup" %}', true);
-
-        var formData = new FormData(this);
-      xml.onload = function() {
-        if (xml.status === 200) {
-            var response = JSON.parse(xml.responseText);
-               
-                if(response.error_message){
-                document.getElementById(response.type).textContent = response.error_message;
-            }
-        } else {
-            document.getElementById('error-msg').textContent = 'There was an error with the signup request.';
-        }
-    };
-          xml.onerror = function() {
-        document.getElementById('error-msg').textContent = 'There was an error with the request.';
-    };
-        xml.send(formData);  
-    }
-
-    )
- document.getElementById('signUpBtn').addEventListener('click', function(e) {
-        e.preventDefault();  
-        var xml= new XMLHttpRequest();
-        xml.open('POST', '{% url "validate" %}', true);
-
-           const form = document.getElementById('signUpForm');
-           const formData = new FormData(form);
-      xml.onload = function() {
-        if (xml.status === 200) {
-            var response = JSON.parse(xml.responseText);
-            
-            if(response.success){
-                alert("user registered successfully");
-                window.location.href="{% url 'Login'%}";
-            }
-            else{ 
-                document.getElementById('erroruser').textContent = '';
-                document.getElementById('errorpassword').textContent = '';
-                document.getElementById('erroremail').textContent = '';
-                document.getElementById(response.type).textContent = response.error_message;
-            }
-
-        } else {
-            document.getElementById('error-msg').textContent = 'There was an error with the signup request.';
-        }
-    };
-          xml.onerror = function() {
-        document.getElementById('error-msg').textContent = 'There was an error with the request.';
-    };
-        xml.send(formData);  
-    }
-
-    )
+ 
     </script>
 </body>
 </html>
